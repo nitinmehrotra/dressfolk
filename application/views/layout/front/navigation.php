@@ -580,17 +580,6 @@
                                     <li ><a href="customer/account/login/index.html" title="Log In" >Log In</a></li>
                                     <li class=" last" ><a href="customer/account/create/index.html" title="Sign Up" >Sign Up</a></li>
                                 </ul>
-                                <div class="language-currency ">
-                                    <div class="language-switcher switcher-wrap">
-                                        <div class="title-selector"><span>Your Languages</span></div>
-                                        <ul class="select-language clearfix">
-                                            <li><a href="index-___store=english&___from_store=usa.html"> <img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/flags/flag-english.jpg" /> </a></li>
-                                            <li class="current-language"><span><img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/flags/flag-usa.jpg" /></span></li>
-                                            <li><a href="index-___store=australia&___from_store=usa.html"> <img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/flags/flag-australia.jpg" /> </a></li>
-                                            <li><a href="index-___store=italia&___from_store=usa.html"> <img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/flags/flag-italia.jpg" /> </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1180,17 +1169,6 @@
                                 <li ><a href="customer/account/login/index.html" title="Log In" >Log In</a></li>
                                 <li class=" last" ><a href="customer/account/create/index.html" title="Sign Up" >Sign Up</a></li>
                             </ul>
-                            <div class="language-currency ">
-                                <div class="language-switcher switcher-wrap">
-                                    <div class="title-selector"><span>Your Languages</span></div>
-                                    <ul class="select-language clearfix">
-                                        <li><a href="index-___store=english&___from_store=usa.html"> <img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/flags/flag-english.jpg" /> </a></li>
-                                        <li class="current-language"><span><img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/flags/flag-usa.jpg" /></span></li>
-                                        <li><a href="index-___store=australia&___from_store=usa.html"> <img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/flags/flag-australia.jpg" /> </a></li>
-                                        <li><a href="index-___store=italia&___from_store=usa.html"> <img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/flags/flag-italia.jpg" /> </a></li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
