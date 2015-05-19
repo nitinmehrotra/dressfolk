@@ -1,0 +1,15 @@
+.login-error
+{
+    background: #f31841;
+    color: #FFF;
+    padding: 10px;
+    text-align: center;
+}
+
+.login-success
+{
+    background: #0aa93a;
+    color: #FFF;
+    padding: 10px;
+    text-align: center;
+}
