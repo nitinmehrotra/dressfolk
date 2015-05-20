@@ -1,3 +1,8 @@
+<?php
+$controller = $this->router->fetch_class();
+$method = $this->router->fetch_method();
+$path = $controller . "/" . $method;
+?>
 <header class="header-wrapper">
     <div class="header-container">
         <div id="mobile-sticky" class="main-header visible-xs">
@@ -1175,117 +1180,127 @@
             </div>
         </div>
         <div class=""></div>
-        <div class="top-container"><div class="slide-home" id="block-slide-home">
-                <div class="slide-home owl-carousel ">
-                    <div class="slide-content">
-                        <div class="slide-inner-content">
-                            <div class="slider-image"><img class="images-resposive" alt="slider 01" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide1.jpg" /></div>
-                            <div class="slider-text">
-                                <h2 class="slider-title"><span>You can have anything you want <br /> if you dress for it </span></h2>
-                                <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+        <?php
+        if ($path == 'index/index')
+        {
+            ?>
+            <div class="top-container">
+                <div class="slide-home" id="block-slide-home">
+                    <div class="slide-home owl-carousel ">
+                        <div class="slide-content">
+                            <div class="slide-inner-content">
+                                <div class="slider-image"><img class="images-resposive" alt="slider 01" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide1.jpg" /></div>
+                                <div class="slider-text">
+                                    <h2 class="slider-title"><span>You can have anything you want <br /> if you dress for it </span></h2>
+                                    <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+                                </div>
                             </div>
-                        </div>
-                    </div>                    <div class="slide-content">
-                        <div class="slide-inner-content">
-                            <div class="slider-image"><img class="images-resposive" alt="slider 02" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide2.jpg" /></div>
-                            <div class="slider-text">
-                                <h2 class="slider-title"><span>Trendy is the last stage before tacky</span></h2>
-                                <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+                        </div>                    <div class="slide-content">
+                            <div class="slide-inner-content">
+                                <div class="slider-image"><img class="images-resposive" alt="slider 02" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide2.jpg" /></div>
+                                <div class="slider-text">
+                                    <h2 class="slider-title"><span>Trendy is the last stage before tacky</span></h2>
+                                    <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+                                </div>
                             </div>
-                        </div>
-                    </div>                    <div class="slide-content">
-                        <div class="slide-inner-content">
-                            <div class="slider-image"><img class="images-resposive" alt="slider 01" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide3.jpg" /></div>
-                            <div class="slider-text">
-                                <h2 class="slider-title"><span>it's about something else <br/> that comes from within you</span></h2>
-                                <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+                        </div>                    <div class="slide-content">
+                            <div class="slide-inner-content">
+                                <div class="slider-image"><img class="images-resposive" alt="slider 01" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide3.jpg" /></div>
+                                <div class="slider-text">
+                                    <h2 class="slider-title"><span>it's about something else <br/> that comes from within you</span></h2>
+                                    <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+                                </div>
                             </div>
-                        </div>
-                    </div>            </div>
-                <script type="text/javascript">
-                    jQuery(document).ready(function () {
-                        widgetConfig.init('block-slide-home', {
-                            carousel: {"enable": true, "pagination": true, "autoPlay": false, "items": 1, "singleItem": true, "lazyLoad": true, "lazyEffect": false, "addClassActive": true, "navigation": false, "navigationText": [null, null]}});
-                    });
-                </script>
-            </div></div>                    <div class="header-search">
-            <div class="container">
-                <div class="row">
-                    <form id="search_mini_form" action="http://puro.icotheme.com/catalogsearch/result/" method="get">
-                        <div class="input-group form-search">
-                            <span class="input-group-btn category-filter">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                    <span class="category-label">
-                                        All Categories                </span>&nbsp;<i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:void(0)" data-value="">All</a></li>
-                                    <li><a href="javascript:void(0)" data-value="3">Women</a></li>
-                                    <li><a href="javascript:void(0)" data-value="4">Men</a></li>
-                                    <li><a href="javascript:void(0)" data-value="5">Footwear</a></li>
-                                    <li><a href="javascript:void(0)" data-value="6">Jewellery</a></li>
-                                    <li><a href="javascript:void(0)" data-value="7">Accessories</a></li>
-                                    <li><a href="javascript:void(0)" data-value="8">Shoes</a></li>
-                                    <li><a href="javascript:void(0)" data-value="9">Bag</a></li>
-                                    <li><a href="javascript:void(0)" data-value="10">Shirts</a></li>
-                                    <li><a href="javascript:void(0)" data-value="11">Pants</a></li>
-                                </ul>
-                            </span>
-                            <input type="hidden" name="cat" value=""/>
-                            <input id="search"
-                                   type="search"
-                                   name="q"
-                                   value=""
-                                   class="input-text required-entry"
-                                   maxlength="128"
-                                   />
-                            <button type="submit" title="Search" class="search-button"><span><span><i class="fa fa-search"></i></span></span></button>
-                        </div>
-                        <div id="search_autocomplete" class="search-autocomplete" style="display: none"></div>
-                        <script type="text/javascript">
-                            //<![CDATA[
-                            var CatSearch = Class.create(Varien.searchForm, {
-                                initAutocomplete: function (url, destinationElement) {
-                                    new Ajax.Autocompleter(this.field, destinationElement, url, {
-                                        paramName: this.field.name,
-                                        method: 'get',
-                                        minChars: 2,
-                                        updateElement: this._selectAutocompleteItem.bind(this),
-                                        onShow: function (element, update) {
-                                            if (!update.style.position || update.style.position == 'absolute') {
-                                                update.style.position = 'absolute';
-                                                Position.clone(element, update, {
-                                                    setHeight: false,
-                                                    offsetTop: element.offsetHeight
-                                                });
+                        </div>            </div>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function () {
+                            widgetConfig.init('block-slide-home', {
+                                carousel: {"enable": true, "pagination": true, "autoPlay": false, "items": 1, "singleItem": true, "lazyLoad": true, "lazyEffect": false, "addClassActive": true, "navigation": false, "navigationText": [null, null]}});
+                        });
+                    </script>
+                </div>
+            </div>            
+            <div class="header-search">
+                <div class="container">
+                    <div class="row">
+                        <form id="search_mini_form" action="http://puro.icotheme.com/catalogsearch/result/" method="get">
+                            <div class="input-group form-search">
+                                <span class="input-group-btn category-filter">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                        <span class="category-label">
+                                            All Categories                </span>&nbsp;<i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)" data-value="">All</a></li>
+                                        <li><a href="javascript:void(0)" data-value="3">Women</a></li>
+                                        <li><a href="javascript:void(0)" data-value="4">Men</a></li>
+                                        <li><a href="javascript:void(0)" data-value="5">Footwear</a></li>
+                                        <li><a href="javascript:void(0)" data-value="6">Jewellery</a></li>
+                                        <li><a href="javascript:void(0)" data-value="7">Accessories</a></li>
+                                        <li><a href="javascript:void(0)" data-value="8">Shoes</a></li>
+                                        <li><a href="javascript:void(0)" data-value="9">Bag</a></li>
+                                        <li><a href="javascript:void(0)" data-value="10">Shirts</a></li>
+                                        <li><a href="javascript:void(0)" data-value="11">Pants</a></li>
+                                    </ul>
+                                </span>
+                                <input type="hidden" name="cat" value=""/>
+                                <input id="search"
+                                       type="search"
+                                       name="q"
+                                       value=""
+                                       class="input-text required-entry"
+                                       maxlength="128"
+                                       />
+                                <button type="submit" title="Search" class="search-button"><span><span><i class="fa fa-search"></i></span></span></button>
+                            </div>
+                            <div id="search_autocomplete" class="search-autocomplete" style="display: none"></div>
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                var CatSearch = Class.create(Varien.searchForm, {
+                                    initAutocomplete: function (url, destinationElement) {
+                                        new Ajax.Autocompleter(this.field, destinationElement, url, {
+                                            paramName: this.field.name,
+                                            method: 'get',
+                                            minChars: 2,
+                                            updateElement: this._selectAutocompleteItem.bind(this),
+                                            onShow: function (element, update) {
+                                                if (!update.style.position || update.style.position == 'absolute') {
+                                                    update.style.position = 'absolute';
+                                                    Position.clone(element, update, {
+                                                        setHeight: false,
+                                                        offsetTop: element.offsetHeight
+                                                    });
+                                                }
+                                                Effect.Appear(update, {duration: 0});
                                             }
-                                            Effect.Appear(update, {duration: 0});
-                                        }
-                                    });
-                                },
-                                initSearchFilter: function (field, target) {
-                                    var fieldElm = this.form.down('input[name="' + field + '"]');
-                                    if (!fieldElm)
-                                        return;
-                                    var targetElm = this.form.down(target);
-                                    this.form.select('.form-search .dropdown-menu a').each(function (item) {
-                                        Event.observe(item, 'click', function () {
-                                            fieldElm.value = item.readAttribute('data-value');
-                                            if (targetElm)
-                                                targetElm.update(item.innerHTML);
                                         });
-                                    });
-                                }
-                            });
-                            var searchForm = new CatSearch('search_mini_form', 'search', '');
-                            searchForm.initAutocomplete('http://puro.icotheme.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
-                            searchForm.initSearchFilter('cat', '.category-label');
-                            //]]>
-                        </script>
-                    </form>
+                                    },
+                                    initSearchFilter: function (field, target) {
+                                        var fieldElm = this.form.down('input[name="' + field + '"]');
+                                        if (!fieldElm)
+                                            return;
+                                        var targetElm = this.form.down(target);
+                                        this.form.select('.form-search .dropdown-menu a').each(function (item) {
+                                            Event.observe(item, 'click', function () {
+                                                fieldElm.value = item.readAttribute('data-value');
+                                                if (targetElm)
+                                                    targetElm.update(item.innerHTML);
+                                            });
+                                        });
+                                    }
+                                });
+                                var searchForm = new CatSearch('search_mini_form', 'search', '');
+                                searchForm.initAutocomplete('http://puro.icotheme.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
+                                searchForm.initSearchFilter('cat', '.category-label');
+                                //]]>
+                            </script>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+            <?php
+        }
+        ?>
 
     </div>
 </header>

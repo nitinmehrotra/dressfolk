@@ -18,8 +18,10 @@ $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
 $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
 $this->output->set_header('Pragma: no-cache');
 //    prd($meta_logo_image);
-?> 
-<?php require_once './constants.php'; ?>
+$controller = $this->router->fetch_class();
+$method = $this->router->fetch_method();
+$path = $controller . "/" . $method;
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
@@ -67,7 +69,7 @@ $this->output->set_header('Pragma: no-cache');
             //]]></script>  
         <link href='http://fonts.googleapis.com/css?family=Montserrat:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400&subset=latin' rel='stylesheet' type='text/css'/>
     </head>
-    <body class=" cms-index-index slidebar-left cms-home">
+    <body class="slidebar-left <?php echo $path == 'index/index' ? 'cms-home cms-index-index' : ''; ?>">
         <!-- // HEADER // -->
         <?php
         $this->load->view('layout/front/navigation');
@@ -78,7 +80,8 @@ $this->output->set_header('Pragma: no-cache');
                 <div class="notice-inner">
                     <p>
                         <strong>JavaScript seems to be disabled in your browser.</strong><br />
-                        You must have JavaScript enabled in your browser to utilize the functionality of this website.</p>
+                        You must have JavaScript enabled in your browser to utilize the functionality of this website.
+                    </p>
                 </div>
             </div>
         </noscript>
