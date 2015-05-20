@@ -22,7 +22,7 @@ $path = $controller . "/" . $method;
                         </div>
                         <nav class="collapse bs-navbar-collapse" role="navigation">
                             <ul class="nav-accordion nav-mobile-accordion">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="<?php echo base_url(); ?>">Home</a></li>
                                 <li class="level0 nav-6 level-top first parent">
                                     <a href="women.html" class="level-top">
                                         <span>Women</span>
@@ -541,7 +541,8 @@ $path = $controller . "/" . $method;
                                 <a href="accessories.html" class="level-top">
                                     <span>Accessories</span>
                                 </a>
-                            </li>                        <li class="level0 level-top link-external">
+                            </li>                      
+                            <li class="level0 level-top link-external">
                                 <a href="blog/index.html"
                                    class="level-top">
                                     <span>Blog</span>
@@ -577,13 +578,13 @@ $path = $controller . "/" . $method;
                             </div>
                             <div class="switcher-content">
                                 <ul class="links">
-                                    <li class="first" ><a href="customer/account/index.html" title="My Account" >My Account</a></li>
-                                    <li ><a href="wishlist/index.html" title="My Wishlist" >My Wishlist</a></li>
-                                    <li ><a href="checkout/cart/index.html" title="My Cart" class="top-link-cart">My Cart</a></li>
-                                    <li ><a href="checkout/index.html" title="Checkout" class="top-link-checkout">Checkout</a></li>
-                                    <li ><a href="blog/index.html" title="Blog" >Blog</a></li>
-                                    <li ><a href="customer/account/login/index.html" title="Log In" >Log In</a></li>
-                                    <li class=" last" ><a href="customer/account/create/index.html" title="Sign Up" >Sign Up</a></li>
+                                    <li class="first" ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                    <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
+                                    <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
+                                    <li ><a href="<?php echo base_url('checkout'); ?>" title="Checkout" class="top-link-checkout">Checkout</a></li>
+                                    <li ><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
+                                    <li ><a href="<?php echo base_url('login'); ?>" title="Log In" >Log In</a></li>
+                                    <li class=" last" ><a href="<?php echo base_url('signup'); ?>" title="Sign Up" >Sign Up</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -848,7 +849,8 @@ $path = $controller . "/" . $method;
                                             <a href="accessories.html" class="level-top">
                                                 <span>Accessories</span>
                                             </a>
-                                        </li>            </ul>
+                                        </li>           
+                                    </ul>
                                 </nav>
                             </div>
                         </div>
@@ -856,7 +858,7 @@ $path = $controller . "/" . $method;
                             <div class="main-navigation">
                                 <ul class="top-navigation">
                                     <li class="level0 home level-top  active m-dropdown parent">
-                                        <a href="index.html"
+                                        <a href="<?php echo base_url(); ?>"
                                            class="level-top"><span>Home</span></a>
                                     </li>
                                     <li class="level0 nav-1 level-top first parent parent">
@@ -1133,7 +1135,8 @@ $path = $controller . "/" . $method;
                                         <a href="accessories.html" class="level-top">
                                             <span>Accessories</span>
                                         </a>
-                                    </li>                        <li class="level0 level-top link-external">
+                                    </li>                       
+                                    <li class="level0 level-top link-external">
                                         <a href="blog/index.html"
                                            class="level-top">
                                             <span>Blog</span>
@@ -1142,7 +1145,8 @@ $path = $controller . "/" . $method;
                                 </ul>
                             </div>
                         </div>
-                        <!-- navigation EOF -->                    </div>
+                        <!-- navigation EOF -->             
+                    </div>
                 </div>
             </div>
             <div class="right-header-menu">
@@ -1166,13 +1170,13 @@ $path = $controller . "/" . $method;
 
                         <div class="switcher-content">
                             <ul class="links">
-                                <li class="first" ><a href="customer/account/index.html" title="My Account" >My Account</a></li>
-                                <li ><a href="wishlist/index.html" title="My Wishlist" >My Wishlist</a></li>
-                                <li ><a href="checkout/cart/index.html" title="My Cart" class="top-link-cart">My Cart</a></li>
-                                <li ><a href="checkout/index.html" title="Checkout" class="top-link-checkout">Checkout</a></li>
-                                <li ><a href="blog/index.html" title="Blog" >Blog</a></li>
-                                <li ><a href="customer/account/login/index.html" title="Log In" >Log In</a></li>
-                                <li class=" last" ><a href="customer/account/create/index.html" title="Sign Up" >Sign Up</a></li>
+                                <li class="first" ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
+                                <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
+                                <li ><a href="<?php echo base_url('checkout'); ?>" title="Checkout" class="top-link-checkout">Checkout</a></li>
+                                <li ><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
+                                <li ><a href="<?php echo base_url('login'); ?>" title="Log In" >Log In</a></li>
+                                <li class=" last" ><a href="<?php echo base_url('signup'); ?>" title="Sign Up" >Sign Up</a></li>
                             </ul>
                         </div>
                     </div>
