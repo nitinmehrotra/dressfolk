@@ -22,8 +22,7 @@
                             <div class="page-title">
                                 <h1>Login or Create an Account</h1>
                             </div>
-                            <form action="http://puro.icotheme.com/customer/account/loginPost/" method="post" id="login-form">
-                                <input name="form_key" type="hidden" value="Aw51Z9NVQ6ogmjDS" />
+                            <form action="" method="post" id="login-form">
                                 <div class="col2-set">
                                     <div class="col-1 new-users">
                                         <div class="content">
@@ -31,7 +30,7 @@
                                             <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
                                         </div>
                                         <div class="buttons-set">
-                                            <button type="button" title="Create an Account" class="button" onclick="window.location = 'http://puro.icotheme.com/customer/account/create/';"><span><span>Create an Account</span></span></button>
+                                            <button type="button" title="Create an Account" class="button" onclick="window.location = '<?php echo base_url('signup'); ?>';"><span><span>Create an Account</span></span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +56,7 @@
                                             <p class="required">* Required Fields</p>
                                         </div>
                                         <div class="buttons-set">
-                                            <a href="../forgotpassword/index.html" class="f-left">Forgot Your Password?</a>
+                                            <a href="<?php echo base_url('forgot-password'); ?>" class="f-left">Forgot Your Password?</a>
                                             <button type="submit" class="button" title="Login" name="send" id="send2"><span><span>Login</span></span></button>
                                         </div>
                                     </div>
