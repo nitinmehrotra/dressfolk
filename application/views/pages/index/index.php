@@ -463,52 +463,6 @@
 </div> --></div>                        </div>
                 </div>
             </div>
-            <div class="deal">
-                <div class="row show-grid">
-                    <div class="widget widget-static-block"><div class="deal-of-day">
-                            <img class="img-responsive" src="<?php echo FRONT_ASSETS_PATH;?>/wysiwyg/icotheme/image_deal.jpg" alt="" />
-                            <div class="content">
-                                <div class="content-top">
-                                    <span class="title">Deal of the day</span> 
-                                    <span class="intro">Elegant Fashion on Sale Only Today</span> 
-                                </div>
-                                <div class="product-countdown">
-                                    <div class="" id="block-727c17666bad76b270f6ae4b76ee698d">
-                                        <ul class="products-grid ">
-                                            <li class="item">
-                                                <div class="wrapper-product-date">
-                                                    <div class="product-date clearfix" data-date="Mar 03, 2016 04:00"></div>
-                                                </div>
-                                                <div class="shop-now button">
-                                                    <a class="btn-button" href="island-waistcoat.html" title="Shop Now">
-                                                        Shop Now                </a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <script type="text/javascript">
-                                        jQuery(window).load(function () {
-                                            widgetConfig.init('block-727c17666bad76b270f6ae4b76ee698d', {
-                                                countdown: {"enable": true, "yearText": "years", "monthText": "months", "weekText": "weeks", "dayText": "days", "hourText": "hours", "minText": "mins", "secText": "secs", "yearSingularText": "year", "monthSingularText": "month", "weekSingularText": "week", "daySingularText": "day", "hourSingularText": "hour", "minSingularText": "min", "secSingularText": "sec"},
-                                                countdownConfig: {dayText: '',
-                                                    hourText: '',
-                                                    minText: '',
-                                                    secText: '',
-                                                    daySingularText: '',
-                                                    hourSingularText: '',
-                                                    minSingularText: '',
-                                                    secSingularText: ''
-                                                },
-                                                countdownTemplate: '<div class="day"><span class="no">%d</span><span class="text">days</span></div><div class="hours"><span class="no">%h</span><span class="text">hours</span></div><div class="min"><span class="no">%i</span><span class="text">min</span></div><div class="second"><span class="no">%s</span><span class="text">secs</span></div>'
-                                            });
-                                        });
-                                    </script>
-
-                                </div>
-                            </div>
-                        </div> </div>
-                </div>
-            </div>
             <div class="container">
                 <div class="row show-grid">
                     <div class="home-product-tab tab-product-collection" id="block-a1d055d728a0105690467f4686c2cbba">
