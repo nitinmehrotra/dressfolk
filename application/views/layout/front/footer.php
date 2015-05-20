@@ -172,6 +172,6 @@
     frontendData.enableSticky = true;
     frontendData.enableAjax = true;
 </script>
-<script type="text/javascript" src="skin/frontend/puro/default/js/frontend.js"></script>
+<script type="text/javascript" src="<?php echo JS_PATH; ?>/frontend.js"></script>
 </body>
 </html>
