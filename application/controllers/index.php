@@ -34,4 +34,13 @@ class Index extends CI_Controller
         $this->template->render();
     }
 
+    public function forgotPassword()
+    {
+        $data = array();
+
+        $data['meta_title'] = 'Forgot password | ' . SITE_NAME;
+        $this->template->write_view("content", "pages/index/forgot-password", $data);
+        $this->template->render();
+    }
+
 }
