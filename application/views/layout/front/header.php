@@ -1,67 +1,87 @@
 <?php
-    if (!isset($meta_title))
-        $meta_title = SITE_TITLE;
+if (!isset($meta_title))
+    $meta_title = SITE_TITLE;
 
-    if (!isset($meta_keywords))
-        $meta_keywords = SEO_KEYWORDS;
+if (!isset($meta_keywords))
+    $meta_keywords = SEO_KEYWORDS;
 
-    if (!isset($meta_description))
-        $meta_description = SEO_DESCRIPTION;
+if (!isset($meta_description))
+    $meta_description = SEO_DESCRIPTION;
 
-    if (!isset($meta_logo_image))
-        $meta_logo_image = IMAGES_PATH . "/logo.png";
+if (!isset($meta_logo_image))
+    $meta_logo_image = IMAGES_PATH . "/logo.png";
 
-    clearstatcache();
-    $this->output->set_header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
-    $this->output->set_header('Last-Modified:' . gmdate('D, d M Y H:i:s') . 'GMT');
-    $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
-    $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
-    $this->output->set_header('Pragma: no-cache');
+clearstatcache();
+$this->output->set_header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
+$this->output->set_header('Last-Modified:' . gmdate('D, d M Y H:i:s') . 'GMT');
+$this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
+$this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
+$this->output->set_header('Pragma: no-cache');
 //    prd($meta_logo_image);
-?> 
-
+$controller = $this->router->fetch_class();
+$method = $this->router->fetch_method();
+$path = $controller . "/" . $method;
+?>
 <!DOCTYPE html>
-<!--[if lt IE 8]>      <html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie10 lt-ie9"> <![endif]-->
-<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
-<!--[if IE]><meta http-equiv=”X-UA-Compatible” content=”IE=9″><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title><?php echo $meta_title; ?></title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-        <meta name="description" content="<?php echo $meta_description ?>"/>
-        <meta name="author" content="<?php echo SITE_NAME; ?>"/>
-        <meta name="robots" content="index,follow"/>
-        <meta name="robots" content="robots.txt"/>
-        <meta property="og:url" content="<?php echo current_url(); ?>"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="<?php echo $meta_title; ?>"/>
-        <meta property="og:description" content="<?php echo $meta_description; ?>"/>
-        <meta property="og:image" content="<?php echo $meta_logo_image; ?>"/>
-        <meta name="geo.region" content="India" />
-        <meta property="og:locale" content="en_US" />
-        <!--Google plus essentials START-->
-        <link href="https://plus.google.com/+ThreadCraftsJodhpur" rel="publisher" />
-        <script type="text/javascript" async defer src="https://apis.google.com/js/platform.js?publisherid=101035726513260358778"></script>
-        <!--Google plus essentials END-->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo IMAGES_PATH; ?>/apple-touch/144.png"/>
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo IMAGES_PATH; ?>/apple-touch/114.png"/>
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo IMAGES_PATH; ?>/apple-touch/72.png"/>
-        <link rel="apple-touch-icon-precomposed" href="<?php echo IMAGES_PATH; ?>/apple-touch/57.png"/>
-        <link rel="shortcut icon" href="<?php echo IMAGES_PATH; ?>/favicon.ico"/>        
-        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/style.css"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo JS_PATH; ?>/jquery-ui-1.10.3/css/smoothness/jquery-ui-1.10.3.custom.min.css"/>
-        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <script type="text/javascript" src="<?php echo JS_PATH; ?>/jquery-core-n-modernizer.min.js"></script>
+        <meta name="description" content="<?php echo $meta_description; ?>"/>
+        <meta name="keywords" content="<?php echo $meta_keywords; ?>"/>
+        <meta name="robots" content="INDEX,FOLLOW"/>
+        <base target="_parent" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
+        <link rel="icon" href="<?php echo IMAGES_PATH; ?>/favicon.ico" type="image/x-icon"/>
+        <link rel="shortcut icon" href="<?php echo IMAGES_PATH; ?>/favicon.ico" type="image/x-icon"/>
+        <!--[if lt IE 7]>
         <script type="text/javascript">
-            if (window.location.hash && window.location.hash == '#_=_') {
-                window.location.hash = '';
-            }
-            var baseUrl = '<?php echo base_url(); ?>';
+            //<![CDATA[
+            var BLANK_URL = 'http://puro.icotheme.com/js/blank.html';
+            var BLANK_IMG = 'http://puro.icotheme.com/js/spacer.gif';
+        //]]>
         </script>
+        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/437006133d9d6342b2e498ea089b0cf7.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/36bc63752380e29e215776dd85d7047e.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/976e407bad0f6ef8b3c84752e70679a7.css" media="print" />
+        <script type="text/javascript" src="<?php echo JS_PATH; ?>/5164f243df82e4cc8456f4bdf354ac03.js"></script>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/e3abd5ccfeb574ea6ab6aa54081488b2.css" media="all" />
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <script type="text/javascript" src="<?php echo JS_PATH; ?>/daf32c11099ae3bdc0c12fc49c58d4ef.js"></script>
+        <![endif]-->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="<?php echo JS_PATH; ?>/0708f4cc60b3173c34d0e617f1d6536d.js"></script>
+        <![endif]-->
+
+        <script type="text/javascript">
+            //<![CDATA[
+            Mage.Cookies.path = '/';
+            Mage.Cookies.domain = '.puro.icotheme.com';
+            //]]>
+            //<![CDATA[
+            optionalZipCountries = ["HK", "IE", "MO", "PA"];
+            //]]>
+            //<![CDATA[
+            var Translator = new Translate([]);
+            //]]></script>  
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400&subset=latin' rel='stylesheet' type='text/css'/>
     </head>
-    <body>
+    <body class="slidebar-left <?php echo $path == 'index/index' ? 'cms-home cms-index-index' : ''; ?>">
+        <!-- // HEADER // -->
         <?php
-            $this->load->view('layout/front/navigation');
-            
+        $this->load->view('layout/front/navigation');
+        ?>
+
+        <noscript>
+            <div class="global-site-notice noscript">
+                <div class="notice-inner">
+                    <p>
+                        <strong>JavaScript seems to be disabled in your browser.</strong><br />
+                        You must have JavaScript enabled in your browser to utilize the functionality of this website.
+                    </p>
+                </div>
+            </div>
+        </noscript>

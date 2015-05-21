@@ -46,6 +46,9 @@
 
     $route['static/(:any)'] = 'staticpages/index/$1';
     $route['about-us'] = 'staticpages/index/about-us';
+    $route['login'] = 'index/login';
+    $route['signup'] = 'index/signup';
+    $route['forgot-password'] = 'index/forgotPassword';
 
     /* End of file routes.php */
 /* Location: ./application/config/routes.php */
