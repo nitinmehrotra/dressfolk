@@ -18,11 +18,23 @@ class Index extends CI_Controller
 
     public function login()
     {
-        $data = array();
+        if ($this->input->post())
+        {
+            $arr = $this->input->post();
+            $user_email = $arr["email"];
+            $user_password = md5($arr["password"]);
+            $url = $arr["url"];
+            $loginAuth = new Login_auth();
+            $loginAuth->login($user_email, $user_password, $url, base_url('login'));
+        }
+        else
+        {
+            $data = array();
 
-        $data['meta_title'] = 'Login | ' . SITE_NAME;
-        $this->template->write_view("content", "pages/index/login", $data);
-        $this->template->render();
+            $data['meta_title'] = 'Login | ' . SITE_NAME;
+            $this->template->write_view("content", "pages/index/login", $data);
+            $this->template->render();
+        }
     }
 
     public function signup()

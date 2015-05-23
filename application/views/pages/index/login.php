@@ -37,17 +37,18 @@
                                     <div class="content">
                                         <h2>Registered Customers</h2>
                                         <p>If you have an account with us, please log in.</p>
+                                        <input type="hidden" name="url" value="<?php echo isset($_GET['next']) == true ? $_GET['next'] : base_url(); ?>"/>
                                         <ul class="form-list">
                                             <li>
                                                 <label for="email" class="required"><em>*</em>Email Address</label>
                                                 <div class="input-box">
-                                                    <input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="Email Address" />
+                                                    <input type="email" name="email" value="" id="email" class="input-text required-entry validate-email" title="Email Address" />
                                                 </div>
                                             </li>
                                             <li>
                                                 <label for="pass" class="required"><em>*</em>Password</label>
                                                 <div class="input-box">
-                                                    <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password" />
+                                                    <input type="password" name="password" class="input-text required-entry validate-password" id="pass" title="Password" />
                                                 </div>
                                             </li>
                                         </ul>
