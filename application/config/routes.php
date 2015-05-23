@@ -46,6 +46,14 @@
 
     $route['static/(:any)'] = 'staticpages/index/$1';
     $route['about-us'] = 'staticpages/index/about-us';
+    $route['disclaimer'] = 'staticpages/index/disclaimer';
+    $route['privacy-policy'] = 'staticpages/index/privacy-policy';
+    $route['return-policy'] = 'staticpages/index/return-policy';
+    $route['shipping-details'] = 'staticpages/index/shipping-details';
+    $route['terms'] = 'staticpages/index/terms';
+    $route['contact-us'] = 'staticpages/contactUs';
+    
+    $route['about-us'] = 'staticpages/index/about-us';
     $route['login'] = 'index/login';
     $route['signup'] = 'index/signup';
     $route['forgot-password'] = 'index/forgotPassword';

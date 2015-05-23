@@ -1,0 +1,3 @@
+.signup-gender-radio input[type="radio"]{width: auto;margin-right: 10px}
+.noti-area{position: relative}
+.noti-area .alert{position: absolute;width: 100%;z-index: 99;text-align: center;}

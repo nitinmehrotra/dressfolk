@@ -45,6 +45,7 @@ $path = $controller . "/" . $method;
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/437006133d9d6342b2e498ea089b0cf7.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/36bc63752380e29e215776dd85d7047e.css" media="all" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/976e407bad0f6ef8b3c84752e70679a7.css" media="print" />
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/custom.css" />
         <script type="text/javascript" src="<?php echo JS_PATH; ?>/5164f243df82e4cc8456f4bdf354ac03.js"></script>
         <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/e3abd5ccfeb574ea6ab6aa54081488b2.css" media="all" />
@@ -71,7 +72,21 @@ $path = $controller . "/" . $method;
     </head>
     <body class="slidebar-left <?php echo $path == 'index/index' ? 'cms-home cms-index-index' : ''; ?>">
         <!-- // HEADER // -->
+
         <?php
+        if ($this->session->flashdata('success'))
+        {
+            echo '<div class="noti-area"><div class="alert alert-success in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('success') . '</div></div>';
+        }
+        if ($this->session->flashdata('error'))
+        {
+            echo '<div class="noti-area"><div class="alert alert-danger in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('success') . '</div></div>';
+        }
+        if ($this->session->flashdata('warning'))
+        {
+            echo '<div class="noti-area"><div class="alert alert-warning in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('success') . '</div></div>';
+        }
+
         $this->load->view('layout/front/navigation');
         ?>
 
@@ -85,3 +100,44 @@ $path = $controller . "/" . $method;
                 </div>
             </div>
         </noscript>
+
+        <!-- // OPEN MAIN CONTAINER // -->
+        <section class="main-container col1-layout">
+            <?php
+            if (isset($breadcrumbArray))
+            {
+                ?>
+                <div class="main-breadcrumbs">
+                    <div class="container">
+                        <div class="row show-grid">
+                            <div class="col-lg-12">
+                                <div class="breadcrumbs">
+                                    <ul>
+                                        <li class="home">
+                                            <a href="<?php echo base_url(); ?>" title="Go to Home Page">Home</a>
+                                            <span>/ </span>
+                                        </li>
+                                        <?php
+                                        if (!empty($breadcrumbArray))
+                                        {
+                                            $b_i = 1;
+                                            foreach ($breadcrumbArray as $bKey => $bValue)
+                                            {
+                                                echo '<li class="cms_page"><a href="' . $bValue . '" title="' . $bKey . '">' . $bKey . '</a>';
+                                                if ($b_i != count($breadcrumbArray))
+                                                {
+                                                    echo '<span>/ </span>';
+                                                }
+                                                echo '</li>';
+                                                $b_i++;
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
