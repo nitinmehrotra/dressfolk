@@ -4,7 +4,19 @@ $method = $this->router->fetch_method();
 $path = $controller . "/" . $method;
 
 $model = new Common_model();
+$pc_id_array = array();
+$cc_records = array();
 $pc_records = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, NULL, 'pc_name', 'ASC', 5);
+foreach ($pc_records as $pc)
+{
+    $pc_id_array[] = $pc['pc_id'];
+}
+$cc_sql = 'SELECT cc_pc_id, cc_id, cc_name, cc_url FROM ' . TABLE_CHILD_CATEGORY . ' as cc WHERE cc_pc_id IN (' . implode(', ', $pc_id_array) . ') ORDER BY cc_name LIMIT 0,4';
+$cc_data = $model->db->query($cc_sql)->result_array();
+foreach ($cc_data as $ccKey => $ccValue)
+{
+    $cc_records[$ccValue['cc_pc_id']][] = $ccValue;
+}
 ?>
 <header class="header-wrapper">
     <div class="header-container">
@@ -33,147 +45,17 @@ $pc_records = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, NULL, 'pc_na
                                         <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
                                             <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                         </a>
-                                        <ul class="level0">
-                                            <li class="level1 item nav-7-1 first parent">
-                                                <a href="men/dress.html">
-                                                    <span>Dress</span>
-                                                </a>
-                                                <ul class="level1">
-                                                    <li class="level2 nav-7-1-1 first">
-                                                        <a href="men/dress/cocktail.html">
-                                                            <span>Cocktail</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-1-2">
-                                                        <a href="men/dress/day.html">
-                                                            <span>Day</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-1-3">
-                                                        <a href="men/dress/evening.html">
-                                                            <span>Evening</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-1-4 last">
-                                                        <a href="men/dress/sports.html">
-                                                            <span>Sports</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li><li class="level1 item nav-7-2 parent">
-                                                <a href="men/shoes.html">
-                                                    <span>Shoes</span>
-                                                </a>
-                                                <ul class="level1">
-                                                    <li class="level2 nav-7-2-5 first">
-                                                        <a href="men/shoes/sandal.html">
-                                                            <span>Sandal</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-2-6">
-                                                        <a href="men/shoes/sport.html">
-                                                            <span>Sport</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-2-7">
-                                                        <a href="men/shoes/books.html">
-                                                            <span>Books</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-2-8 last">
-                                                        <a href="men/shoes/sock.html">
-                                                            <span>Sock</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li><li class="level1 item nav-7-3 parent">
-                                                <a href="men/handbags.html">
-                                                    <span>Handbags</span>
-                                                </a>
-                                                <ul class="level1">
-                                                    <li class="level2 nav-7-3-9 first">
-                                                        <a href="men/handbags/blazers.html">
-                                                            <span>Blazers</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-3-10">
-                                                        <a href="men/handbags/table.html">
-                                                            <span>Table</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-3-11">
-                                                        <a href="men/handbags/coats.html">
-                                                            <span>Coats</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-3-12 last">
-                                                        <a href="men/handbags/kids.html">
-                                                            <span>Kids</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li><li class="level1 item nav-7-4 parent">
-                                                <a href="men/styliest-bag.html">
-                                                    <span>Styliest Bag</span>
-                                                </a>
-                                                <ul class="level1">
-                                                    <li class="level2 nav-7-4-13 first">
-                                                        <a href="men/styliest-bag/clutch-handbags.html">
-                                                            <span>Clutch Handbags</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-4-14">
-                                                        <a href="men/styliest-bag/diaper-bags.html">
-                                                            <span>Diaper Bags</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-4-15">
-                                                        <a href="men/styliest-bag/bags.html">
-                                                            <span>Bags</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-4-16 last">
-                                                        <a href="men/styliest-bag/hobo-handbags.html">
-                                                            <span>Hobo Handbags</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li><li class="level1 item nav-7-5 parent">
-                                                <a href="men/material-bag.html">
-                                                    <span>Material Bag</span>
-                                                </a>
-                                                <ul class="level1">
-                                                    <li class="level2 nav-7-5-17 first">
-                                                        <a href="men/material-bag/beaded-handbags.html">
-                                                            <span>Beaded Handbags</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-5-18">
-                                                        <a href="men/material-bag/fabric-handbags.html">
-                                                            <span>Fabric Handbags</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-5-19">
-                                                        <a href="men/material-bag/handbags.html">
-                                                            <span>Handbags</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-5-20 last">
-                                                        <a href="men/material-bag/leather-handbags.html">
-                                                            <span>Leather Handbags</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li><li class="level1 item nav-7-6 last parent">
-                                                <a href="men/jwellery.html">
-                                                    <span>Jwellery</span>
-                                                </a>
-                                                <ul class="level1">
-                                                    <li class="level2 nav-7-6-21 first">
-                                                        <a href="men/jwellery/bracelets.html">
-                                                            <span>Bracelets</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-6-22">
-                                                        <a href="men/jwellery/necklaces-pendants.html">
-                                                            <span>Necklaces &amp; Pendants</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-6-23">
-                                                        <a href="men/jwellery/pendants.html">
-                                                            <span>Pendants</span>
-                                                        </a>
-                                                    </li><li class="level2 nav-7-6-24 last">
-                                                        <a href="men/jwellery/pins-brooches.html">
-                                                            <span>Pins &amp; Brooches</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                        <?php
+                                        if (!empty($cc_records[$pcValue['pc_id']]))
+                                        {
+                                            echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
+                                            foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                            {
+                                                echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                            }
+                                            echo '</ul></li></ul>';
+                                        }
+                                        ?>
                                     </li>
                                     <?php
                                 }
@@ -199,159 +81,17 @@ $pc_records = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, NULL, 'pc_na
                                     </a>
                                     <div class="level0 menu-wrap-sub">
                                         <div class="ulmenu-block ulmenu-block-center menu-items grid12-9 itemgrid itemgrid-3col">
-                                            <ul class="level0">
-                                                <li class="level1 groups item nav-2-1 first">
-                                                    <a href="men/dress.html">
-                                                        <span class="title_group">Dress</span>
-                                                    </a>
-                                                    <div class="menu-wrapper">
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-2-1-1 first">
-                                                                <a href="men/dress/cocktail.html">
-                                                                    <span>Cocktail</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-1-2">
-                                                                <a href="men/dress/day.html">
-                                                                    <span>Day</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-1-3">
-                                                                <a href="men/dress/evening.html">
-                                                                    <span>Evening</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-1-4 last">
-                                                                <a href="men/dress/sports.html">
-                                                                    <span>Sports</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li><li class="level1 groups item nav-2-2">
-                                                    <a href="men/shoes.html">
-                                                        <span class="title_group">Shoes</span>
-                                                    </a>
-                                                    <div class="menu-wrapper">
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-2-2-5 first">
-                                                                <a href="men/shoes/sandal.html">
-                                                                    <span>Sandal</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-2-6">
-                                                                <a href="men/shoes/sport.html">
-                                                                    <span>Sport</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-2-7">
-                                                                <a href="men/shoes/books.html">
-                                                                    <span>Books</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-2-8 last">
-                                                                <a href="men/shoes/sock.html">
-                                                                    <span>Sock</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li><li class="level1 groups item nav-2-3">
-                                                    <a href="men/handbags.html">
-                                                        <span class="title_group">Handbags</span>
-                                                    </a>
-                                                    <div class="menu-wrapper">
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-2-3-9 first">
-                                                                <a href="men/handbags/blazers.html">
-                                                                    <span>Blazers</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-3-10">
-                                                                <a href="men/handbags/table.html">
-                                                                    <span>Table</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-3-11">
-                                                                <a href="men/handbags/coats.html">
-                                                                    <span>Coats</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-3-12 last">
-                                                                <a href="men/handbags/kids.html">
-                                                                    <span>Kids</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li><li class="level1 groups item nav-2-4">
-                                                    <a href="men/styliest-bag.html">
-                                                        <span class="title_group">Styliest Bag</span>
-                                                    </a>
-                                                    <div class="menu-wrapper">
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-2-4-13 first">
-                                                                <a href="men/styliest-bag/clutch-handbags.html">
-                                                                    <span>Clutch Handbags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-4-14">
-                                                                <a href="men/styliest-bag/diaper-bags.html">
-                                                                    <span>Diaper Bags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-4-15">
-                                                                <a href="men/styliest-bag/bags.html">
-                                                                    <span>Bags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-4-16 last">
-                                                                <a href="men/styliest-bag/hobo-handbags.html">
-                                                                    <span>Hobo Handbags</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li><li class="level1 groups item nav-2-5">
-                                                    <a href="men/material-bag.html">
-                                                        <span class="title_group">Material Bag</span>
-                                                    </a>
-                                                    <div class="menu-wrapper">
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-2-5-17 first">
-                                                                <a href="men/material-bag/beaded-handbags.html">
-                                                                    <span>Beaded Handbags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-5-18">
-                                                                <a href="men/material-bag/fabric-handbags.html">
-                                                                    <span>Fabric Handbags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-5-19">
-                                                                <a href="men/material-bag/handbags.html">
-                                                                    <span>Handbags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-5-20 last">
-                                                                <a href="men/material-bag/leather-handbags.html">
-                                                                    <span>Leather Handbags</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li><li class="level1 groups item nav-2-6 last">
-                                                    <a href="men/jwellery.html">
-                                                        <span class="title_group">Jwellery</span>
-                                                    </a>
-                                                    <div class="menu-wrapper">
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-2-6-21 first">
-                                                                <a href="men/jwellery/bracelets.html">
-                                                                    <span>Bracelets</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-6-22">
-                                                                <a href="men/jwellery/necklaces-pendants.html">
-                                                                    <span>Necklaces &amp; Pendants</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-6-23">
-                                                                <a href="men/jwellery/pendants.html">
-                                                                    <span>Pendants</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-2-6-24 last">
-                                                                <a href="men/jwellery/pins-brooches.html">
-                                                                    <span>Pins &amp; Brooches</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            <?php
+                                            if (!empty($cc_records[$pcValue['pc_id']]))
+                                            {
+                                                echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
+                                                foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                                {
+                                                    echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                                }
+                                                echo '</ul></li></ul>';
+                                            }
+                                            ?>
                                         </div>
                                         <div class="menu-static-blocks ulmenu-block ulmenu-block-right pull-right grid12-3">
                                             <img class="img-responsive" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/menu/men.jpg" alt="" />
@@ -450,147 +190,18 @@ $pc_records = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, NULL, 'pc_na
                                                 <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
                                                     <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                                 </a>
-                                                <ul class="level0">
-                                                    <li class="level1 item nav-7-1 first parent">
-                                                        <a href="men/dress.html">
-                                                            <span>Dress</span>
-                                                        </a>
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-7-1-1 first">
-                                                                <a href="men/dress/cocktail.html">
-                                                                    <span>Cocktail</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-1-2">
-                                                                <a href="men/dress/day.html">
-                                                                    <span>Day</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-1-3">
-                                                                <a href="men/dress/evening.html">
-                                                                    <span>Evening</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-1-4 last">
-                                                                <a href="men/dress/sports.html">
-                                                                    <span>Sports</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li><li class="level1 item nav-7-2 parent">
-                                                        <a href="men/shoes.html">
-                                                            <span>Shoes</span>
-                                                        </a>
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-7-2-5 first">
-                                                                <a href="men/shoes/sandal.html">
-                                                                    <span>Sandal</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-2-6">
-                                                                <a href="men/shoes/sport.html">
-                                                                    <span>Sport</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-2-7">
-                                                                <a href="men/shoes/books.html">
-                                                                    <span>Books</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-2-8 last">
-                                                                <a href="men/shoes/sock.html">
-                                                                    <span>Sock</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li><li class="level1 item nav-7-3 parent">
-                                                        <a href="men/handbags.html">
-                                                            <span>Handbags</span>
-                                                        </a>
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-7-3-9 first">
-                                                                <a href="men/handbags/blazers.html">
-                                                                    <span>Blazers</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-3-10">
-                                                                <a href="men/handbags/table.html">
-                                                                    <span>Table</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-3-11">
-                                                                <a href="men/handbags/coats.html">
-                                                                    <span>Coats</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-3-12 last">
-                                                                <a href="men/handbags/kids.html">
-                                                                    <span>Kids</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li><li class="level1 item nav-7-4 parent">
-                                                        <a href="men/styliest-bag.html">
-                                                            <span>Styliest Bag</span>
-                                                        </a>
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-7-4-13 first">
-                                                                <a href="men/styliest-bag/clutch-handbags.html">
-                                                                    <span>Clutch Handbags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-4-14">
-                                                                <a href="men/styliest-bag/diaper-bags.html">
-                                                                    <span>Diaper Bags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-4-15">
-                                                                <a href="men/styliest-bag/bags.html">
-                                                                    <span>Bags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-4-16 last">
-                                                                <a href="men/styliest-bag/hobo-handbags.html">
-                                                                    <span>Hobo Handbags</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li><li class="level1 item nav-7-5 parent">
-                                                        <a href="men/material-bag.html">
-                                                            <span>Material Bag</span>
-                                                        </a>
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-7-5-17 first">
-                                                                <a href="men/material-bag/beaded-handbags.html">
-                                                                    <span>Beaded Handbags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-5-18">
-                                                                <a href="men/material-bag/fabric-handbags.html">
-                                                                    <span>Fabric Handbags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-5-19">
-                                                                <a href="men/material-bag/handbags.html">
-                                                                    <span>Handbags</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-5-20 last">
-                                                                <a href="men/material-bag/leather-handbags.html">
-                                                                    <span>Leather Handbags</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li><li class="level1 item nav-7-6 last parent">
-                                                        <a href="men/jwellery.html">
-                                                            <span>Jwellery</span>
-                                                        </a>
-                                                        <ul class="level1">
-                                                            <li class="level2 nav-7-6-21 first">
-                                                                <a href="men/jwellery/bracelets.html">
-                                                                    <span>Bracelets</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-6-22">
-                                                                <a href="men/jwellery/necklaces-pendants.html">
-                                                                    <span>Necklaces &amp; Pendants</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-6-23">
-                                                                <a href="men/jwellery/pendants.html">
-                                                                    <span>Pendants</span>
-                                                                </a>
-                                                            </li><li class="level2 nav-7-6-24 last">
-                                                                <a href="men/jwellery/pins-brooches.html">
-                                                                    <span>Pins &amp; Brooches</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+
+                                                <?php
+                                                if (!empty($cc_records[$pcValue['pc_id']]))
+                                                {
+                                                    echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
+                                                    foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                                    {
+                                                        echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                                    }
+                                                    echo '</ul></li></ul>';
+                                                }
+                                                ?>
                                             </li>
                                             <?php
                                         }
@@ -614,162 +225,19 @@ $pc_records = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, NULL, 'pc_na
                                             <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
                                                 <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                             </a>
-                                            </a>
                                             <div class="level0 menu-wrap-sub">
                                                 <div class="ulmenu-block ulmenu-block-center menu-items grid12-9 itemgrid itemgrid-3col">
-                                                    <ul class="level0">
-                                                        <li class="level1 groups item nav-2-1 first">
-                                                            <a href="men/dress.html">
-                                                                <span class="title_group">Dress</span>
-                                                            </a>
-                                                            <div class="menu-wrapper">
-                                                                <ul class="level1">
-                                                                    <li class="level2 nav-2-1-1 first">
-                                                                        <a href="men/dress/cocktail.html">
-                                                                            <span>Cocktail</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-1-2">
-                                                                        <a href="men/dress/day.html">
-                                                                            <span>Day</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-1-3">
-                                                                        <a href="men/dress/evening.html">
-                                                                            <span>Evening</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-1-4 last">
-                                                                        <a href="men/dress/sports.html">
-                                                                            <span>Sports</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><li class="level1 groups item nav-2-2">
-                                                            <a href="men/shoes.html">
-                                                                <span class="title_group">Shoes</span>
-                                                            </a>
-                                                            <div class="menu-wrapper">
-                                                                <ul class="level1">
-                                                                    <li class="level2 nav-2-2-5 first">
-                                                                        <a href="men/shoes/sandal.html">
-                                                                            <span>Sandal</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-2-6">
-                                                                        <a href="men/shoes/sport.html">
-                                                                            <span>Sport</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-2-7">
-                                                                        <a href="men/shoes/books.html">
-                                                                            <span>Books</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-2-8 last">
-                                                                        <a href="men/shoes/sock.html">
-                                                                            <span>Sock</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><li class="level1 groups item nav-2-3">
-                                                            <a href="men/handbags.html">
-                                                                <span class="title_group">Handbags</span>
-                                                            </a>
-                                                            <div class="menu-wrapper">
-                                                                <ul class="level1">
-                                                                    <li class="level2 nav-2-3-9 first">
-                                                                        <a href="men/handbags/blazers.html">
-                                                                            <span>Blazers</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-3-10">
-                                                                        <a href="men/handbags/table.html">
-                                                                            <span>Table</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-3-11">
-                                                                        <a href="men/handbags/coats.html">
-                                                                            <span>Coats</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-3-12 last">
-                                                                        <a href="men/handbags/kids.html">
-                                                                            <span>Kids</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><li class="level1 groups item nav-2-4">
-                                                            <a href="men/styliest-bag.html">
-                                                                <span class="title_group">Styliest Bag</span>
-                                                            </a>
-                                                            <div class="menu-wrapper">
-                                                                <ul class="level1">
-                                                                    <li class="level2 nav-2-4-13 first">
-                                                                        <a href="men/styliest-bag/clutch-handbags.html">
-                                                                            <span>Clutch Handbags</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-4-14">
-                                                                        <a href="men/styliest-bag/diaper-bags.html">
-                                                                            <span>Diaper Bags</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-4-15">
-                                                                        <a href="men/styliest-bag/bags.html">
-                                                                            <span>Bags</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-4-16 last">
-                                                                        <a href="men/styliest-bag/hobo-handbags.html">
-                                                                            <span>Hobo Handbags</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><li class="level1 groups item nav-2-5">
-                                                            <a href="men/material-bag.html">
-                                                                <span class="title_group">Material Bag</span>
-                                                            </a>
-                                                            <div class="menu-wrapper">
-                                                                <ul class="level1">
-                                                                    <li class="level2 nav-2-5-17 first">
-                                                                        <a href="men/material-bag/beaded-handbags.html">
-                                                                            <span>Beaded Handbags</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-5-18">
-                                                                        <a href="men/material-bag/fabric-handbags.html">
-                                                                            <span>Fabric Handbags</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-5-19">
-                                                                        <a href="men/material-bag/handbags.html">
-                                                                            <span>Handbags</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-5-20 last">
-                                                                        <a href="men/material-bag/leather-handbags.html">
-                                                                            <span>Leather Handbags</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><li class="level1 groups item nav-2-6 last">
-                                                            <a href="men/jwellery.html">
-                                                                <span class="title_group">Jwellery</span>
-                                                            </a>
-                                                            <div class="menu-wrapper">
-                                                                <ul class="level1">
-                                                                    <li class="level2 nav-2-6-21 first">
-                                                                        <a href="men/jwellery/bracelets.html">
-                                                                            <span>Bracelets</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-6-22">
-                                                                        <a href="men/jwellery/necklaces-pendants.html">
-                                                                            <span>Necklaces &amp; Pendants</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-6-23">
-                                                                        <a href="men/jwellery/pendants.html">
-                                                                            <span>Pendants</span>
-                                                                        </a>
-                                                                    </li><li class="level2 nav-2-6-24 last">
-                                                                        <a href="men/jwellery/pins-brooches.html">
-                                                                            <span>Pins &amp; Brooches</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                                    <?php
+                                                    if (!empty($cc_records[$pcValue['pc_id']]))
+                                                    {
+                                                        echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
+                                                        foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                                        {
+                                                            echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                                        }
+                                                        echo '</ul></li></ul>';
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <div class="menu-static-blocks ulmenu-block ulmenu-block-right pull-right grid12-3">
                                                     <img class="img-responsive" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/menu/men.jpg" alt="" />
