@@ -1,3 +1,5 @@
+</section>
+<!--// CLOSE MAIN CONTAINER //-->
 <!-- // FOOTER // -->
 <footer class="footer-wrapper">
     <div class="footer-top">

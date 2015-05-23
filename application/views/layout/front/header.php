@@ -96,3 +96,44 @@ $path = $controller . "/" . $method;
                 </div>
             </div>
         </noscript>
+
+        <!-- // OPEN MAIN CONTAINER // -->
+        <section class="main-container col1-layout">
+            <?php
+            if (isset($breadcrumbArray))
+            {
+                ?>
+                <div class="main-breadcrumbs">
+                    <div class="container">
+                        <div class="row show-grid">
+                            <div class="col-lg-12">
+                                <div class="breadcrumbs">
+                                    <ul>
+                                        <li class="home">
+                                            <a href="<?php echo base_url(); ?>" title="Go to Home Page">Home</a>
+                                            <span>/ </span>
+                                        </li>
+                                        <?php
+                                        if (!empty($breadcrumbArray))
+                                        {
+                                            $b_i = 1;
+                                            foreach ($breadcrumbArray as $bKey => $bValue)
+                                            {
+                                                echo '<li class="cms_page"><a href="' . $bValue . '" title="' . $bKey . '">' . $bKey . '</a>';
+                                                if ($b_i != count($breadcrumbArray))
+                                                {
+                                                    echo '<span>/ </span>';
+                                                }
+                                                echo '</li>';
+                                                $b_i++;
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
