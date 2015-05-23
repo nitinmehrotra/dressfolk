@@ -29,11 +29,12 @@
                                                 <div class="block-title">
                                                     <span>Newsletter Signup</span>
                                                 </div>
-                                                <form action="" method="post" id="newsletter-validate-detail">
+                                                <form action="<?php echo base_url('index/saveNewsletter'); ?>" method="post" id="newsletter-validate-detail">
                                                     <div class="block-content">
                                                         <div class="form-subscribe-header">
                                                             <div class="input-box">
-                                                                <input type="text" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email"/>
+                                                                <input type="hidden" name="url" value="<?php echo current_url(); ?>"/>
+                                                                <input type="email" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email"/>
                                                             </div>
                                                             <div class="actions">
                                                                 <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
@@ -77,15 +78,15 @@
                                                         </div>
                                                         <div class="custom-footer-content">
                                                             <ul class="footer-list">
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('product-recall');?>" title="Product Recall"><span>Product Recall</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('product-recall'); ?>" title="Product Recall"><span>Product Recall</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('gift-vouchers');?>" title="Gift Vouchers"><span>Gift Vouchers</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('gift-vouchers'); ?>" title="Gift Vouchers"><span>Gift Vouchers</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('return-exchanges');?>" title="Returns and Exchanges"><span>Returns and Exchanges</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('return-exchanges'); ?>" title="Returns and Exchanges"><span>Returns and Exchanges</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('shipping-options');?>" title="Shipping Options"><span>Shipping Options</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('shipping-options'); ?>" title="Shipping Options"><span>Shipping Options</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('faq');?>" title="Help &amp; FAQs"><span>Help &amp; FAQs</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('faq'); ?>" title="Help &amp; FAQs"><span>Help &amp; FAQs</span></a></span>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -96,15 +97,15 @@
                                                         </div>
                                                         <div class="custom-footer-content">
                                                             <ul class="footer-list">
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('login');?>" title="Login"><span>Login</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('login'); ?>" title="Login"><span>Login</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('cart');?>" title="View Cart"><span>View Cart</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('cart'); ?>" title="View Cart"><span>View Cart</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('my-wishlist');?>" title="My Wishlist"><span>My Wishlist</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist"><span>My Wishlist</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('checkout');?>" title="Checkout"><span>Checkout</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('checkout'); ?>" title="Checkout"><span>Checkout</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('track-order');?>" title="Track my order"><span>Track my order</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('track-order'); ?>" title="Track my order"><span>Track my order</span></a></span>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -145,7 +146,7 @@
     <div class="footer-copyright">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8"><address>Copyright &copy; <?php echo date('Y');?> <a href="<?php echo base_url();?>" target="_blank"><?php echo SITE_NAME;?></a>. All rights reserved.</address></div>
+                <div class="col-lg-8"><address>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php echo base_url(); ?>" target="_blank"><?php echo SITE_NAME; ?></a>. All rights reserved.</address></div>
                 <div class="col-lg-4"></div>
             </div>
         </div>

@@ -63,12 +63,7 @@ class Index extends CI_Controller
                 $model->insertData(TABLE_USERS, $data_array);
 
                 // to insert into the newsletters db table
-                $newsletter_data_array = array(
-                    "newsletter_email" => $user_email,
-                    "newsletter_ipaddress" => USER_IP,
-                    "newsletter_useragent" => USER_AGENT,
-                );
-                $model->insertData(TABLE_NEWSLETTER, $newsletter_data_array);
+                $this->saveNewsLetterInfo($user_email);
 
                 if ($_SERVER["REMOTE_ADDR"] != '127.0.0.1')
                 {
@@ -110,6 +105,31 @@ class Index extends CI_Controller
         $data['meta_title'] = 'Forgot password | ' . SITE_NAME;
         $this->template->write_view("content", "pages/index/forgot-password", $data);
         $this->template->render();
+    }
+
+    public function saveNewsletter()
+    {
+        if ($this->input->post())
+        {
+            $this->saveNewsLetterInfo($this->input->post('email'));
+            $this->session->set_flashdata("error", "Your email has been added to our newsletters");
+            redirect($this->input->post('url'));
+        }
+    }
+
+    public function saveNewsLetterInfo($email)
+    {
+        $model = new Common_model();
+        $is_exists = $model->is_exists('newsletter_id', TABLE_NEWSLETTER, array('newsletter_email' => $email));
+        if (empty($this->input->post('email')))
+        {
+            $newsletter_data_array = array(
+                "newsletter_email" => strtolower($email),
+                "newsletter_ipaddress" => USER_IP,
+                "newsletter_useragent" => USER_AGENT,
+            );
+            $model->insertData(TABLE_NEWSLETTER, $newsletter_data_array);
+        }
     }
 
 }
