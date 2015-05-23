@@ -59,8 +59,8 @@
                                         <li class="signup-gender-radio">
                                             <label for="gender" class="required"><em>*</em>Gender</label>
                                             <div class="input-box">
-                                                <input type="radio" name="gender" value="male" class="input-text required-entry" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input type="radio" name="gender" checked="checked" value="female" class="input-text required-entry" />Female
+                                                <input type="radio" name="gender" value="male" class="input-text" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="radio" name="gender" checked="checked" value="female" class="input-text" />Female
                                             </div>
                                         </li>
                                     </ul>

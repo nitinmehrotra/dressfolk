@@ -39,22 +39,22 @@ class Index extends CI_Controller
                 $activation_code = getActivationKey($user_email . USER_IP . time());
                 $data_array = array(
                     'user_fullname' => addslashes($arr['fullname']),
-                    'user_contact' => substr($arr['mobile'], -10, 10),
+                    'user_contact' => substr($arr['contact'], -10, 10),
                     'user_gender' => strtolower($arr['gender']),
                     'user_email' => $user_email,
                     'user_password' => md5($arr["password"]),
-                    'activation_code' => $activation_code,
+                    'user_activation_code' => $activation_code,
                     'user_ipaddress' => USER_IP,
-                    'user_agent' => USER_AGENT,
+                    'user_useragent' => USER_AGENT,
                     'user_joined_date' => date('Y-m-d H:i:s')
                 );
                 $model->insertData(TABLE_USERS, $data_array);
 
                 // to insert into the newsletters db table
                 $newsletter_data_array = array(
-                    "user_email" => $user_email,
-                    "user_ipaddress" => USER_IP,
-                    "user_agent" => USER_AGENT,
+                    "newsletter_email" => $user_email,
+                    "newsletter_ipaddress" => USER_IP,
+                    "newsletter_useragent" => USER_AGENT,
                 );
                 $model->insertData(TABLE_NEWSLETTER, $newsletter_data_array);
 
