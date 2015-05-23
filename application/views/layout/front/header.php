@@ -72,7 +72,17 @@ $path = $controller . "/" . $method;
     </head>
     <body class="slidebar-left <?php echo $path == 'index/index' ? 'cms-home cms-index-index' : ''; ?>">
         <!-- // HEADER // -->
+
         <?php
+        if ($this->session->flashdata('success'))
+        {
+            echo '<div class="noti-area"><div class="alert alert-success in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('success') . '</div></div>';
+        }
+        if ($this->session->flashdata('error'))
+        {
+            echo '<div class="noti-area"><div class="alert alert-danger in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('success') . '</div></div>';
+        }
+
         $this->load->view('layout/front/navigation');
         ?>
 
