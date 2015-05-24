@@ -80,11 +80,11 @@ $path = $controller . "/" . $method;
         }
         if ($this->session->flashdata('error'))
         {
-            echo '<div class="noti-area"><div class="alert alert-danger in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('success') . '</div></div>';
+            echo '<div class="noti-area"><div class="alert alert-danger in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('error') . '</div></div>';
         }
         if ($this->session->flashdata('warning'))
         {
-            echo '<div class="noti-area"><div class="alert alert-warning in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('success') . '</div></div>';
+            echo '<div class="noti-area"><div class="alert alert-warning in fade"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('warning') . '</div></div>';
         }
 
         $this->load->view('layout/front/navigation');
