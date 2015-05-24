@@ -21,7 +21,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                             <ul class="social-icons small light">
                                                 <li class="facebook"><a class="fa fa-facebook" href="http://www.facebook.com/" target="_blank"><span>Facebook</span></a></li>
                                                 <li class="twitter"><a class="fa fa-twitter" href="http://www.twitter.com/" target="_blank"><span>Twitter</span></a></li>
-                                                <li class="behance"><a class="fa fa-behance" href="https://www.behance.net/" target="_blank"><span>Behance</span></a></li>
+                                                <li class="instagram"><a class="fa fa-instagram" href="https://www.behance.net/" target="_blank"><span>Behance</span></a></li>
                                                 <li class="gplus"><a class="fa fa-google-plus" href="https://plus.google.com/" target="_blank"><span>Google plus</span></a></li>
                                             </ul>
                                         </div>
