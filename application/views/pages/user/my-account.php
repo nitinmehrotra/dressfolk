@@ -64,6 +64,52 @@
                             </script>
                         </div>
                     </div>
+
+                    <div class="col-md-6">
+                        <div class="account-create">
+                            <div class="page-title">
+                                <h1>Change Password</h1>
+                            </div>
+                            <form action="<?php echo base_url('user/updatePassword'); ?>" method="post" id="form-validate">
+                                <div class="fieldset">
+                                    <h2 class="legend">Change Password</h2>
+                                    <ul class="form-list">
+                                        <li class="fields">
+                                            <div class="customer-name">
+                                                <div class="field name-new_password">
+                                                    <label for="new_password" class="required"><em>*</em>New Password</label>
+                                                    <div class="input-box">
+                                                        <input type="password" id="new_password" name="new_password" value="" title="New Password" maxlength="255" class="input-text validate-password required-entry"  />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="fields">
+                                            <div class="customer-name">
+                                                <div class="field name-confirm_password">
+                                                    <label for="confirm_password" class="required"><em>*</em>Confirm Password</label>
+                                                    <div class="input-box">
+                                                        <input type="password" id="confirm_password" name="confirm_password" value="" title="Confirm Password" maxlength="255" class="input-text validate-password required-entry"  />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="buttons-set">
+                                    <div>
+                                        <p class="required">* Required Fields</p>
+                                    </div>
+                                    <button type="submit" title="Change" class="button"><span><span>Change</span></span></button>
+                                </div>
+                            </form>
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                var dataForm = new VarienForm('form-validate', true);
+                                //]]>
+                            </script>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

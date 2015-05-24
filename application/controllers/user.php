@@ -20,7 +20,6 @@ class User extends CI_Controller
         if ($this->input->post())
         {
             $arr = $this->input->post();
-            $user_id = $this->session->userdata['user_id'];
             $user_email = strtolower($arr["email"]);
 
             $is_exists = $model->is_exists("user_id", TABLE_USERS, array("user_email" => $user_email, 'user_id !=' => $user_id));
@@ -56,6 +55,36 @@ class User extends CI_Controller
             $this->template->write_view("content", "pages/user/my-account", $data);
             $this->template->render();
         }
+    }
+
+    public function updatePassword()
+    {
+        if ($this->input->post())
+        {
+            $model = new Common_model();
+            $user_id = $this->session->userdata['user_id'];
+            $arr = $this->input->post();
+            $new_password = $arr['new_password'];
+            $confirm_password = $arr['confirm_password'];
+
+            if (strcmp($new_password, $confirm_password) == 0)
+            {
+                $data_array = array(
+                    'user_password' => md5($confirm_password),
+                    'user_ipaddress' => USER_IP,
+                    'user_useragent' => USER_AGENT,
+                );
+                $model->updateData(TABLE_USERS, $data_array, array('user_id' => $user_id));
+
+                $this->session->set_flashdata("success", "Password successfully changed");
+            }
+            else
+            {
+                $this->session->set_flashdata("error", "Passwords you entered do not match");
+            }
+        }
+
+        redirect(base_url('my-account'));
     }
 
 }
