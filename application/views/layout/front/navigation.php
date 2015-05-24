@@ -147,7 +147,6 @@ foreach ($cc_data as $ccKey => $ccValue)
                                         <li class="first" ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
                                         <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
                                         <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
-                                        <li ><a href="<?php echo base_url('checkout'); ?>" title="Checkout" class="top-link-checkout">Checkout</a></li>
                                         <?php
                                     }
                                     else
@@ -303,7 +302,6 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     <li class="first" ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
                                     <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
                                     <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
-                                    <li ><a href="<?php echo base_url('checkout'); ?>" title="Checkout" class="top-link-checkout">Checkout</a></li>
                                     <?php
                                 }
                                 else
