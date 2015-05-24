@@ -113,18 +113,26 @@ foreach ($cc_data as $ccKey => $ccValue)
                     </a>
                 </div>
                 <div class="right-header-menu">
-                    <div class="header-maincart">
-                        <div class="cart-container">
-                            <a href="javascript:void(0);" title="Cart header" class="icon-cart-header">
-                                <span class="icon_bag_alt"></span>
-                            </a>
+                    <?php
+                    if (isset($this->session->userdata['user_id']))
+                    {
+                        ?>
+                        <div class="header-maincart">
+                            <div class="cart-container">
+                                <a href="javascript:void(0);" title="Cart header" class="icon-cart-header">
+                                    <span class="icon_bag_alt"></span>
+                                </a>
 
-                            <div class="cart-wrapper">
-                                <div class="cart-content">
-                                    <p class="no-items-in-cart">You have no items in your shopping cart.</p>
+                                <div class="cart-wrapper">
+                                    <div class="cart-content">
+                                        <p class="no-items-in-cart">You have no items in your shopping cart.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>                    </div>
+                            </div>           
+                        </div>
+                        <?php
+                    }
+                    ?>
                     <div class="header-setting">
                         <div class="setting-switcher switcher-wrap">
                             <div class="overwrite-setting">
@@ -160,7 +168,7 @@ foreach ($cc_data as $ccKey => $ccValue)
         </div>
         <div id="main-header" class="main-header hidden-xs">
             <a href="<?php echo base_url(); ?>" title="Puro Theme" class="logo">
-                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/<?php echo $path=='index/index'?'homepage/logo_puro.png':'logo_puro_1_1.png';?>" alt="Puro Theme" />
+                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/<?php echo $path == 'index/index' ? 'homepage/logo_puro.png' : 'logo_puro_1_1.png'; ?>" alt="Puro Theme" />
                 <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="Puro Theme" />
             </a>
             <div class="wrapper-top-menu container">
@@ -260,19 +268,26 @@ foreach ($cc_data as $ccKey => $ccValue)
                 </div>
             </div>
             <div class="right-header-menu">
-                <div class="header-maincart">
-                    <div class="cart-container">
-                        <a href="javascript:void(0);" title="Cart" class="icon-cart-header">
-                            <span class="icon_bag_alt"></span>
-                        </a>
+                <?php
+                if (isset($this->session->userdata['user_id']))
+                {
+                    ?>
+                    <div class="header-maincart">
+                        <div class="cart-container">
+                            <a href="javascript:void(0);" title="Cart" class="icon-cart-header">
+                                <span class="icon_bag_alt"></span>
+                            </a>
 
-                        <div class="cart-wrapper">
-                            <div class="cart-content">
-                                <p class="no-items-in-cart">You have no items in your shopping cart.</p>
+                            <div class="cart-wrapper">
+                                <div class="cart-content">
+                                    <p class="no-items-in-cart">You have no items in your shopping cart.</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>               
-                </div>
+                        </div>               
+                    </div>
+                    <?php
+                }
+                ?>
                 <div class="header-setting">
                     <div class="setting-switcher switcher-wrap">
                         <div class="overwrite-setting">
