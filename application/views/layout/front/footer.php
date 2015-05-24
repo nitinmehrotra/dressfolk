@@ -19,10 +19,10 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                         <div class="social">
                                             <div class="title-footer">FOLLOW US</div>
                                             <ul class="social-icons small light">
-                                                <li class="facebook"><a class="fa fa-facebook" href="http://www.facebook.com/" target="_blank"><span>Facebook</span></a></li>
-                                                <li class="twitter"><a class="fa fa-twitter" href="http://www.twitter.com/" target="_blank"><span>Twitter</span></a></li>
-                                                <li class="instagram"><a class="fa fa-instagram" href="https://www.behance.net/" target="_blank"><span>Behance</span></a></li>
-                                                <li class="gplus"><a class="fa fa-google-plus" href="https://plus.google.com/" target="_blank"><span>Google plus</span></a></li>
+                                                <li class="facebook"><a class="fa fa-facebook" href="<?php echo FACEBOOK_SOCIAL_LINK; ?>" target="_blank"><span>Facebook</span></a></li>
+                                                <li class="twitter"><a class="fa fa-twitter" href="<?php echo TWITTER_SOCIAL_LINK; ?>" target="_blank"><span>Twitter</span></a></li>
+                                                <li class="instagram"><a class="fa fa-instagram" href="<?php echo INSTAGRAM_SOCIAL_LINK; ?>" target="_blank"><span>Behance</span></a></li>
+                                                <li class="gplus"><a class="fa fa-google-plus" href="<?php echo GOOGLE_PLUS_SOCIAL_LINK; ?>" target="_blank"><span>Google plus</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
