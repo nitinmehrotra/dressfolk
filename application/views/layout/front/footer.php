@@ -1,3 +1,7 @@
+<?php
+$model = new Common_model();
+$static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_PAGES, array('static_page_key' => 'about-us-short'));
+?>
 </section>
 <!--// CLOSE MAIN CONTAINER //-->
 <!-- // FOOTER // -->
@@ -10,8 +14,8 @@
                         <div class="">
                             <div class="">
                                 <div class="about-social col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="about"><img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro.png" />
-                                        <div class="about-text"><p> Sed ornare cras donec litora integer curabit ur orci at nullam aliquam libero nam himen aeos amet massa amet. </p> <p>Nisi porttitor inceptos consectetur donec orci, dui ipsum leo class gravida. </p></div>
+                                    <div class="about"><img alt="logo" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro.png" />
+                                        <div class="about-text"><p><?php echo stripslashes($static_record[0]['static_page_content']); ?></p></div>
                                         <div class="social">
                                             <div class="title-footer">FOLLOW US</div>
                                             <ul class="social-icons small light">
