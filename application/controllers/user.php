@@ -50,6 +50,10 @@ class User extends CI_Controller
             $fields = 'user_fullname, user_gender, user_contact';
             $record = $model->fetchSelectedData($fields, TABLE_USERS, array('user_id' => $user_id));
 
+            $breadcrumbArray = array(
+                'My Account' => base_url('my-account')
+            );
+            $data["breadcrumbArray"] = $breadcrumbArray;
             $data['record'] = $record[0];
             $data['meta_title'] = 'My account | ' . SITE_NAME;
             $this->template->write_view("content", "pages/user/my-account", $data);
