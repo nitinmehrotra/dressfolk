@@ -111,10 +111,11 @@ $doc_type_array = array('pan card', 'aadhar card', 'electricity bill', 'address 
 define("SELLER_DOC_TYPE_ARRAY", json_encode($doc_type_array));
 define("SELLER_DOC_PATH", "resources/seller-docs");
 
-define("DISQUS_SHORTNAME", "threadcrafts");
-define("FACEBOOK_SOCIAL_LINK", "https://www.facebook.com/ThreadCraftsIn");
-define("TWITTER_SOCIAL_LINK", "https://twitter.com/ThreadCrafts");
-define("GOOGLE_PLUS_SOCIAL_LINK", "https://www.google.com/+ThreadCraftsJodhpur");
+define("DISQUS_SHORTNAME", "");
+define("FACEBOOK_SOCIAL_LINK", "https://www.facebook.com/");
+define("TWITTER_SOCIAL_LINK", "https://twitter.com/Dressfolk");
+define("GOOGLE_PLUS_SOCIAL_LINK", "https://www.google.com/");
+define("INSTAGRAM_SOCIAL_LINK", "");
 define("ANDROID_APP_URL", "#");
 define("NO_PRODUCT_IMG_PATH", IMAGES_PATH . "/no-image.png");
 
