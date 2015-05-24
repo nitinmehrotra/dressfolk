@@ -3706,7 +3706,7 @@ button.button:hover:before {
   bottom:10px;
   left:10px;
   right:10px;
-  border:2px solid #ffffff;
+  border:2px solid #777777;
   opacity:0;
   -webkit-transition:all 0.3s ease-out 0s;
   -moz-transition:all 0.3s ease-out 0s;
@@ -3729,11 +3729,11 @@ button.button:hover:before {
   height:45px;
   display:block;
   position:relative;
-  color:#ffffff;
+  color:#777777;
   font-size:24px;
   text-align:center;
   line-height:45px;
-  border:2px solid #ffffff;
+  border:2px solid #777777;
 }
 .home-banner .inner-banner .overlay .widget-category-link a span { display:none; }
 .home-banner .inner-banner .overlay .widget-category-link a:hover {
