@@ -378,15 +378,12 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)" data-value="">All</a></li>
-                                        <li><a href="javascript:void(0)" data-value="3">Women</a></li>
-                                        <li><a href="javascript:void(0)" data-value="4">Men</a></li>
-                                        <li><a href="javascript:void(0)" data-value="5">Footwear</a></li>
-                                        <li><a href="javascript:void(0)" data-value="6">Jewellery</a></li>
-                                        <li><a href="javascript:void(0)" data-value="7">Accessories</a></li>
-                                        <li><a href="javascript:void(0)" data-value="8">Shoes</a></li>
-                                        <li><a href="javascript:void(0)" data-value="9">Bag</a></li>
-                                        <li><a href="javascript:void(0)" data-value="10">Shirts</a></li>
-                                        <li><a href="javascript:void(0)" data-value="11">Pants</a></li>
+                                        <?php
+                                        foreach ($pc_records as $pcKey => $pcValue)
+                                        {
+                                            echo '<li><a href="javascript:void(0)" data-value="' . $pcValue['pc_id'] . '">' . stripslashes($pcValue['pc_name']) . '</a></li>';
+                                        }
+                                        ?>
                                     </ul>
                                 </span>
                                 <input type="hidden" name="cat" value=""/>
