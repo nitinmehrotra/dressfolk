@@ -160,7 +160,7 @@ foreach ($cc_data as $ccKey => $ccValue)
         </div>
         <div id="main-header" class="main-header hidden-xs">
             <a href="<?php echo base_url(); ?>" title="Puro Theme" class="logo">
-                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/homepage/logo_puro.png" alt="Puro Theme" />
+                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/<?php echo $path=='index/index'?'homepage/logo_puro.png':'logo_puro_1_1.png';?>" alt="Puro Theme" />
                 <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="Puro Theme" />
             </a>
             <div class="wrapper-top-menu container">
