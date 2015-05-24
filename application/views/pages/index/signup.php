@@ -22,16 +22,14 @@
                         </div>
                         <form action="" method="post" id="form-validate">
                             <div class="fieldset">
-                                <input type="hidden" name="success_url" value="" />
-                                <input type="hidden" name="error_url" value="" />
                                 <h2 class="legend">Personal Information</h2>
                                 <ul class="form-list">
                                     <li class="fields">
                                         <div class="customer-name">
-                                            <div class="field name-firstname">
-                                                <label for="firstname" class="required"><em>*</em>Full Name</label>
+                                            <div class="field name-fullname">
+                                                <label for="fullname" class="required"><em>*</em>Full Name</label>
                                                 <div class="input-box">
-                                                    <input type="text" id="firstname" name="fullname" value="" title="Full Name" maxlength="255" class="input-text required-entry"  />
+                                                    <input type="text" id="fullname" name="fullname" value="" title="Full Name" maxlength="255" class="input-text required-entry"  />
                                                 </div>
                                             </div>
                                         </div>
