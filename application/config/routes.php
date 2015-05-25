@@ -55,8 +55,11 @@
     
     $route['about-us'] = 'staticpages/index/about-us';
     $route['login'] = 'index/login';
+    $route['logout'] = 'index/logout';
     $route['signup'] = 'index/signup';
     $route['forgot-password'] = 'index/forgotPassword';
+    
+    $route['my-account'] = 'user/myAccount';
 
     /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -31,10 +31,20 @@ class Index extends CI_Controller
         {
             $data = array();
 
+            $breadcrumbArray = array(
+                'Login' => base_url('login')
+            );
+            $data["breadcrumbArray"] = $breadcrumbArray;
             $data['meta_title'] = 'Login | ' . SITE_NAME;
             $this->template->write_view("content", "pages/index/login", $data);
             $this->template->render();
         }
+    }
+
+    public function logout()
+    {
+        $loginAuth = new Login_auth();
+        $loginAuth->logout();
     }
 
     public function signup()
@@ -92,6 +102,10 @@ class Index extends CI_Controller
         {
             $data = array();
 
+            $breadcrumbArray = array(
+                'Signup' => base_url('signup')
+            );
+            $data["breadcrumbArray"] = $breadcrumbArray;
             $data['meta_title'] = 'Signup | ' . SITE_NAME;
             $this->template->write_view("content", "pages/index/signup", $data);
             $this->template->render();
@@ -102,6 +116,10 @@ class Index extends CI_Controller
     {
         $data = array();
 
+        $breadcrumbArray = array(
+            'Forgot Password' => base_url('forgot-password')
+        );
+        $data["breadcrumbArray"] = $breadcrumbArray;
         $data['meta_title'] = 'Forgot password | ' . SITE_NAME;
         $this->template->write_view("content", "pages/index/forgot-password", $data);
         $this->template->render();

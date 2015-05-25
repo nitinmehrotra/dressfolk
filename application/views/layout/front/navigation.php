@@ -113,18 +113,26 @@ foreach ($cc_data as $ccKey => $ccValue)
                     </a>
                 </div>
                 <div class="right-header-menu">
-                    <div class="header-maincart">
-                        <div class="cart-container">
-                            <a href="javascript:void(0);" title="Cart header" class="icon-cart-header">
-                                <span class="icon_bag_alt"></span>
-                            </a>
+                    <?php
+                    if (isset($this->session->userdata['user_id']))
+                    {
+                        ?>
+                        <div class="header-maincart">
+                            <div class="cart-container">
+                                <a href="javascript:void(0);" title="Cart header" class="icon-cart-header">
+                                    <span class="icon_bag_alt"></span>
+                                </a>
 
-                            <div class="cart-wrapper">
-                                <div class="cart-content">
-                                    <p class="no-items-in-cart">You have no items in your shopping cart.</p>
+                                <div class="cart-wrapper">
+                                    <div class="cart-content">
+                                        <p class="no-items-in-cart">You have no items in your shopping cart.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>                    </div>
+                            </div>           
+                        </div>
+                        <?php
+                    }
+                    ?>
                     <div class="header-setting">
                         <div class="setting-switcher switcher-wrap">
                             <div class="overwrite-setting">
@@ -136,10 +144,10 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     if (isset($this->session->userdata['user_id']))
                                     {
                                         ?>
-                                        <li class="first" ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                        <li class="first" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
+                                        <li ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
                                         <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
                                         <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
-                                        <li ><a href="<?php echo base_url('checkout'); ?>" title="Checkout" class="top-link-checkout">Checkout</a></li>
                                         <?php
                                     }
                                     else
@@ -160,7 +168,7 @@ foreach ($cc_data as $ccKey => $ccValue)
         </div>
         <div id="main-header" class="main-header hidden-xs">
             <a href="<?php echo base_url(); ?>" title="Puro Theme" class="logo">
-                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/homepage/logo_puro.png" alt="Puro Theme" />
+                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/<?php echo $path == 'index/index' ? 'homepage/logo_puro.png' : 'logo_puro_1_1.png'; ?>" alt="Puro Theme" />
                 <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="Puro Theme" />
             </a>
             <div class="wrapper-top-menu container">
@@ -260,19 +268,26 @@ foreach ($cc_data as $ccKey => $ccValue)
                 </div>
             </div>
             <div class="right-header-menu">
-                <div class="header-maincart">
-                    <div class="cart-container">
-                        <a href="javascript:void(0);" title="Cart" class="icon-cart-header">
-                            <span class="icon_bag_alt"></span>
-                        </a>
+                <?php
+                if (isset($this->session->userdata['user_id']))
+                {
+                    ?>
+                    <div class="header-maincart">
+                        <div class="cart-container">
+                            <a href="javascript:void(0);" title="Cart" class="icon-cart-header">
+                                <span class="icon_bag_alt"></span>
+                            </a>
 
-                        <div class="cart-wrapper">
-                            <div class="cart-content">
-                                <p class="no-items-in-cart">You have no items in your shopping cart.</p>
+                            <div class="cart-wrapper">
+                                <div class="cart-content">
+                                    <p class="no-items-in-cart">You have no items in your shopping cart.</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>               
-                </div>
+                        </div>               
+                    </div>
+                    <?php
+                }
+                ?>
                 <div class="header-setting">
                     <div class="setting-switcher switcher-wrap">
                         <div class="overwrite-setting">
@@ -285,10 +300,10 @@ foreach ($cc_data as $ccKey => $ccValue)
                                 if (isset($this->session->userdata['user_id']))
                                 {
                                     ?>
-                                    <li class="first" ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                    <li class="first" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
+                                    <li ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
                                     <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
                                     <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
-                                    <li ><a href="<?php echo base_url('checkout'); ?>" title="Checkout" class="top-link-checkout">Checkout</a></li>
                                     <?php
                                 }
                                 else
@@ -363,15 +378,12 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)" data-value="">All</a></li>
-                                        <li><a href="javascript:void(0)" data-value="3">Women</a></li>
-                                        <li><a href="javascript:void(0)" data-value="4">Men</a></li>
-                                        <li><a href="javascript:void(0)" data-value="5">Footwear</a></li>
-                                        <li><a href="javascript:void(0)" data-value="6">Jewellery</a></li>
-                                        <li><a href="javascript:void(0)" data-value="7">Accessories</a></li>
-                                        <li><a href="javascript:void(0)" data-value="8">Shoes</a></li>
-                                        <li><a href="javascript:void(0)" data-value="9">Bag</a></li>
-                                        <li><a href="javascript:void(0)" data-value="10">Shirts</a></li>
-                                        <li><a href="javascript:void(0)" data-value="11">Pants</a></li>
+                                        <?php
+                                        foreach ($pc_records as $pcKey => $pcValue)
+                                        {
+                                            echo '<li><a href="javascript:void(0)" data-value="' . $pcValue['pc_id'] . '">' . stripslashes($pcValue['pc_name']) . '</a></li>';
+                                        }
+                                        ?>
                                     </ul>
                                 </span>
                                 <input type="hidden" name="cat" value=""/>
