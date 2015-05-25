@@ -16,8 +16,7 @@ $this->output->set_header('Expires: Tue, 01 Jan 2000 00:00:00 GMT');
 $this->output->set_header('Last-Modified:' . gmdate('D, d M Y H:i:s') . 'GMT');
 $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
 $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
-$this->output->set_header('Pragma: no-cache');
-//    prd($meta_logo_image);
+//$this->output->set_header('Pragma: no-cache');
 $controller = $this->router->fetch_class();
 $method = $this->router->fetch_method();
 $path = $controller . "/" . $method;
@@ -34,33 +33,15 @@ $path = $controller . "/" . $method;
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
         <link rel="icon" href="<?php echo IMAGES_PATH; ?>/favicon.ico" type="image/x-icon"/>
         <link rel="shortcut icon" href="<?php echo IMAGES_PATH; ?>/favicon.ico" type="image/x-icon"/>
-        <!--[if lt IE 7]>
-        <script type="text/javascript">
-            //<![CDATA[
-            var BLANK_URL = 'http://puro.icotheme.com/js/blank.html';
-            var BLANK_IMG = 'http://puro.icotheme.com/js/spacer.gif';
-        //]]>
-        </script>
-        <![endif]-->
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/owl.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/style.css" media="all" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/print.css" media="print" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/custom.css" />
         <script type="text/javascript" src="<?php echo JS_PATH; ?>/5164f243df82e4cc8456f4bdf354ac03.js"></script>
-        <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/e3abd5ccfeb574ea6ab6aa54081488b2.css" media="all" />
-        <![endif]-->
-        <!--[if lt IE 7]>
-        <script type="text/javascript" src="<?php echo JS_PATH; ?>/daf32c11099ae3bdc0c12fc49c58d4ef.js"></script>
-        <![endif]-->
-        <!--[if lt IE 9]>
-        <script type="text/javascript" src="<?php echo JS_PATH; ?>/0708f4cc60b3173c34d0e617f1d6536d.js"></script>
-        <![endif]-->
-
         <script type="text/javascript">
             //<![CDATA[
             Mage.Cookies.path = '/';
-            Mage.Cookies.domain = '.puro.icotheme.com';
+            Mage.Cookies.domain = '.<?php echo base_url(); ?>';
             //]]>
             //<![CDATA[
             optionalZipCountries = ["HK", "IE", "MO", "PA"];
