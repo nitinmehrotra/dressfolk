@@ -74,11 +74,6 @@
                                             <!-- // Product Button Add To Link -->
                                             <div class="action-list">
                                                 <ul class="add-to-links">
-                                                    <li class="first"><a href="#" class="link-compare bootstrap-tooltip"  data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-pie-chart"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="action-list">
-                                                <ul class="add-to-links">
                                                     <li><a href="#" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
                                                 </ul>
                                             </div>
