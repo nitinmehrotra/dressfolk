@@ -1010,6 +1010,7 @@ button.button:hover:before {
   line-height:70px;
   color:#181818;
   width:70px;
+  cursor:pointer;
 }
 .header-wrapper .header-container .is-sticky .main-header .right-header-menu .header-setting .setting-switcher:hover .switcher-content { top:70px; }
 .header-wrapper .header-container .is-sticky .main-header .main-navigation ul.top-navigation li.level0 > .menu-wrap-sub { top:70px; }
