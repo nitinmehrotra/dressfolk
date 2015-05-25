@@ -36,409 +36,78 @@
                         </div> 
                     </div></div>
                 <div class="widget-products-new home-new-product" id="block-4e8ee2e7dccf59d2682a0d27c4713f19">
-                    <h3 class="title-widget"><span>New Product</span></h3>
+                    <h3 class="title-widget"><span>New Products</span></h3>
                     <div class="category-products">
                         <ul class="products-grid  owl-carousel">
-                            <li class="item effect-pageLeft">
-                                <div class="product-action">
-                                    <!-- // Product Label -->
-                                    <div class="product-new-label">New</div><div class="product-sale-label">Sale</div>                    <!-- // End Product Label -->
-                                    <a class="product-image" href="hr-jasper-blazer-155.html"
-                                       title="HR Jasper Blazer">
-                                        <img
-                                            class="lazyOwl img-responsive" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/1/4/14.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/1/4/14.jpg"                                src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif"
-                                            alt="HR Jasper Blazer"/>
-                                        <img class="img-responsive alt-img lazy" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/1/5/15.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/1/5/15.jpg" src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif" alt="HR Jasper Blazer" />                                            </a>
+                            <?php
+                            foreach ($products_arr as $pKey => $pValue)
+                            {
+                                $product_url = base_url($pValue['product_url_key']);
+                                $product_title = stripslashes($pValue['product_title']);
+                                $product_image_1 = getImage('');
+                                $product_image_2 = getImage('');
+                                $product_price = $pValue['product_price'];
+                                ?>
+                                <li class="item effect-pageLeft">
+                                    <div class="product-action">
+                                        <!-- // Product Label -->
+                                        <div class="product-new-label">New</div>       
+                                        <!-- // End Product Label -->
+                                        <a class="product-image" href="<?php echo $product_url; ?>" title="<?php echo $product_title; ?>">
+                                            <img class="lazyOwl img-responsive" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>"/>
+                                            <img class="img-responsive alt-img lazy" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>" />
+                                        </a>
 
-                                    <div class="actions">
-                                        <div class="action-list quickview hidden-xs">
-                                            <div class="quickview-wrapper" onclick="quickview(this);" data-url="http://puro.icotheme.com/ajaxproducts/index/quickview/product_id/23/">
-                                                <i class="fa fa-search-plus"></i>
+                                        <div class="actions">
+                                            <div class="action-list quickview hidden-xs">
+                                                <div class="quickview-wrapper" onclick="quickview(this);" data-url="<?php echo $product_url; ?>">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </div>
+                                            </div>
+                                            <!-- // Product Button Add To Cart -->
+                                            <div class="action-list addtocart">
+                                                <button type="button" title="Add to Cart" class="btn-cart bootstrap-tooltip" data-toggle="tooltip" data-placement="left" onclick="setLocationCache('#')">
+                                                    <span><span><i class="fa fa-shopping-cart"></i></span></span>
+                                                </button>
+                                            </div>
+                                            <!-- // End Product Button Add To Cart -->
+                                            <!-- // Product Button Add To Link -->
+                                            <div class="action-list">
+                                                <ul class="add-to-links">
+                                                    <li class="first"><a href="#" class="link-compare bootstrap-tooltip"  data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-pie-chart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="action-list">
+                                                <ul class="add-to-links">
+                                                    <li><a href="#" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <!-- // End Product Button Add To Link -->
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">
+                                            <a href="<?php echo $product_url ?>" title="<?php echo $product_title; ?>"><?php echo $product_title; ?></a>
+                                        </h3>
+                                        <!-- // Product Rating Summary -->
+                                        <div class="ratings">
+                                            <div class="rating-box">
+                                                <div class="rating" style="width:87%"></div>
                                             </div>
                                         </div>
-                                        <!-- // Product Button Add To Cart -->
-                                        <div class="action-list addtocart">
-                                            <button type="button" title="Add to Cart" class="btn-cart bootstrap-tooltip" data-toggle="tooltip" data-placement="left" onclick="setLocationCache('http://puro.icotheme.com/hr-jasper-blazer-155.html')">
-                                                <span><span><i class="fa fa-shopping-cart"></i></span></span>
-                                            </button>
+                                        <!-- // End Product Rating Summary -->
+
+                                        <div class="price-box">
+                                            <p class="special-price">
+                                                <span class="price-label">Price:</span>
+                                                <span class="price"><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_price, 2); ?></span>
+                                            </p>
                                         </div>
-                                        <!-- // End Product Button Add To Cart -->
-                                        <!-- // Product Button Add To Link -->
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li class="first"><a href="catalog/product_compare/add/product/23/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-compare bootstrap-tooltip"  data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-pie-chart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li><a href="wishlist/index/add/product/23/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- // End Product Button Add To Link -->
                                     </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-name">
-                                        <a href="hr-jasper-blazer-155.html"
-                                           title="HR Jasper Blazer">
-                                            HR Jasper Blazer                        </a>
-                                    </h3>
-                                    <!-- // Product Rating Summary -->
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:87%"></div>
-                                        </div>
-                                        <!--span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://puro.icotheme.com/review/product/list/id/23/'; return false;">1 Review(s)</a></span-->
-                                    </div>
-                                    <!-- // End Product Rating Summary -->
-
-
-
-                                    <div class="price-box">
-
-                                        <p class="old-price">
-                                            <span class="price-label">Regular Price:</span>
-                                            <span class="price">
-                                                $450.00                </span>
-                                        </p>
-
-                                        <p class="special-price">
-                                            <span class="price-label">Special Price</span>
-                                            <span class="price">
-                                                $400.00                </span>
-                                        </p>
-
-
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="item effect-pageLeft">
-                                <div class="product-action">
-                                    <!-- // Product Label -->
-                                    <div class="product-new-label">New</div><div class="product-sale-label">Sale</div>                    <!-- // End Product Label -->
-                                    <a class="product-image" href="island-waistcoat.html"
-                                       title="Island Waistcoat">
-                                        <img
-                                            class="lazyOwl img-responsive" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/v/e/vest8.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/v/e/vest8.jpg"                                src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif"
-                                            alt="Island Waistcoat"/>
-                                        <img class="img-responsive alt-img lazy" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/v/e/vest8-1.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/v/e/vest8-1.jpg" src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif" alt="Island Waistcoat" />                                            </a>
-
-                                    <div class="actions">
-                                        <div class="action-list quickview hidden-xs">
-                                            <div class="quickview-wrapper" onclick="quickview(this);" data-url="http://puro.icotheme.com/ajaxproducts/index/quickview/product_id/13/">
-                                                <i class="fa fa-search-plus"></i>
-                                            </div>
-                                        </div>
-                                        <!-- // Product Button Add To Cart -->
-                                        <div class="action-list addtocart">
-                                            <button type="button" title="Add to Cart" class="btn-cart bootstrap-tooltip" data-toggle="tooltip" data-placement="left" onclick="setLocationCache('http://puro.icotheme.com/island-waistcoat.html')">
-                                                <span><span><i class="fa fa-shopping-cart"></i></span></span>
-                                            </button>
-                                        </div>
-                                        <!-- // End Product Button Add To Cart -->
-                                        <!-- // Product Button Add To Link -->
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li class="first"><a href="catalog/product_compare/add/product/13/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-compare bootstrap-tooltip"  data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-pie-chart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li><a href="wishlist/index/add/product/13/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- // End Product Button Add To Link -->
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-name">
-                                        <a href="island-waistcoat.html"
-                                           title="Island Waistcoat">
-                                            Island Waistcoat                        </a>
-                                    </h3>
-                                    <!-- // Product Rating Summary -->
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:80%"></div>
-                                        </div>
-                                        <!--span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://puro.icotheme.com/review/product/list/id/13/'; return false;">1 Review(s)</a></span-->
-                                    </div>
-                                    <!-- // End Product Rating Summary -->
-
-
-
-                                    <div class="price-box">
-
-                                        <p class="old-price">
-                                            <span class="price-label">Regular Price:</span>
-                                            <span class="price">
-                                                $230.00                </span>
-                                        </p>
-
-                                        <p class="special-price">
-                                            <span class="price-label">Special Price</span>
-                                            <span class="price">
-                                                $200.00                </span>
-                                        </p>
-
-
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="item effect-pageLeft">
-                                <div class="product-action">
-                                    <!-- // Product Label -->
-                                    <div class="product-new-label">New</div>                    <!-- // End Product Label -->
-                                    <a class="product-image" href="skinny-suit-jacket.html"
-                                       title="Skinny Suit Jacket ">
-                                        <img
-                                            class="lazyOwl img-responsive" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/b/a/back.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/b/a/back.jpg"                                src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif"
-                                            alt="Skinny Suit Jacket "/>
-                                        <img class="img-responsive alt-img lazy" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/1/1/11_1.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/1/1/11_1.jpg" src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif" alt="Skinny Suit Jacket " />                                            </a>
-
-                                    <div class="actions">
-                                        <div class="action-list quickview hidden-xs">
-                                            <div class="quickview-wrapper" onclick="quickview(this);" data-url="http://puro.icotheme.com/ajaxproducts/index/quickview/product_id/28/">
-                                                <i class="fa fa-search-plus"></i>
-                                            </div>
-                                        </div>
-                                        <!-- // Product Button Add To Cart -->
-                                        <div class="action-list addtocart">
-                                            <button type="button" title="Add to Cart" class="btn-cart bootstrap-tooltip" data-toggle="tooltip" data-placement="left" onclick="setLocationCache('http://puro.icotheme.com/skinny-suit-jacket.html')">
-                                                <span><span><i class="fa fa-shopping-cart"></i></span></span>
-                                            </button>
-                                        </div>
-                                        <!-- // End Product Button Add To Cart -->
-                                        <!-- // Product Button Add To Link -->
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li class="first"><a href="catalog/product_compare/add/product/28/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-compare bootstrap-tooltip"  data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-pie-chart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li><a href="wishlist/index/add/product/28/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- // End Product Button Add To Link -->
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-name">
-                                        <a href="skinny-suit-jacket.html"
-                                           title="Skinny Suit Jacket ">
-                                            Skinny Suit Jacket                         </a>
-                                    </h3>
-                                    <!-- // Product Rating Summary -->
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:73%"></div>
-                                        </div>
-                                        <!--span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://puro.icotheme.com/review/product/list/id/28/'; return false;">1 Review(s)</a></span-->
-                                    </div>
-                                    <!-- // End Product Rating Summary -->
-
-
-
-                                    <div class="price-box">
-                                        <span class="regular-price">
-                                            <span class="price">$232.00</span>                                    </span>
-
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="item effect-pageLeft">
-                                <div class="product-action">
-                                    <!-- // Product Label -->
-                                    <div class="product-new-label">New</div>                    <!-- // End Product Label -->
-                                    <a class="product-image" href="suit-jacket-in-burgundy.html"
-                                       title="Suit Jacket In Burgundy">
-                                        <img
-                                            class="lazyOwl img-responsive" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/b/u/bungady.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/b/u/bungady.jpg"                                src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif"
-                                            alt="Suit Jacket In Burgundy"/>
-                                        <img class="img-responsive alt-img lazy" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/i/m/image2xxl.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/i/m/image2xxl.jpg" src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif" alt="Suit Jacket In Burgundy" />                                            </a>
-
-                                    <div class="actions">
-                                        <div class="action-list quickview hidden-xs">
-                                            <div class="quickview-wrapper" onclick="quickview(this);" data-url="http://puro.icotheme.com/ajaxproducts/index/quickview/product_id/20/">
-                                                <i class="fa fa-search-plus"></i>
-                                            </div>
-                                        </div>
-                                        <!-- // Product Button Add To Cart -->
-                                        <div class="action-list addtocart">
-                                            <button type="button" title="Add to Cart" class="btn-cart bootstrap-tooltip" data-toggle="tooltip" data-placement="left" onclick="setLocationCache('http://puro.icotheme.com/checkout/cart/add/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/product/20/form_key/pbgL1SNOsiEx9ET9/')">
-                                                <span><span><i class="fa fa-shopping-cart"></i></span></span>
-                                            </button>
-                                        </div>
-                                        <!-- // End Product Button Add To Cart -->
-                                        <!-- // Product Button Add To Link -->
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li class="first"><a href="catalog/product_compare/add/product/20/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-compare bootstrap-tooltip"  data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-pie-chart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li><a href="wishlist/index/add/product/20/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- // End Product Button Add To Link -->
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-name">
-                                        <a href="suit-jacket-in-burgundy.html"
-                                           title="Suit Jacket In Burgundy">
-                                            Suit Jacket In Burgundy                        </a>
-                                    </h3>
-                                    <!-- // Product Rating Summary -->
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:93%"></div>
-                                        </div>
-                                        <!--span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://puro.icotheme.com/review/product/list/id/20/'; return false;">1 Review(s)</a></span-->
-                                    </div>
-                                    <!-- // End Product Rating Summary -->
-
-
-
-                                    <div class="price-box">
-                                        <span class="regular-price">
-                                            <span class="price">$145.00</span>                                    </span>
-
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="item effect-pageLeft">
-                                <div class="product-action">
-                                    <!-- // Product Label -->
-                                    <div class="product-new-label">New</div>                    <!-- // End Product Label -->
-                                    <a class="product-image" href="hr-jasper-blazer.html"
-                                       title="HR Jasper Blazer">
-                                        <img
-                                            class="lazyOwl img-responsive" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/v/e/vest1-1.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/v/e/vest1-1.jpg"                                src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif"
-                                            alt="HR Jasper Blazer"/>
-                                        <img class="img-responsive alt-img lazy" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/v/e/vest1-2.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/v/e/vest1-2.jpg" src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif" alt="HR Jasper Blazer" />                                            </a>
-
-                                    <div class="actions">
-                                        <div class="action-list quickview hidden-xs">
-                                            <div class="quickview-wrapper" onclick="quickview(this);" data-url="http://puro.icotheme.com/ajaxproducts/index/quickview/product_id/11/">
-                                                <i class="fa fa-search-plus"></i>
-                                            </div>
-                                        </div>
-                                        <!-- // Product Button Add To Cart -->
-                                        <div class="action-list addtocart">
-                                            <button type="button" title="Add to Cart" class="btn-cart bootstrap-tooltip" data-toggle="tooltip" data-placement="left" onclick="setLocationCache('http://puro.icotheme.com/checkout/cart/add/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/product/11/form_key/pbgL1SNOsiEx9ET9/')">
-                                                <span><span><i class="fa fa-shopping-cart"></i></span></span>
-                                            </button>
-                                        </div>
-                                        <!-- // End Product Button Add To Cart -->
-                                        <!-- // Product Button Add To Link -->
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li class="first"><a href="catalog/product_compare/add/product/11/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-compare bootstrap-tooltip"  data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-pie-chart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li><a href="wishlist/index/add/product/11/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- // End Product Button Add To Link -->
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-name">
-                                        <a href="hr-jasper-blazer.html"
-                                           title="HR Jasper Blazer">
-                                            HR Jasper Blazer                        </a>
-                                    </h3>
-                                    <!-- // Product Rating Summary -->
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:100%"></div>
-                                        </div>
-                                        <!--span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://puro.icotheme.com/review/product/list/id/11/'; return false;">2 Review(s)</a></span-->
-                                    </div>
-                                    <!-- // End Product Rating Summary -->
-
-
-
-                                    <div class="price-box">
-                                        <span class="regular-price">
-                                            <span class="price">$220.00</span>                                    </span>
-
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="item effect-pageLeft">
-                                <div class="product-action">
-                                    <!-- // Product Label -->
-                                    <div class="product-new-label">New</div>                    <!-- // End Product Label -->
-                                    <a class="product-image" href="blue-100-silk-709.html"
-                                       title="Man Blazer ">
-                                        <img
-                                            class="lazyOwl img-responsive" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/v/e/vest2-3_1_1.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/v/e/vest2-3_1_1.jpg"                                src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif"
-                                            alt="Man Blazer "/>
-                                        <img class="img-responsive alt-img lazy" data-src="media/catalog/product/cache/1/small_image/360x/040ec09b1e35df139433887a97daa66f/v/e/vest5.jpg" data-srcX2="http://puro.icotheme.com/media/catalog/product/cache/1/small_image/720x/040ec09b1e35df139433887a97daa66f/v/e/vest5.jpg" src="http://puro.icotheme.com/skin/frontend/puro/default/images/AjaxLoader.gif" alt="Man Blazer " />                                            </a>
-
-                                    <div class="actions">
-                                        <div class="action-list quickview hidden-xs">
-                                            <div class="quickview-wrapper" onclick="quickview(this);" data-url="http://puro.icotheme.com/ajaxproducts/index/quickview/product_id/43/">
-                                                <i class="fa fa-search-plus"></i>
-                                            </div>
-                                        </div>
-                                        <!-- // Product Button Add To Cart -->
-                                        <div class="action-list addtocart">
-                                            <button type="button" title="Add to Cart" class="btn-cart bootstrap-tooltip" data-toggle="tooltip" data-placement="left" onclick="setLocationCache('http://puro.icotheme.com/checkout/cart/add/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/product/43/form_key/pbgL1SNOsiEx9ET9/')">
-                                                <span><span><i class="fa fa-shopping-cart"></i></span></span>
-                                            </button>
-                                        </div>
-                                        <!-- // End Product Button Add To Cart -->
-                                        <!-- // Product Button Add To Link -->
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li class="first"><a href="catalog/product_compare/add/product/43/uenc/aHR0cDovL3B1cm8uaWNvdGhlbWUuY29tLw,,/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-compare bootstrap-tooltip"  data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-pie-chart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="action-list">
-                                            <ul class="add-to-links">
-                                                <li><a href="wishlist/index/add/product/43/form_key/pbgL1SNOsiEx9ET9/index.html" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- // End Product Button Add To Link -->
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-name">
-                                        <a href="blue-100-silk-709.html"
-                                           title="Man Blazer ">
-                                            Man Blazer                         </a>
-                                    </h3>
-                                    <!-- // Product Rating Summary -->
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:100%"></div>
-                                        </div>
-                                        <!--span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://puro.icotheme.com/review/product/list/id/43/'; return false;">1 Review(s)</a></span-->
-                                    </div>
-                                    <!-- // End Product Rating Summary -->
-
-
-
-                                    <div class="price-box">
-                                        <span class="regular-price">
-                                            <span class="price">$213.00</span>                                    </span>
-
-                                    </div>
-
-                                </div>
-                            </li>
+                                </li>
+                                <?php
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -451,15 +120,6 @@
                         });
                     });
                 </script>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row show-grid">
-                <div class="col-main">
-                    <div class="std"><!-- <div class="page-title">
-<h2>Home Page</h2>
-</div> --></div>                
-                </div>
             </div>
         </div>
     </div>
