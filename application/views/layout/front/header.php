@@ -42,9 +42,9 @@ $path = $controller . "/" . $method;
         //]]>
         </script>
         <![endif]-->
-        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/437006133d9d6342b2e498ea089b0cf7.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/36bc63752380e29e215776dd85d7047e.css" media="all" />
-        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/976e407bad0f6ef8b3c84752e70679a7.css" media="print" />
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/owl.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/style.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/print.css" media="print" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/custom.css" />
         <script type="text/javascript" src="<?php echo JS_PATH; ?>/5164f243df82e4cc8456f4bdf354ac03.js"></script>
         <!--[if lt IE 8]>

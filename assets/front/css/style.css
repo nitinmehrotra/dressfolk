@@ -8326,5 +8326,3 @@ table td a.btn-remove:hover, table th a.btn-remove:hover, a.btn-remove:hover spa
 /* Item grid: 8 columns */
 .products-itemgrid-8col .item { width:9.4396%; }
 .products-itemgrid-8col .item:nth-child(8n+1) { clear:left; }
-
-/* Localized */
