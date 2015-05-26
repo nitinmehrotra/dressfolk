@@ -82,11 +82,7 @@ $product_title = stripslashes($record['product_title']);
                                                         <i class="fa fa-minus"></i>
                                                     </div>
                                                     <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty" />
-                                                    <div class="increase items" onclick="var result = document.getElementById('qty');
-                                                            var qty = result.value;
-                                                            if (!isNaN(qty))
-                                                                result.value++;
-                                                            return false;">
+                                                    <div class="increase items" onclick="var result = document.getElementById('qty'); var qty = result.value; if (!isNaN(qty)) result.value++; return false;">
                                                         <i class="fa fa-plus"></i>
                                                     </div>
                                                 </div>
