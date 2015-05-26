@@ -1,0 +1,415 @@
+<?php
+$product_title = stripslashes($record['product_title']);
+?>
+<div class="main-wrapper">
+    <div class="main">
+        <div class="container">
+            <div class="row show-grid">
+                <div class="col-main">
+                    <div id="messages_product_view"></div>
+                    <div class="product-view">
+                        <div class="product-essential show-grid">
+                            <form action="" method="post" id="product_addtocart_form">
+                                <div class="product-img-box col-md-6 col-sm-6">
+                                    <div class="product-img-list">
+                                        <div class="more-views-verticle">
+                                            <a class="more-views-prev more-views-nav" href="javascript:void(0)" id="carousel-up" style="display: block;">
+                                                <i class="fa fa-caret-square-o-up"></i>
+                                            </a>
+
+                                            <div class="media-list">
+                                                <div id="more-slides" class="verticl-carousel product-image-thumbs">
+                                                    <?php
+                                                    foreach ($record['images_arr'] as $piKey => $piValue)
+                                                    {
+                                                        ?>
+                                                        <a class="thumb-link" href="#" title="<?php echo $product_title; ?>" data-image-index="0">
+                                                            <img class="img-responsive" src="<?php echo getImage($piValue['pi_image_path']); ?>" alt="<?php echo $product_title . '-' . $piKey; ?>"/>
+                                                        </a>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <a class="more-views-next more-views-nav" href="javascript:void(0)" id="carousel-down" style="display: block;">
+                                                <i class="fa fa-caret-square-o-down"></i>
+                                            </a>
+                                        </div>
+                                        <div class="product-image product-image-zoom">
+                                            <div class="product-image-gallery">
+                                                <img id="image-main" class="gallery-image visible" src="<?php echo getImage($record['images_arr'][0]['pi_image_path']); ?>" alt="<?php echo $product_title; ?>" title="<?php echo $product_title; ?>"/>
+                                                <?php
+                                                foreach ($record['images_arr'] as $piKey => $piValue)
+                                                {
+                                                    ?>
+                                                    <img id="image-<?php echo $piKey ?>" class="gallery-image" src="<?php echo getImage($piValue['pi_image_path']); ?>" data-zoom-image="<?php echo getImage($piValue['pi_image_path']); ?>" alt="<?php echo $product_title . '-' . $piKey; ?>" title="<?php echo $product_title . '-' . $piKey; ?>"/>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="product-shop col-md-6 col-sm-6">
+                                    <div class="product-shop-wrapper">
+                                        <div class="product-name top-product-detail">
+                                            <h2><?php echo $product_title; ?></h2>
+                                        </div>
+                                        <div class="middle-product-detail">
+                                            <div class="review-product-details">
+                                                <p class="no-rating"><a href="#review-form">Be the first to review this product</a></p>
+                                            </div>
+                                            <div class="product-type-data">
+                                                <div class="price-box">
+                                                    <span class="regular-price">
+                                                        <span class="price"><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($record['product_price'], 2); ?></span>                 
+                                                    </span>
+                                                </div>
+                                                <p class="availability in-stock">Availability: <span>In stock</span></p>
+                                            </div>
+                                            <div class="short-description-detail">
+                                                <div class="short-description">
+                                                    <h2>Quick Overview</h2>
+                                                    <div class="std"><?php echo getNWordsFromString(stripslashes($record['product_description']), 150); ?></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="actions-wrapper">
+                                            <div class="add-to-cart">
+                                                <div class="input-box pull-left">
+                                                    <div class="reduced items" onclick="var result = document.getElementById('qty'); var qty = result.value; if (!isNaN(qty) & amp; & amp; qty > 1) result.value--; return false;">
+                                                        <i class="fa fa-minus"></i>
+                                                    </div>
+                                                    <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty" />
+                                                    <div class="increase items" onclick="var result = document.getElementById('qty');
+                                                            var qty = result.value;
+                                                            if (!isNaN(qty))
+                                                                result.value++;
+                                                            return false;">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="actions">
+                                                    <div class="action-list addtocart">
+                                                        <button type="button" title="Add to cart" data-button="<i class='fs1' aria-hidden='true' data-icon=''></i><span>Add to Cart</span>" class="btn-cart" onclick="productAddToCartForm.submit(this)">
+                                                            <span>
+                                                                <span>
+                                                                    <i class="fs1" aria-hidden="true" data-icon=""></i>
+                                                                    <span>Add to Cart</span>
+                                                                </span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="action-list wishlist">
+                                                        <ul class="add-to-links">
+                                                            <li class="first wishlist">
+                                                                <a href="#" onclick="productAddToCartForm.submitLight(this, this.href);
+                                                                        return false;" class="link-wishlist"><i class="fa fa-heart-o"></i>Wishlist</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="product-collateral">
+                            <ul id="product-tab" class="nav nav-tabs" role="tablist">
+                                <li class=" active first">
+                                    <a href="#product_tabs_description" role="tab" data-toggle="tab">More Information</a>
+                                </li>
+                                <li class="">
+                                    <a href="#product_tabs_tabreviews" role="tab" data-toggle="tab">Reviews</a>
+                                </li>
+                                <li class="">
+                                    <a href="#product_tabs_tags" role="tab" data-toggle="tab">Tags</a>
+                                </li>
+                                <li class=" last">
+                                    <a href="#product_tabs_additional" role="tab" data-toggle="tab">Additional Information</a>
+                                </li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane in active first" id="product_tabs_description">
+                                    <div class="product-tabs-content-inner clearfix">
+                                        <h2>Details</h2>
+                                        <div class="std"><?php echo stripslashes($record['product_description']); ?></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane " id="product_tabs_tabreviews">
+                                    <div class="product-tabs-content-inner clearfix">
+                                        <div class="box-collateral box-reviews" id="customer-reviews">
+                                            <div class="form-add">
+                                                <h2>Write Your Own Review</h2>
+                                                <form action="" method="post" id="review-form">
+                                                    <fieldset>
+                                                        <h3>You're reviewing: <span> Blue 100% Silk</span></h3>
+                                                        <h4>How do you rate this product? <em class="required">*</em></h4>
+                                                        <span id="input-message-box"></span>
+                                                        <table class="data-table" id="product-review-table">
+                                                            <col />
+                                                            <col width="1" />
+                                                            <col width="1" />
+                                                            <col width="1" />
+                                                            <col width="1" />
+                                                            <col width="1" />
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>&nbsp;</th>
+                                                                    <th><span class="nobr">1 star</span></th>
+                                                                    <th><span class="nobr">2 stars</span></th>
+                                                                    <th><span class="nobr">3 stars</span></th>
+                                                                    <th><span class="nobr">4 stars</span></th>
+                                                                    <th><span class="nobr">5 stars</span></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Value</th>
+                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_1" value="6" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_2" value="7" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_3" value="8" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_4" value="9" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_5" value="10" class="radio" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Quality</th>
+                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_1" value="1" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_2" value="2" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_3" value="3" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_4" value="4" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_5" value="5" class="radio" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Price</th>
+                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_1" value="11" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_2" value="12" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_3" value="13" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_4" value="14" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_5" value="15" class="radio" /></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+                                                        <script type="text/javascript">decorateTable('product-review-table')</script>
+                                                        <ul class="form-list">
+                                                            <li>
+                                                                <label for="nickname_field" class="required"><em>*</em>Nickname</label>
+                                                                <div class="input-box">
+                                                                    <input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="" />
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <label for="summary_field" class="required"><em>*</em>Summary of Your Review</label>
+                                                                <div class="input-box">
+                                                                    <input type="text" name="title" id="summary_field" class="input-text required-entry" value="" />
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <label for="review_field" class="required"><em>*</em>Review</label>
+                                                                <div class="input-box">
+                                                                    <textarea name="detail" id="review_field" cols="25" rows="10" class="required-entry"></textarea>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </fieldset>
+                                                    <div class="buttons-set">
+                                                        <button type="submit" title="Submit Review" class="button"><span><span>Submit Review</span></span></button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane " id="product_tabs_tags">
+                                    <div class="product-tabs-content-inner clearfix">
+                                        <div class="box-collateral box-tags">
+                                            <h2>Product Tags</h2>
+                                            <form id="addTagForm" action="" method="get">
+                                                <div class="form-add">
+                                                    <label for="productTagName">Add Your Tags:</label>
+                                                    <div class="input-box">
+                                                        <input type="text" class="input-text required-entry" name="productTagName" id="productTagName" />
+                                                    </div>
+                                                    <button type="button" title="Add Tags" class="button" onclick="submitTagForm()">
+                                                        <span>
+                                                            <span>Add Tags</span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <p class="note">Use spaces to separate tags. Use single quotes (') for phrases.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane  last" id="product_tabs_additional">
+                                    <div class="product-tabs-content-inner clearfix">
+                                        <h2>Additional Information</h2>
+                                        <table class="data-table" id="product-attribute-specs-table">
+                                            <col width="25%" />
+                                            <col />
+                                            <tbody>
+                                                <tr>
+                                                    <th class="label">Size</th>
+                                                    <td class="data">M</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <script type="text/javascript">decorateTable('product-attribute-specs-table')</script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                        <?php echo $this->load->view('pages/products/related-products', array('product_id' => $record['product_id'])); ?>                                               
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice([]);
+    dataZoom = {};
+    dataZoom.position = 'inside'
+
+    var lifetime = 3600;
+    var expireAt = Mage.Cookies.expires;
+    if (lifetime > 0) {
+        expireAt = new Date();
+        expireAt.setTime(expireAt.getTime() + lifetime * 1000);
+    }
+    Mage.Cookies.set('external_no_cache', 1, expireAt);
+
+    //<![CDATA[
+    var addTagFormJs = new VarienForm('addTagForm');
+    function submitTagForm() {
+        if (addTagFormJs.validator.validate()) {
+            addTagFormJs.form.submit();
+        }
+    }
+    //]]>
+
+    //<![CDATA[
+    var dataForm = new VarienForm('review-form');
+    Validation.addAllThese(
+            [
+                ['validate-rating', 'Please select one of each of the ratings above', function (v) {
+                        var trs = $('product-review-table').select('tr');
+                        var inputs;
+                        var error = 1;
+
+                        for (var j = 0; j < trs.length; j++) {
+                            var tr = trs[j];
+                            if (j > 0) {
+                                inputs = tr.select('input');
+
+                                for (i in inputs) {
+                                    if (inputs[i].checked == true) {
+                                        error = 0;
+                                    }
+                                }
+
+                                if (error == 1) {
+                                    return false;
+                                } else {
+                                    error = 1;
+                                }
+                            }
+                        }
+                        return true;
+                    }]
+            ]
+            );
+    //]]>
+
+    jQuery(function ($) {
+        var carCount = $('.product-img-box .verticl-carousel').find('a').length;
+        if (carCount <= 3) {
+            $('.product-img-box .more-views-nav').hide();
+        }
+        $(".product-img-box #carousel-up").on("click", function () {
+            if (!$(".product-img-box .verticl-carousel").is(':animated')) {
+                var bottom = $(".product-img-box .verticl-carousel > a:last-child");
+                var clone = $(".product-img-box .verticl-carousel > a:last-child").clone();
+                clone.prependTo(".product-img-box .verticl-carousel");
+                $(".product-img-box .verticl-carousel").animate({
+                    "top": "-=85"
+                }, 0).stop().animate({
+                    "top": '+=85'
+                }, 250, function () {
+                    bottom.remove();
+                });
+                ProductMediaManager.init();
+            }
+        });
+        $(".product-img-box #carousel-down").on("click", function () {
+            if (!$(".product-img-box .verticl-carousel").is(':animated')) {
+                var top = $(".product-img-box .verticl-carousel > a:first-child");
+                var clone = $(".product-img-box .verticl-carousel > a:first-child").clone();
+                clone.appendTo(".product-img-box .verticl-carousel");
+                $(".product-img-box .verticl-carousel").animate({
+                    "top": '-=85'
+                }, 250, function () {
+                    top.remove();
+                    $(".product-img-box .verticl-carousel").animate({
+                        "top": "+=85"
+                    }, 0);
+                });
+                ProductMediaManager.init();
+            }
+        });
+    });
+
+    //<![CDATA[
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+    productAddToCartForm.submit = function (button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+
+            if (url) {
+                form.action = url;
+            }
+            var e = null;
+            try {
+                this.form.submit();
+            } catch (e) {
+            }
+            this.form.action = oldUrl;
+            if (e) {
+                throw e;
+            }
+
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+        }
+    }.bind(productAddToCartForm);
+
+    productAddToCartForm.submitLight = function (button, url) {
+        if (this.validator) {
+            var nv = Validation.methods;
+            delete Validation.methods['required-entry'];
+            delete Validation.methods['validate-one-required'];
+            delete Validation.methods['validate-one-required-by-name'];
+            // Remove custom datetime validators
+            for (var methodName in Validation.methods) {
+                if (methodName.match(/^validate-datetime-.*/i)) {
+                    delete Validation.methods[methodName];
+                }
+            }
+            if (this.validator.validate()) {
+                if (url) {
+                    this.form.action = url;
+                }
+                this.form.submit();
+            }
+            Object.extend(Validation.methods, nv);
+        }
+    }.bind(productAddToCartForm);
+    //]]>
+</script>

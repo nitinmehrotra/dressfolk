@@ -2704,12 +2704,12 @@ button.button:hover:before {
   display:inline-block;
   vertical-align:top;
   float:left;
-  width:17%;
+  width:14%;
   transition:all 300ms ease-in-out 0s;
 }
-.actions .action-list.addtocart { width:66%; }
-.actions .action-list.addtocart:hover { width:66% !important; }
-.actions .action-list:hover { width:66%; }
+.actions .action-list.addtocart { width:86%; }
+.actions .action-list.addtocart:hover { width:86% !important; }
+.actions .action-list:hover { width:86%; }
 .actions .btn-cart {
   float:left;
   border:none;
@@ -2763,7 +2763,7 @@ button.button:hover:before {
   padding-left:10px;
 }
 .actions .add-to-links li.first { border-right:#3f393b solid 1px; }
-.actions:hover .action-list.addtocart { width:17%; }
+.actions:hover .action-list.addtocart { width:14%; }
 .product-view .product-img-box .product-img-list {
   display:block;
   width:100%;
