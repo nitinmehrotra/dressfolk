@@ -74,7 +74,6 @@
             $result = $result->join(TABLE_PRODUCT_IMAGES . " as pi", "pi.pi_product_id=p.product_id", "LEFT");
             $result = $result->join(TABLE_CHILD_CATEGORY . " as cc", "cc.cc_id=p.product_child_category", "INNER");
             $result = $result->join(TABLE_PARENT_CATEGORY . " as pc", "pc.pc_id=cc.cc_pc_id", "INNER");
-            $result = $result->join(TABLE_GRAND_CATEGORY . " as gc", "gc.gc_id=pc.pc_gc_id", "INNER");
             $result = $result->join(TABLE_SELLER . " as s", "s.seller_id=p.product_seller_id", "INNER");
 
             if ($orderByFieldName != NULL)
