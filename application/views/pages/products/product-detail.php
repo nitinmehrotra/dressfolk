@@ -254,7 +254,6 @@ $product_title = stripslashes($record['product_title']);
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <script type="text/javascript">decorateTable('product-attribute-specs-table')</script>
                                     </div>
                                 </div>
                             </div>
@@ -268,6 +267,7 @@ $product_title = stripslashes($record['product_title']);
 </div>
 
 <script type="text/javascript">
+    decorateTable('product-attribute-specs-table');
     var optionsPrice = new Product.OptionsPrice([]);
     dataZoom = {};
     dataZoom.position = 'inside'
