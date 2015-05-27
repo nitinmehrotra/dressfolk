@@ -14,7 +14,7 @@
         {
             $this->load->model('custom_model');
             $custom_model = new Custom_model();
-            $fields = 'product_id, product_title, product_code, product_price, product_seller_price, product_status, gc_name, pc_name, cc_name';
+            $fields = 'product_id, product_title, product_code, product_price, product_seller_price, product_status, pc_name, cc_name';
             $whereCondArr = NULL;
             $data["alldata"] = $custom_model->getAllProductsList($fields, $whereCondArr);
 //            prd($data);
@@ -319,7 +319,7 @@
             }
             else
             {
-                $product_fields = 'product_id, product_title, product_description, gc_id, pc_id, cc_id, product_seller_price, product_shipping_charge, product_gift_charge';
+                $product_fields = 'product_id, product_title, product_description, pc_id, cc_id, product_seller_price, product_shipping_charge, product_gift_charge';
                 $detail_fields = 'pd_id';
                 $images_fields = 'pi_id';
                 $record = $custom_model->getAllProductsDetails($product_id, $product_fields, $detail_fields, $images_fields);

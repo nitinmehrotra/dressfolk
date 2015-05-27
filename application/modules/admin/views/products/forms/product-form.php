@@ -1,24 +1,24 @@
 <?php
-    $result = array();
-    if (isset($record))
+$result = array();
+if (isset($record))
+{
+    foreach ($record as $key => $value)
     {
-        foreach ($record as $key => $value)
-        {
-            $result[$key] = $value;
-        }
+        $result[$key] = $value;
     }
-    else
-    {
-        $result["product_id"] = "";
-        $result["product_title"] = "";
-        $result["product_description"] = "";
-        $result["product_seller_price"] = "";
-        $result["product_shipping_charge"] = "";
-        $result["product_gift_charge"] = "25";
-    }
+}
+else
+{
+    $result["product_id"] = "";
+    $result["product_title"] = "";
+    $result["product_description"] = "";
+    $result["product_seller_price"] = "";
+    $result["product_shipping_charge"] = "";
+    $result["product_gift_charge"] = "25";
+}
 
-    if (!isset($form_action))
-        $form_action = "";
+if (!isset($form_action))
+    $form_action = "";
 ?>
 
 <!-- BEGIN PAGE -->  
@@ -66,104 +66,74 @@
                                     <div class="help-block">(minimum <?php echo PRODUCT_DESC_MIN_LENGTH; ?> characters)</div>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">State it belongs<span class="required">*</span></label>
-                                <div class="controls">
-                                    <select name="product_grand_category" class="span6 m-wrap" id="gc_id">
-                                        <?php
-                                            if (!empty($grand_cat_array))
-                                            {
-                                                echo '<option value="">Select</option>';
-                                                foreach ($grand_cat_array as $gcKey => $gcValue)
-                                                {
-                                                    $gc_id = $gcValue["gc_id"];
-                                                    $gc_name = $gcValue["gc_name"];
 
-                                                    $selected = "";
-                                                    if ($result["product_grand_category"] == $gc_id)
-                                                        $selected = "selected='selected'";
-
-                                                    echo '<option value="' . $gc_id . '" ' . $selected . '>' . $gc_name . '</option>';
-                                                }
-                                            }
-                                            else
-                                            {
-                                                echo '<option>No data</option>';
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <span id="pc_select_box">
-                                <?php
-                                    if (!empty($result["product_parent_category"]))
-                                    {
-                                        echo '<div class="control-group">
+                            <?php
+                            if (!empty($result["product_parent_category"]))
+                            {
+                                echo '<div class="control-group">
                                                     <label class="control-label">Category<span class="required">*</span></label>
                                                     <div class="controls">
                                                         <select name="product_parent_category" class="span6 m-wrap" id="pc_id">';
 
-                                        if (!empty($parent_cat_array))
-                                        {
-                                            echo '<option>select</option>';
-                                            foreach ($parent_cat_array as $pcKey => $pcValue)
-                                            {
-                                                $pc_id = $pcValue["pc_id"];
-                                                $pc_name = $pcValue["pc_name"];
+                                if (!empty($parent_cat_array))
+                                {
+                                    echo '<option>select</option>';
+                                    foreach ($parent_cat_array as $pcKey => $pcValue)
+                                    {
+                                        $pc_id = $pcValue["pc_id"];
+                                        $pc_name = $pcValue["pc_name"];
 
-                                                $selected = "";
-                                                if ($result["product_parent_category"] == $pc_id)
-                                                    $selected = "selected='selected'";
+                                        $selected = "";
+                                        if ($result["product_parent_category"] == $pc_id)
+                                            $selected = "selected='selected'";
 
-                                                echo '<option value="' . $pc_id . '" ' . $selected . '>' . $pc_name . '</option>';
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo '<option>No data</option>';
-                                        }
+                                        echo '<option value="' . $pc_id . '" ' . $selected . '>' . $pc_name . '</option>';
+                                    }
+                                }
+                                else
+                                {
+                                    echo '<option>No data</option>';
+                                }
 
-                                        echo '</select>
+                                echo '</select>
                                                 </div>
                                             </div>';
-                                    }
-                                ?>
-                            </span>                            
+                            }
+                            ?>                         
 
                             <span id="cc_select_box">
                                 <?php
-                                    if (!empty($result["product_child_category"]))
-                                    {
-                                        echo '<div class="control-group">
+                                if (!empty($result["product_child_category"]))
+                                {
+                                    echo '<div class="control-group">
                                                     <label class="control-label">Sub-Category<span class="required">*</span></label>
                                                     <div class="controls">
                                                         <select name="product_child_category" class="span6 m-wrap" id="pc_id">';
 
-                                        if (!empty($child_cat_array))
+                                    if (!empty($child_cat_array))
+                                    {
+                                        echo '<option>select</option>';
+                                        foreach ($child_cat_array as $ccKey => $ccValue)
                                         {
-                                            echo '<option>select</option>';
-                                            foreach ($child_cat_array as $ccKey => $ccValue)
-                                            {
-                                                $cc_id = $ccValue["cc_id"];
-                                                $cc_name = $ccValue["cc_name"];
+                                            $cc_id = $ccValue["cc_id"];
+                                            $cc_name = $ccValue["cc_name"];
 
-                                                $selected = "";
-                                                if ($result["product_child_category"] == $cc_id)
-                                                    $selected = "selected='selected'";
+                                            $selected = "";
+                                            if ($result["product_child_category"] == $cc_id)
+                                                $selected = "selected='selected'";
 
-                                                echo '<option value="' . $cc_id . '" ' . $selected . '>' . $cc_name . '</option>';
-                                            }
+                                            echo '<option value="' . $cc_id . '" ' . $selected . '>' . $cc_name . '</option>';
                                         }
-                                        else
-                                        {
-                                            echo '<option>No data</option>';
-                                        }
+                                    }
+                                    else
+                                    {
+                                        echo '<option>No data</option>';
+                                    }
 
-                                        echo '</select>
+                                    echo '</select>
                                                 </div>
                                             </div>';
-                                    }
+                                }
                                 ?>
                             </span>
                             <div class="control-group">
@@ -214,24 +184,6 @@
 
 <script>
     $(document).ready(function () {
-        $("#gc_id").change(function () {
-            $("#pc_select_box").html("Loading...");
-            var gc_id = $(this).val();
-            if (gc_id !== "")
-            {
-                $.ajax({
-                    url: "<?php echo base_url_seller("products/getParentCategoriesAjax"); ?>" + "/" + gc_id,
-                    success: function (response) {
-                        $("#pc_select_box").html(response);
-                    }
-                });
-            }
-            else
-            {
-                $("#pc_select_box").html("");
-            }
-        });
-
         $("#pc_id").live("change", function () {
             $("#cc_select_box").html("Loading...");
             var pc_id = $(this).val();
