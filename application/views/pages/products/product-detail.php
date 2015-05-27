@@ -82,13 +82,17 @@ $product_title = stripslashes($record['product_title']);
                                                         <i class="fa fa-minus"></i>
                                                     </div>
                                                     <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty" />
-                                                    <div class="increase items" onclick="var result = document.getElementById('qty'); var qty = result.value; if (!isNaN(qty)) result.value++; return false;">
+                                                    <div class="increase items" onclick="var result = document.getElementById('qty');
+                                                            var qty = result.value;
+                                                            if (!isNaN(qty))
+                                                                result.value++;
+                                                            return false;">
                                                         <i class="fa fa-plus"></i>
                                                     </div>
                                                 </div>
                                                 <div class="actions">
                                                     <div class="action-list addtocart">
-                                                        <button type="button" title="Add to cart" data-button="<i class='fs1' aria-hidden='true' data-icon=''></i><span>Add to Cart</span>" class="btn-cart" onclick="productAddToCartForm.submit(this)">
+                                                        <button type="button" title="Add to cart" data-button="<i class='fs1' aria-hidden='true' data-icon=''></i><span>Add to Cart</span>" class="btn-cart" <?php echo isset($this->session->userdata['user_id']) == TRUE ? '' : 'onclick="alert(\'Please login\')"' ?>>
                                                             <span>
                                                                 <span>
                                                                     <i class="fs1" aria-hidden="true" data-icon=""></i>
@@ -100,8 +104,7 @@ $product_title = stripslashes($record['product_title']);
                                                     <div class="action-list wishlist">
                                                         <ul class="add-to-links">
                                                             <li class="first wishlist">
-                                                                <a href="#" onclick="productAddToCartForm.submitLight(this, this.href);
-                                                                        return false;" class="link-wishlist"><i class="fa fa-heart-o"></i>Wishlist</a>
+                                                                <a href="#" <?php echo isset($this->session->userdata['user_id']) == TRUE ? '' : 'onclick="alert(\'Please login\')"' ?> class="link-wishlist"><i class="fa fa-heart-o"></i>Wishlist</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -216,7 +219,7 @@ $product_title = stripslashes($record['product_title']);
                                 </div>
                             </div>
                         </div>                       
-                        <?php echo $this->load->view('pages/products/related-products', array('product_id' => $record['product_id'])); ?>                                               
+<?php echo $this->load->view('pages/products/related-products', array('product_id' => $record['product_id'])); ?>                                               
                     </div>
                 </div>
             </div>
