@@ -31,12 +31,6 @@ class Categories extends CI_Controller
 
     public function addParentCategory()
     {
-        $model = new Common_model();
-        $data["form_action"] = "";
-        $data["form_heading"] = "Add Parent Category";
-        $this->template->write_view("content", "categories/parent-category-form", $data);
-        $this->template->render();
-
         if ($this->input->post())
         {
             $arr = $this->input->post();
@@ -77,6 +71,14 @@ class Categories extends CI_Controller
                 }
             }
         }
+        else
+        {
+            $model = new Common_model();
+            $data["form_action"] = "";
+            $data["form_heading"] = "Add Parent Category";
+            $this->template->write_view("content", "categories/parent-category-form", $data);
+            $this->template->render();
+        }
     }
 
     public function editParentCategory($pc_id)
@@ -113,12 +115,6 @@ class Categories extends CI_Controller
 
     public function addChildCategory()
     {
-        $model = new Common_model();
-        $data["form_action"] = "";
-        $data["form_heading"] = "Add Child Category";
-        $this->template->write_view("content", "categories/child-category-form", $data);
-        $this->template->render();
-
         if ($this->input->post())
         {
             $arr = $this->input->post();
@@ -160,6 +156,15 @@ class Categories extends CI_Controller
                     redirect(base_url_admin("categories/editChildCategory/" . $cc_id));
                 }
             }
+        }
+        else
+        {
+            $model = new Common_model();
+            $data["form_action"] = "";
+            $data["parent_cat_array"] = $model->fetchSelectedData("*", TABLE_PARENT_CATEGORY, array(), "pc_name");
+            $data["form_heading"] = "Add Child Category";
+            $this->template->write_view("content", "categories/child-category-form", $data);
+            $this->template->render();
         }
     }
 
