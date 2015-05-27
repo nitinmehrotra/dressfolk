@@ -42,7 +42,7 @@
                             <?php
                             foreach ($products_arr as $pKey => $pValue)
                             {
-                                $product_url = base_url($pValue['product_url_key']);
+                                $product_url = getProductUrl($pValue['product_url_key']);
                                 $product_title = stripslashes($pValue['product_title']);
                                 $product_image_1 = getImage('');
                                 $product_image_2 = getImage('');

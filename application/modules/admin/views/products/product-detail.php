@@ -68,7 +68,7 @@
                                     <li><span>Product Code</span><span>#<?php echo stripslashes($record['product_code']); ?></span></li>
                                     <li><span>Product Title</span><span><?php echo stripslashes($record['product_title']); ?></span></li>
                                     <li><span>Product Description</span><span><?php echo stripslashes($record['product_description']); ?></span></li>
-                                    <li><span>View Product</span><span><a href="<?php echo getProductUrl($record['product_id']); ?>" target="_blank">Click here</a></span></li>
+                                    <li><span>View Product</span><span><a href="<?php echo getProductUrl($record['product_url_key']); ?>" target="_blank">Click here</a></span></li>
                                 </ul>
                                 <ul class="unstyled span5 offset1">
                                     <li><span>Seller</span><span><a href='<?php echo base_url_admin('sellers/sellerDetail/' . $record['seller_id']); ?>' target="_blank"><?php echo getSellerDisplayName($record['seller_fullname'], $record['seller_company_name']); ?></a></span></li>

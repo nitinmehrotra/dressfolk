@@ -76,7 +76,7 @@
                                         <li><span>Gift-wrap charge: </span><span><?php echo $record['product_gift_charge'] == 0 ? 'Free' : (DEFAULT_CURRENCY_SYMBOL . number_format($record['product_gift_charge'], 2)); ?></span></li>
                                         <li><span>Price to Customer: </span><span><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($record['product_price'], 2); ?></span></li>
                                         <li><span>Last Modified: </span><span><?php echo date('d-M-Y h:i A', strtotime($record['product_timestamp'])); ?></span></li>
-                                        <li><span>View Product: </span><span><a href='<?php echo getProductUrl($record['product_id']); ?>' target="_blank">Click here</a></span></li>
+                                        <li><span>View Product: </span><span><a href='<?php echo getProductUrl($record['product_url_key']); ?>' target="_blank">Click here</a></span></li>
                                     </ul>
                                 </div>
 

@@ -234,12 +234,12 @@ class Products extends CI_Controller
                     {
                         $this->session->set_flashdata("warning", "This product is already in your cart");
                     }
-                    redirect(getProductUrl($arr["product_id"]));
+                    redirect(getProductUrl($arr["product_url_key"]));
                 }
                 else
                 {
                     $this->session->set_flashdata("error", "Please login to add product to your cart");
-                    redirect(getProductUrl($arr["product_id"]));
+                    redirect(getProductUrl($arr["product_url_key"]));
                 }
             }
             else
@@ -260,7 +260,7 @@ class Products extends CI_Controller
         $model = new Common_model();
         if ($product_id && isset($this->session->userdata["user_id"]))
         {
-            $product_detail = $model->fetchSelectedData("product_status", TABLE_PRODUCTS, array("product_id" => $product_id));
+            $product_detail = $model->fetchSelectedData("product_status, product_url_key", TABLE_PRODUCTS, array("product_id" => $product_id));
             if ($product_detail[0]["product_status"] == "1")
             {
                 $user_id = $this->session->userdata["user_id"];
@@ -287,7 +287,7 @@ class Products extends CI_Controller
         {
             $this->session->set_flashdata("warning", "<strong>Just a sec!</strong> You will need to login to add a product to compare list");
         }
-        redirect(getProductUrl($product_id));
+        redirect(getProductUrl($product_detail[0]['product_url_key']));
     }
 
     public function search()
