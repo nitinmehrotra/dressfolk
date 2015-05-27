@@ -120,12 +120,6 @@ $product_title = stripslashes($record['product_title']);
                                 <li class="">
                                     <a href="#product_tabs_tabreviews" role="tab" data-toggle="tab">Reviews</a>
                                 </li>
-                                <li class="">
-                                    <a href="#product_tabs_tags" role="tab" data-toggle="tab">Tags</a>
-                                </li>
-                                <li class=" last">
-                                    <a href="#product_tabs_additional" role="tab" data-toggle="tab">Additional Information</a>
-                                </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -135,7 +129,7 @@ $product_title = stripslashes($record['product_title']);
                                         <div class="std"><?php echo stripslashes($record['product_description']); ?></div>
                                     </div>
                                 </div>
-                                <div class="tab-pane " id="product_tabs_tabreviews">
+                                <div class="tab-pane last" id="product_tabs_tabreviews">
                                     <div class="product-tabs-content-inner clearfix">
                                         <div class="box-collateral box-reviews" id="customer-reviews">
                                             <div class="form-add">
@@ -218,42 +212,6 @@ $product_title = stripslashes($record['product_title']);
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane " id="product_tabs_tags">
-                                    <div class="product-tabs-content-inner clearfix">
-                                        <div class="box-collateral box-tags">
-                                            <h2>Product Tags</h2>
-                                            <form id="addTagForm" action="" method="get">
-                                                <div class="form-add">
-                                                    <label for="productTagName">Add Your Tags:</label>
-                                                    <div class="input-box">
-                                                        <input type="text" class="input-text required-entry" name="productTagName" id="productTagName" />
-                                                    </div>
-                                                    <button type="button" title="Add Tags" class="button" onclick="submitTagForm()">
-                                                        <span>
-                                                            <span>Add Tags</span>
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </form>
-                                            <p class="note">Use spaces to separate tags. Use single quotes (') for phrases.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane  last" id="product_tabs_additional">
-                                    <div class="product-tabs-content-inner clearfix">
-                                        <h2>Additional Information</h2>
-                                        <table class="data-table" id="product-attribute-specs-table">
-                                            <col width="25%" />
-                                            <col />
-                                            <tbody>
-                                                <tr>
-                                                    <th class="label">Size</th>
-                                                    <td class="data">M</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
                             </div>
