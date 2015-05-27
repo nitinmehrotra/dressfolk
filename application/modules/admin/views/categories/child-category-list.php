@@ -30,7 +30,6 @@
                                 <tr>
                                     <th>Child Category Name</th>
                                     <th>Parent Category Name</th>
-                                    <th>Grand Category Name</th>
                                     <th>Edit</th>
                                 </tr>
                             </thead>
@@ -40,14 +39,12 @@
                                     foreach ($alldata as $a_key => $a_value)
                                     {
                                         $cc_id = $a_value["cc_id"];
-                                        $gc_name = $a_value["gc_name"];
                                         $pc_name = $a_value["pc_name"];
                                         $cc_name = $a_value["cc_name"];
                                         ?>
                                         <tr>
                                             <td class="center"><?php echo $cc_name; ?></td>
                                             <td class="center"><?php echo $pc_name; ?></td>
-                                            <td class="center"><?php echo $gc_name; ?></td>
                                             <td class="center"><a href="<?php echo base_url_admin("categories/editChildCategory/" . $cc_id); ?>"><i class="icon-pencil"></i></a></td>
                                         </tr>
                                         <?php

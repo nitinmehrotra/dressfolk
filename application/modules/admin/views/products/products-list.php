@@ -48,7 +48,7 @@
                                         $product_cost_price = $a_value["product_price"];
                                         $product_status = getProductStatusText($a_value["product_status"]);
 
-                                        $category = '<a href="' . base_url_admin('products/category?gc=' . urlencode($a_value["gc_name"])) . '">' . $a_value["gc_name"] . '</a> -> <a href="' . base_url_admin('products/category?pc=' . urlencode($a_value["pc_name"])) . '">' . $a_value["pc_name"] . '</a> -> <a href="' . base_url_admin('products/category?cc=' . urlencode($a_value["cc_name"])) . '">' . $a_value["cc_name"] . '</a>';
+                                        $category = '<a href="' . base_url_admin('products/category?pc=' . urlencode($a_value["pc_name"])) . '">' . $a_value["pc_name"] . '</a> -> <a href="' . base_url_admin('products/category?cc=' . urlencode($a_value["cc_name"])) . '">' . $a_value["cc_name"] . '</a>';
                                         ?>
                                         <tr>
                                             <td>

@@ -1,32 +1,31 @@
 <?php
-    $result = array();
-    if (isset($record))
+$result = array();
+if (isset($record))
+{
+    foreach ($record as $key => $value)
     {
-        foreach ($record as $key => $value)
-        {
-            $result[$key] = $value;
-        }
+        $result[$key] = $value;
     }
-    else
-    {
-        $result["cc_id"] = "";
-        $result["cc_pc_id"] = "";
-        $result["cc_gc_id"] = "";
-        $result["cc_name"] = "";
-    }
+}
+else
+{
+    $result["cc_id"] = "";
+    $result["cc_pc_id"] = "";
+    $result["cc_name"] = "";
+}
 
-    if (!isset($form_action))
-        $form_action = "";
+if (!isset($form_action))
+    $form_action = "";
 
-    if (empty($result["cc_id"]))
-    {
-        ?>
-        <style>
-            #cc_name_box{display: none;}
-            .submit-bttn{display: none;}
-        </style>
-        <?php
-    }
+if (empty($result["cc_id"]))
+{
+    ?>
+    <style>
+        #cc_name_box{display: none;}
+        .submit-bttn{display: none;}
+    </style>
+    <?php
+}
 ?>
 
 <!-- BEGIN PAGE -->  
@@ -60,70 +59,37 @@
                         <!-- BEGIN FORM-->
                         <form action="<?php echo $form_action; ?>" method="post" class="form-horizontal">
                             <input type="hidden" name="cc_id" value="<?php echo set_value("cc_id", $result["cc_id"]); ?>"/>
-                            <div class="control-group">
-                                <label class="control-label">Grand Category<span class="required">*</span></label>
-                                <div class="controls">
-                                    <select name="gc_id" class="span6 m-wrap" id="gc_id">
-                                        <?php
-                                            if (!empty($grand_cat_array))
-                                            {
-                                                echo '<option>select</option>';
-                                                foreach ($grand_cat_array as $gcKey => $gcValue)
-                                                {
-                                                    $gc_id = $gcValue["gc_id"];
-                                                    $gc_name = $gcValue["gc_name"];
 
-                                                    $selected = "";
-                                                    if ($result["cc_gc_id"] == $gc_id)
-                                                        $selected = "selected='selected'";
-
-                                                    echo '<option value="' . $gc_id . '" ' . $selected . '>' . $gc_name . '</option>';
-                                                }
-                                            }
-                                            else
-                                            {
-                                                echo '<option>No data</option>';
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <span id="pc_select_box">
-                                <?php
-                                    if (!empty($result["cc_pc_id"]))
-                                    {
-                                        echo '<div class="control-group">
+                            <?php
+                            echo '<div class="control-group">
                                                     <label class="control-label">Parent Category<span class="required">*</span></label>
                                                     <div class="controls">
                                                         <select name="pc_id" class="span6 m-wrap" id="pc_id">';
 
-                                        if (!empty($parent_cat_array))
-                                        {
-                                            echo '<option>select</option>';
-                                            foreach ($parent_cat_array as $gcKey => $gcValue)
-                                            {
-                                                $pc_id = $gcValue["pc_id"];
-                                                $pc_name = $gcValue["pc_name"];
+                            if (!empty($parent_cat_array))
+                            {
+                                echo '<option>select</option>';
+                                foreach ($parent_cat_array as $gcKey => $gcValue)
+                                {
+                                    $pc_id = $gcValue["pc_id"];
+                                    $pc_name = $gcValue["pc_name"];
 
-                                                $selected = "";
-                                                if ($result["cc_pc_id"] == $pc_id)
-                                                    $selected = "selected='selected'";
+                                    $selected = "";
+                                    if ($result["cc_pc_id"] == $pc_id)
+                                        $selected = "selected='selected'";
 
-                                                echo '<option value="' . $pc_id . '" ' . $selected . '>' . $pc_name . '</option>';
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo '<option>No data</option>';
-                                        }
+                                    echo '<option value="' . $pc_id . '" ' . $selected . '>' . $pc_name . '</option>';
+                                }
+                            }
+                            else
+                            {
+                                echo '<option>No data</option>';
+                            }
 
-                                        echo '</select>
+                            echo '</select>
                                                 </div>
                                             </div>';
-                                    }
-                                ?>
-                            </span>
+                            ?>
 
                             <span id="cc_name_box">
                                 <div class="control-group">
@@ -152,24 +118,6 @@
 
 <script>
     $(document).ready(function () {
-        $("#gc_id").change(function () {
-            $("#pc_select_box").html("Loading...");
-            var gc_id = $(this).val();
-            if (gc_id !== "")
-            {
-                $.ajax({
-                    url: "<?php echo base_url("admin/categories/getParentCategoriesAjax"); ?>" + "/" + gc_id,
-                    success: function (response) {
-                        $("#pc_select_box").html(response);
-                    }
-                });
-            }
-            else
-            {
-                $("#pc_select_box").html("");
-            }
-        });
-
         $("#pc_id").live("change", function () {
             var pc_id = $(this).val();
             if (pc_id != "")

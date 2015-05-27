@@ -128,24 +128,6 @@
 
 <script>
     $(document).ready(function () {
-        $("#gc_id").change(function () {
-            $("#pc_select_box").html("Loading...");
-            var gc_id = $(this).val();
-            if (gc_id !== "")
-            {
-                $.ajax({
-                    url: "<?php echo base_url("admin/categories/getParentCategoriesAjax"); ?>" + "/" + gc_id,
-                    success: function (response) {
-                        $("#pc_select_box").html(response);
-                    }
-                });
-            }
-            else
-            {
-                $("#pc_select_box").html("");
-            }
-        });
-
         $("#pc_id").live("change", function () {
             $("#cc_select_box").html("Loading...");
             var pc_id = $(this).val();

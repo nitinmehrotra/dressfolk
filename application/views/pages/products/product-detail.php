@@ -78,17 +78,25 @@ $product_title = stripslashes($record['product_title']);
                                         <div class="actions-wrapper">
                                             <div class="add-to-cart">
                                                 <div class="input-box pull-left">
-                                                    <div class="reduced items" onclick="var result = document.getElementById('qty'); var qty = result.value; if (!isNaN(qty) & amp; & amp; qty > 1) result.value--; return false;">
+                                                    <div class="reduced items" onclick="var result = document.getElementById('qty');
+                                                            var qty = result.value;
+                                                            if (!isNaN(qty) && qty > 1)
+                                                                result.value--;
+                                                            return false;">
                                                         <i class="fa fa-minus"></i>
                                                     </div>
                                                     <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty" />
-                                                    <div class="increase items" onclick="var result = document.getElementById('qty'); var qty = result.value; if (!isNaN(qty)) result.value++; return false;">
+                                                    <div class="increase items" onclick="var result = document.getElementById('qty');
+                                                            var qty = result.value;
+                                                            if (!isNaN(qty))
+                                                                result.value++;
+                                                            return false;">
                                                         <i class="fa fa-plus"></i>
                                                     </div>
                                                 </div>
                                                 <div class="actions">
                                                     <div class="action-list addtocart">
-                                                        <button type="button" title="Add to cart" data-button="<i class='fs1' aria-hidden='true' data-icon=''></i><span>Add to Cart</span>" class="btn-cart" onclick="productAddToCartForm.submit(this)">
+                                                        <button type="button" title="Add to cart" data-button="<i class='fs1' aria-hidden='true' data-icon=''></i><span>Add to Cart</span>" class="btn-cart" <?php echo isset($this->session->userdata['user_id']) == TRUE ? '' : 'onclick="alert(\'Please login\')"' ?>>
                                                             <span>
                                                                 <span>
                                                                     <i class="fs1" aria-hidden="true" data-icon=""></i>
@@ -100,8 +108,7 @@ $product_title = stripslashes($record['product_title']);
                                                     <div class="action-list wishlist">
                                                         <ul class="add-to-links">
                                                             <li class="first wishlist">
-                                                                <a href="#" onclick="productAddToCartForm.submitLight(this, this.href);
-                                                                        return false;" class="link-wishlist"><i class="fa fa-heart-o"></i>Wishlist</a>
+                                                                <a href="#" <?php echo isset($this->session->userdata['user_id']) == TRUE ? '' : 'onclick="alert(\'Please login\')"' ?> class="link-wishlist"><i class="fa fa-heart-o"></i>Wishlist</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -120,12 +127,6 @@ $product_title = stripslashes($record['product_title']);
                                 <li class="">
                                     <a href="#product_tabs_tabreviews" role="tab" data-toggle="tab">Reviews</a>
                                 </li>
-                                <li class="">
-                                    <a href="#product_tabs_tags" role="tab" data-toggle="tab">Tags</a>
-                                </li>
-                                <li class=" last">
-                                    <a href="#product_tabs_additional" role="tab" data-toggle="tab">Additional Information</a>
-                                </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -135,7 +136,7 @@ $product_title = stripslashes($record['product_title']);
                                         <div class="std"><?php echo stripslashes($record['product_description']); ?></div>
                                     </div>
                                 </div>
-                                <div class="tab-pane " id="product_tabs_tabreviews">
+                                <div class="tab-pane last" id="product_tabs_tabreviews">
                                     <div class="product-tabs-content-inner clearfix">
                                         <div class="box-collateral box-reviews" id="customer-reviews">
                                             <div class="form-add">
@@ -220,43 +221,6 @@ $product_title = stripslashes($record['product_title']);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane " id="product_tabs_tags">
-                                    <div class="product-tabs-content-inner clearfix">
-                                        <div class="box-collateral box-tags">
-                                            <h2>Product Tags</h2>
-                                            <form id="addTagForm" action="" method="get">
-                                                <div class="form-add">
-                                                    <label for="productTagName">Add Your Tags:</label>
-                                                    <div class="input-box">
-                                                        <input type="text" class="input-text required-entry" name="productTagName" id="productTagName" />
-                                                    </div>
-                                                    <button type="button" title="Add Tags" class="button" onclick="submitTagForm()">
-                                                        <span>
-                                                            <span>Add Tags</span>
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </form>
-                                            <p class="note">Use spaces to separate tags. Use single quotes (') for phrases.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane  last" id="product_tabs_additional">
-                                    <div class="product-tabs-content-inner clearfix">
-                                        <h2>Additional Information</h2>
-                                        <table class="data-table" id="product-attribute-specs-table">
-                                            <col width="25%" />
-                                            <col />
-                                            <tbody>
-                                                <tr>
-                                                    <th class="label">Size</th>
-                                                    <td class="data">M</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <script type="text/javascript">decorateTable('product-attribute-specs-table')</script>
-                                    </div>
-                                </div>
                             </div>
                         </div>                       
                         <?php echo $this->load->view('pages/products/related-products', array('product_id' => $record['product_id'])); ?>                                               
@@ -268,7 +232,8 @@ $product_title = stripslashes($record['product_title']);
 </div>
 
 <script type="text/javascript">
-    var optionsPrice = new Product.OptionsPrice([]);
+    decorateTable('product-attribute-specs-table');
+//    var optionsPrice = new Product.OptionsPrice([]);
     dataZoom = {};
     dataZoom.position = 'inside'
 

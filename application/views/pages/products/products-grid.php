@@ -142,7 +142,7 @@
                                                     <div class="picture">
                                                         <img class="lazy" width="540" height="374" alt="<?php echo $product_title; ?>" src="<?php echo $product_image; ?>" data-original="<?php echo $product_image; ?>" />
                                                         <div class="img-overlay">
-                                                            <a class="btn more btn-primary" href="<?php echo getProductUrl($product_id); ?>">View</a>
+                                                            <a class="btn more btn-primary" href="<?php echo getProductUrl($product_url_key); ?>">View</a>
                                                             <!--<a class="btn buy btn-danger" href="<?php echo base_url("products/addToCartGet/$product_id"); ?>">Add to Cart</a>-->
                                                         </div>
                                                     </div>

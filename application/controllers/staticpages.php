@@ -161,10 +161,10 @@
             }
 
             // all the active products
-            $product_records = $model->fetchSelectedData('product_id', TABLE_PRODUCTS, array('product_status' => '1'));
+            $product_records = $model->fetchSelectedData('product_url_key', TABLE_PRODUCTS, array('product_status' => '1'));
             foreach ($product_records as $pKey => $pValue)
             {
-                $product_url = getProductUrl($pValue['product_id']);
+                $product_url = getProductUrl($pValue['product_url_key']);
                 $xml .= '<url><loc>' . $product_url . '</loc><changefreq>weekly</changefreq><priority>1.00</priority></url>' . "\n";
             }
 

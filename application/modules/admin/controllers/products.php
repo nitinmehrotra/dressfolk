@@ -14,7 +14,7 @@
         {
             $this->load->model('custom_model');
             $custom_model = new Custom_model();
-            $fields = 'product_id, product_title, product_code, product_price, product_seller_price, product_status, gc_name, pc_name, cc_name';
+            $fields = 'product_id, product_title, product_code, product_price, product_seller_price, product_status, pc_name, cc_name';
             $whereCondArr = NULL;
             $data["alldata"] = $custom_model->getAllProductsList($fields, $whereCondArr);
 //            prd($data);
@@ -319,13 +319,14 @@
             }
             else
             {
-                $product_fields = 'product_id, product_title, product_description, gc_id, pc_id, cc_id, product_seller_price, product_shipping_charge, product_gift_charge';
+                $product_fields = 'product_id, product_title, product_description, pc_id, cc_id, product_seller_price, product_shipping_charge, product_gift_charge';
                 $detail_fields = 'pd_id';
                 $images_fields = 'pi_id';
                 $record = $custom_model->getAllProductsDetails($product_id, $product_fields, $detail_fields, $images_fields);
 //            prd($record);
 
                 $data["form_heading"] = 'Edit Product Detail';
+                $data["product_parent_category"] = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, array());
                 $data["record"] = $record;
                 $this->template->write_view("content", "products/forms/product-form", $data);
                 $this->template->render();
@@ -432,6 +433,43 @@
             if (unlink($pi_image_path))
             {
                 $model->deleteData(TABLE_PRODUCT_IMAGES, array('pi_id' => $pi_id));
+            }
+        }
+
+        public function getChildCategoriesAjax($pc_id)
+        {
+            if ($pc_id)
+            {
+                $model = new Common_model();
+                $records = $model->fetchSelectedData("*", TABLE_CHILD_CATEGORY, array("cc_pc_id" => $pc_id), "cc_name");
+//                prd($records);
+
+                $str = '<div class="control-group">
+                                <label class="control-label">Child Category<span class="required">*</span></label>
+                                <div class="controls">
+                                    <select name="product_child_category" class="span6 m-wrap" id="cc_id">';
+
+                if (!empty($records))
+                {
+                    $str .= '<option value="">Select</option>';
+                    foreach ($records as $pcKey => $pcValue)
+                    {
+                        $cc_id = $pcValue["cc_id"];
+                        $cc_name = $pcValue["cc_name"];
+
+                        $str .= '<option value="' . $cc_id . '">' . $cc_name . '</option>';
+                    }
+                }
+                else
+                {
+                    $str .= '<option>No data</option>';
+                }
+
+                $str .= '</select>
+                                </div>
+                            </div>';
+
+                echo $str;
             }
         }
 
