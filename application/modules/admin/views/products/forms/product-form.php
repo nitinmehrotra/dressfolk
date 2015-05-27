@@ -68,36 +68,29 @@ if (!isset($form_action))
                             </div>
 
                             <?php
-                            if (!empty($result["product_parent_category"]))
+                            if (!empty($product_parent_category))
                             {
                                 echo '<div class="control-group">
                                                     <label class="control-label">Category<span class="required">*</span></label>
                                                     <div class="controls">
-                                                        <select name="product_parent_category" class="span6 m-wrap" id="pc_id">';
+                                                        <select name="product_parent_category" class="span6 m-wrap" id="pc_id">
+                                                            <option>select</option>';
 
-                                if (!empty($parent_cat_array))
+                                foreach ($product_parent_category as $pcKey => $pcValue)
                                 {
-                                    echo '<option>select</option>';
-                                    foreach ($parent_cat_array as $pcKey => $pcValue)
+                                    $pc_id = $pcValue["pc_id"];
+                                    $pc_name = $pcValue["pc_name"];
+
+                                    $selected = "";
+                                    if ($result["product_parent_category"] == $pc_id)
                                     {
-                                        $pc_id = $pcValue["pc_id"];
-                                        $pc_name = $pcValue["pc_name"];
-
-                                        $selected = "";
-                                        if ($result["product_parent_category"] == $pc_id)
-                                            $selected = "selected='selected'";
-
-                                        echo '<option value="' . $pc_id . '" ' . $selected . '>' . $pc_name . '</option>';
+                                        $selected = "selected='selected'";
                                     }
-                                }
-                                else
-                                {
-                                    echo '<option>No data</option>';
+
+                                    echo '<option value="' . $pc_id . '" ' . $selected . '>' . $pc_name . '</option>';
                                 }
 
-                                echo '</select>
-                                                </div>
-                                            </div>';
+                                echo '</select></div></div>';
                             }
                             ?>                         
 
@@ -190,7 +183,7 @@ if (!isset($form_action))
             if (pc_id !== "")
             {
                 $.ajax({
-                    url: "<?php echo base_url_seller("products/getChildCategoriesAjax"); ?>" + "/" + pc_id,
+                    url: "<?php echo base_url_admin("products/getChildCategoriesAjax"); ?>" + "/" + pc_id,
                     success: function (response) {
                         $("#cc_select_box").html(response);
                     }

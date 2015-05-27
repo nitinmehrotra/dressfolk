@@ -326,6 +326,7 @@
 //            prd($record);
 
                 $data["form_heading"] = 'Edit Product Detail';
+                $data["product_parent_category"] = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, array());
                 $data["record"] = $record;
                 $this->template->write_view("content", "products/forms/product-form", $data);
                 $this->template->render();
@@ -432,6 +433,43 @@
             if (unlink($pi_image_path))
             {
                 $model->deleteData(TABLE_PRODUCT_IMAGES, array('pi_id' => $pi_id));
+            }
+        }
+
+        public function getChildCategoriesAjax($pc_id)
+        {
+            if ($pc_id)
+            {
+                $model = new Common_model();
+                $records = $model->fetchSelectedData("*", TABLE_CHILD_CATEGORY, array("cc_pc_id" => $pc_id), "cc_name");
+//                prd($records);
+
+                $str = '<div class="control-group">
+                                <label class="control-label">Child Category<span class="required">*</span></label>
+                                <div class="controls">
+                                    <select name="product_child_category" class="span6 m-wrap" id="cc_id">';
+
+                if (!empty($records))
+                {
+                    $str .= '<option value="">Select</option>';
+                    foreach ($records as $pcKey => $pcValue)
+                    {
+                        $cc_id = $pcValue["cc_id"];
+                        $cc_name = $pcValue["cc_name"];
+
+                        $str .= '<option value="' . $cc_id . '">' . $cc_name . '</option>';
+                    }
+                }
+                else
+                {
+                    $str .= '<option>No data</option>';
+                }
+
+                $str .= '</select>
+                                </div>
+                            </div>';
+
+                echo $str;
             }
         }
 
