@@ -78,7 +78,11 @@ $product_title = stripslashes($record['product_title']);
                                         <div class="actions-wrapper">
                                             <div class="add-to-cart">
                                                 <div class="input-box pull-left">
-                                                    <div class="reduced items" onclick="var result = document.getElementById('qty'); var qty = result.value; if (!isNaN(qty) & amp; & amp; qty > 1) result.value--; return false;">
+                                                    <div class="reduced items" onclick="var result = document.getElementById('qty');
+                                                            var qty = result.value;
+                                                            if (!isNaN(qty) && qty > 1)
+                                                                result.value--;
+                                                            return false;">
                                                         <i class="fa fa-minus"></i>
                                                     </div>
                                                     <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty" />
@@ -219,7 +223,7 @@ $product_title = stripslashes($record['product_title']);
                                 </div>
                             </div>
                         </div>                       
-<?php echo $this->load->view('pages/products/related-products', array('product_id' => $record['product_id'])); ?>                                               
+                        <?php echo $this->load->view('pages/products/related-products', array('product_id' => $record['product_id'])); ?>                                               
                     </div>
                 </div>
             </div>
@@ -229,7 +233,7 @@ $product_title = stripslashes($record['product_title']);
 
 <script type="text/javascript">
     decorateTable('product-attribute-specs-table');
-    var optionsPrice = new Product.OptionsPrice([]);
+//    var optionsPrice = new Product.OptionsPrice([]);
     dataZoom = {};
     dataZoom.position = 'inside'
 
