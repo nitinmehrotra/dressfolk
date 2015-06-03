@@ -161,6 +161,7 @@ class Products extends CI_Controller
                 $similar_records = $custom_model->getAllProductsList($product_fields, array("product_id != " => $product_id, "pc_id" => $record["pc_id"]), 'rand()', 'DESC', 4);
 //                prd($similar_records);
                 $is_in_wishlist = FALSE;
+                $is_reviewed = FALSE;
                 if (isset($this->session->userdata['user_id']))
                 {
                     $is_exists_wishlist = $model->fetchSelectedData('wishlist_id', TABLE_WISHLIST, array('wishlist_product_id' => $product_id, 'wishlist_user_id' => $this->session->userdata['user_id']));
@@ -168,11 +169,18 @@ class Products extends CI_Controller
                     {
                         $is_in_wishlist = TRUE;
                     }
+
+                    $is_exists_ratings = $model->fetchSelectedData('rating_id', TABLE_RATINGS, array('rating_product_id' => $product_id));
+                    if (!empty($is_exists_ratings))
+                    {
+                        $is_reviewed = TRUE;
+                    }
                 }
 
                 $data["record"] = $record;
                 $data["similar_records"] = $similar_records;
                 $data["is_in_wishlist"] = $is_in_wishlist;
+                $data["is_reviewed"] = $is_reviewed;
 
                 $breadcrumbArray = array(
                     $record["pc_name"] => base_url("products/view/" . rawurlencode($record["pc_name"])),
