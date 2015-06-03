@@ -141,9 +141,10 @@ $product_title = stripslashes($record['product_title']);
                                         <div class="box-collateral box-reviews" id="customer-reviews">
                                             <div class="form-add">
                                                 <h2>Write Your Own Review</h2>
-                                                <form action="" method="post" id="review-form">
+                                                <form action="<?php echo base_url('products/saveProductReview'); ?>" method="post" id="review-form">
+                                                    <input type="hidden" name="product_id" value="<?php echo getEncryptedString($record['product_id']); ?>"/>
                                                     <fieldset>
-                                                        <h3>You're reviewing: <span> Blue 100% Silk</span></h3>
+                                                        <h3>You're reviewing: <span> <?php echo $product_title; ?></span></h3>
                                                         <h4>How do you rate this product? <em class="required">*</em></h4>
                                                         <span id="input-message-box"></span>
                                                         <table class="data-table" id="product-review-table">
@@ -166,27 +167,27 @@ $product_title = stripslashes($record['product_title']);
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Value</th>
-                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_1" value="6" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_2" value="7" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_3" value="8" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_4" value="9" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[2]" id="Value_5" value="10" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[value]" id="Value_1" value="6" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[value]" id="Value_2" value="7" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[value]" id="Value_3" value="8" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[value]" id="Value_4" value="9" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[value]" id="Value_5" value="10" class="radio" /></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Quality</th>
-                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_1" value="1" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_2" value="2" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_3" value="3" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_4" value="4" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[1]" id="Quality_5" value="5" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[quality]" id="Quality_1" value="1" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[quality]" id="Quality_2" value="2" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[quality]" id="Quality_3" value="3" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[quality]" id="Quality_4" value="4" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[quality]" id="Quality_5" value="5" class="radio" /></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price</th>
-                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_1" value="11" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_2" value="12" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_3" value="13" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_4" value="14" class="radio" /></td>
-                                                                    <td class="value"><input type="radio" name="ratings[3]" id="Price_5" value="15" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[price]" id="Price_1" value="11" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[price]" id="Price_2" value="12" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[price]" id="Price_3" value="13" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[price]" id="Price_4" value="14" class="radio" /></td>
+                                                                    <td class="value"><input type="radio" name="ratings[price]" id="Price_5" value="15" class="radio" /></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -194,27 +195,22 @@ $product_title = stripslashes($record['product_title']);
                                                         <script type="text/javascript">decorateTable('product-review-table')</script>
                                                         <ul class="form-list">
                                                             <li>
-                                                                <label for="nickname_field" class="required"><em>*</em>Nickname</label>
+                                                                <label for="review_field" class="required"><em>*</em>Comment</label>
                                                                 <div class="input-box">
-                                                                    <input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="" />
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <label for="summary_field" class="required"><em>*</em>Summary of Your Review</label>
-                                                                <div class="input-box">
-                                                                    <input type="text" name="title" id="summary_field" class="input-text required-entry" value="" />
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <label for="review_field" class="required"><em>*</em>Review</label>
-                                                                <div class="input-box">
-                                                                    <textarea name="detail" id="review_field" cols="25" rows="10" class="required-entry"></textarea>
+                                                                    <textarea name="comment" id="review_field" cols="25" rows="2" class="required-entry"></textarea>
                                                                 </div>
                                                             </li>
                                                         </ul>
                                                     </fieldset>
                                                     <div class="buttons-set">
-                                                        <button type="submit" title="Submit Review" class="button"><span><span>Submit Review</span></span></button>
+                                                        <?php
+                                                        $onlick = '';
+                                                        if (!isset($this->session->userdata['user_id']))
+                                                        {
+                                                            $onlick = 'onclick="alert(\'Please login to review\');return false;"';
+                                                        }
+                                                        ?>
+                                                        <button type="submit" title="Submit Review" class="button" <?php echo $onlick;?>><span><span>Submit Review</span></span></button>
                                                     </div>
                                                 </form>
                                             </div>

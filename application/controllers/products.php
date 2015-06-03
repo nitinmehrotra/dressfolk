@@ -358,4 +358,40 @@ class Products extends CI_Controller
         $model->insertData(TABLE_PRODUCT_VISIT, $visit_data_array);
     }
 
+    public function saveProductReview()
+    {
+        if (isset($this->session->userdata["user_id"]) && $this->input->post())
+        {
+            $model = new Common_model();
+            $arr = $this->input->post();
+
+            $product_id = getEncryptedString($arr['product_id'], 'decode');
+            $comment = addslashes($arr['comment']);
+            $rating = $arr['rating'];
+            $overall_rating = ($rating['value'] + $rating['quality'] + $rating['price']) / count($rating);
+
+            $rating_array = array(
+                'rating_product_id' => $product_id,
+                'rating_user_id' => $this->session->userdata["user_id"],
+                'rating_count' => $overall_rating,
+                'rating_value' => $rating['value'],
+                'rating_quality' => $rating['quality'],
+                'rating_price' => $rating['price'],
+                'rating_comment' => $comment,
+                'rating_ipaddress' => USER_IP,
+                'rating_useragent' => USER_AGENT,
+            );
+            $model->insertData(TABLE_RATINGS, $rating_array);
+
+            $product_record = $model->fetchSelectedData('product_title, product_url_key', TABLE_PRODUCTS, array('product_id' => $product_id));
+
+            $this->session->set_flashdata('success', 'You have successfully rated ' . stripslashes($product_record[0]['product_title']));
+            redirect(getProductUrl($product_record[0]['product_url_key']));
+        }
+        else
+        {
+            redirect(base_url());
+        }
+    }
+
 }
