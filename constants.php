@@ -2,7 +2,7 @@
 
 if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dressfolk.com")
 {
-    define("SITE_BASE_URL", "http://dressfolk.com/");    // When running on server    
+    define("SITE_BASE_URL", "http://dressfolk.com/testing/");    // When running on server    
     define("FACEBOOK_APP_ID", "");
     define("FACEBOOK_SECRET_ID", "");
     define('RAZORPAY_KEY', '');
@@ -16,10 +16,10 @@ if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dr
 //            header("Location:$redirect");
 //        }
 
-    $host = '';
-    $username = '';
-    $database = '';
-    $password = '';
+    $host = 'dressfolk.db.10641467.hostedresource.com';
+    $username = 'dressfolk';
+    $database = 'dressfolk';
+    $password = 'Dress@nitin123';
     $db_debug = FALSE;
 }
 elseif ($_SERVER["REMOTE_ADDR"] == "127.0.0.1")
