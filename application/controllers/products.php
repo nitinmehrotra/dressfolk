@@ -397,4 +397,43 @@ class Products extends CI_Controller
         }
     }
 
+    public function wishlistActionAjax()
+    {
+        if (isset($this->session->userdata["user_id"]) && $this->input->post())
+        {
+            $model = new Common_model();
+            $arr = $this->input->post();
+
+            $user_id = $this->session->userdata["user_id"];
+            $product_id = getEncryptedString($arr['product_id'], 'decode');
+
+            $is_exists = $model->is_exists('wishlist_id', TABLE_WISHLIST, array('wishlist_product_id' => $product_id, 'wishlist_user_id' => $user_id));
+            if (empty($is_exists))
+            {
+                $data_array = array(
+                    'wishlist_product_id' => $product_id,
+                    'wishlist_user_id' => $user_id,
+                    'wishlist_ipaddress' => USER_IP,
+                    'wishlist_useragent' => USER_AGENT
+                );
+                $model->insertData(TABLE_WISHLIST, $data_array);
+                $returnText = 'Product added to wishlist';
+                $msg = 'added';
+            }
+            else
+            {
+                $model->deleteData(TABLE_WISHLIST, array('wishlist_product_id' => $product_id, 'wishlist_user_id' => $user_id));
+                $returnText = 'Product removed from wishlist';
+                $msg = 'removed';
+            }
+        }
+        else
+        {
+            $msg = 'error';
+            $returnText = 'Please login to add product to your wishlist';
+        }
+
+        echo json_encode(array('response' => $msg, 'text' => $returnText));
+    }
+
 }

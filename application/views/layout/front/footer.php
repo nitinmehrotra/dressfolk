@@ -174,5 +174,45 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
     frontendData.enableAjax = true;
 </script>
 <script type="text/javascript" src="<?php echo JS_PATH; ?>/frontend.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        jQuery(document).on('click', 'a.wishlist-action', function (e) {
+            e.preventDefault();
+            var is_loggedin = '<?php echo isset($this->session->userdata['user_id']) == true ? "1" : "0"; ?>';
+            if (is_loggedin == '0')
+            {
+                alert('Please login');
+                return false;
+            }
+            else
+            {
+                var product_id = jQuery(this).attr('data-productid');
+                var obj = jQuery(this);
+                jQuery.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '<?php echo base_url('products/wishlistActionAjax'); ?>',
+                    data: {product_id: product_id},
+                    success: function (response) {
+                        if (response.response == 'added')
+                        {
+                            obj.children().removeClass('fa-heart-o');
+                            obj.find('.fa').addClass('fa-heart');
+                        }
+                        else if (response.response == 'removed')
+                        {
+                            obj.find('.fa').addClass('fa-heart-o');
+                            obj.find('.fa').removeClass('fa-heart');
+                        }
+                        else if (response.response == 'error')
+                        {
+                            alert(response.text);
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>

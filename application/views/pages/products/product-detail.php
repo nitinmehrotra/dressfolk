@@ -108,7 +108,7 @@ $product_title = stripslashes($record['product_title']);
                                                     <div class="action-list wishlist">
                                                         <ul class="add-to-links">
                                                             <li class="first wishlist">
-                                                                <a href="#" <?php echo isset($this->session->userdata['user_id']) == TRUE ? '' : 'onclick="alert(\'Please login\')"' ?> class="link-wishlist"><i class="fa fa-heart-o"></i>Wishlist</a>
+                                                                <a href="#" data-productid="<?php echo getEncryptedString($record['product_id']); ?>" class="link-wishlist wishlist-action"><i class="fa <?php echo $is_in_wishlist == FALSE ? 'fa-heart-o' : 'fa-heart'; ?>"></i>Wishlist</a>
                                                             </li>
                                                         </ul>
                                                     </div>
