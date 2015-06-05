@@ -204,13 +204,8 @@ class Products extends CI_Controller
         }
     }
 
-    public function addToCart($redirect_url = NULL)
+    public function addToCart()
     {
-        if ($redirect_url == NULL)
-        {
-            $redirect_url = base_url();
-        }
-
         if ($this->input->post())
         {
             $model = new Common_model();
@@ -259,7 +254,7 @@ class Products extends CI_Controller
         }
         else
         {
-            redirect($redirect_url);
+            redirect(base_url());
         }
     }
 
