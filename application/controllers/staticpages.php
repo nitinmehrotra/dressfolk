@@ -95,7 +95,7 @@
                                 <p><strong>Subject: </strong>' . $mail_subject . '</p><br/>
                                 <p><strong>Message: </strong>' . $mail_message . '</p><br/>
                         ');
-                    $Email_model->sendMail(SITE_EMAIL_GMAIL, "You have received a new message via website", $mySelfText);
+                    $Email_model->sendMail(SITE_EMAIL, "You have received a new message via website", $mySelfText);
                 }
 
                 $this->session->set_flashdata("success", "<strong>Thank you!</strong> You request #" . $wc_request_id . " will be processed soon.");
