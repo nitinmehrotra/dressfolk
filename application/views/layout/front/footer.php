@@ -82,9 +82,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                         </div>
                                                         <div class="custom-footer-content">
                                                             <ul class="footer-list">
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('product-recall'); ?>" title="Product Recall"><span>Product Recall</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('gift-vouchers'); ?>" title="Gift Vouchers"><span>Gift Vouchers</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('all-products'); ?>" title="All Products"><span>All Products</span></a></span>
                                                                 </li>
                                                                 <li><span class="widget widget-cms-link"><a href="<?php echo base_url('return-exchanges'); ?>" title="Returns and Exchanges"><span>Returns and Exchanges</span></a></span>
                                                                 </li>
@@ -109,8 +107,6 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                                 </li>
                                                                 <li><span class="widget widget-cms-link"><a href="<?php echo base_url('checkout'); ?>" title="Checkout"><span>Checkout</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('track-order'); ?>" title="Track my order"><span>Track my order</span></a></span>
-                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -118,7 +114,8 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                             </div>
                                         </div>
                                     </div>
-                                </div>            </div>
+                                </div>       
+                            </div>
                         </div>
                         <script type="text/javascript">
                             jQuery(document).ready(function () {
