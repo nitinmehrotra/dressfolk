@@ -93,9 +93,6 @@ foreach ($cc_data as $ccKey => $ccValue)
                                             }
                                             ?>
                                         </div>
-                                        <div class="menu-static-blocks ulmenu-block ulmenu-block-right pull-right grid12-3">
-                                            <img class="img-responsive" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/menu/men.jpg" alt="" />
-                                        </div>
                                     </div>
                                 </li>     
                                 <?php
@@ -222,8 +219,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                             <div class="main-navigation">
                                 <ul class="top-navigation">
                                     <li class="level0 home level-top  active m-dropdown parent">
-                                        <a href="<?php echo base_url(); ?>"
-                                           class="level-top"><span>Home</span></a>
+                                        <a href="<?php echo base_url(); ?>" class="level-top"><span>Home</span></a>
                                     </li>
                                     <?php
                                     foreach ($pc_records as $pcKey => $pcValue)
@@ -246,9 +242,6 @@ foreach ($cc_data as $ccKey => $ccValue)
                                                         echo '</ul></li></ul>';
                                                     }
                                                     ?>
-                                                </div>
-                                                <div class="menu-static-blocks ulmenu-block ulmenu-block-right pull-right grid12-3">
-                                                    <img class="img-responsive" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/menu/men.jpg" alt="" />
                                                 </div>
                                             </div>
                                         </li>         
