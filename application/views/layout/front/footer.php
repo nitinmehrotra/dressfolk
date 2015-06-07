@@ -10,7 +10,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
         <div class="container">
             <div class="footer-container">
                 <div class="row show-grid">
-                    <div class="block-container footer-top" id="block-aa5040fa696cd0c51b7fe650ec239ef1">
+                    <div class="block-container footer-top" id="block-footer">
                         <div class="">
                             <div class="">
                                 <div class="about-social col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -119,7 +119,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                         </div>
                         <script type="text/javascript">
                             jQuery(document).ready(function () {
-                                jQuery('#block-aa5040fa696cd0c51b7fe650ec239ef1 .owl-carousel').owlCarousel({"enable": false, "pagination": false, "autoPlay": false, "items": 2, "singleItem": false, "lazyLoad": true, "lazyEffect": false, "addClassActive": true, "navigation": false, "navigationText": [null, null]});
+                                jQuery('#block-footer .owl-carousel').owlCarousel({"enable": false, "pagination": false, "autoPlay": false, "items": 2, "singleItem": false, "lazyLoad": true, "lazyEffect": false, "addClassActive": true, "navigation": false, "navigationText": [null, null]});
                             });
                         </script>
                     </div>
