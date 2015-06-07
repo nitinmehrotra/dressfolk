@@ -110,8 +110,8 @@ class Products extends CI_Controller
         }
         $whereCondArr['product_status'] = '1';
 
-        $fields = 'product_id, product_title, product_code, product_price, product_description, pi_image_path, pi_image_title, cc_name, pc_name, seller_fullname, seller_company_name';
-        $records = $custom_model->getAllProductsList($fields, $whereCondArr, "product_id", "DESC");
+        $product_fields = 'product_id, product_title, product_price, product_url_key, pi_image_path, cc_name';
+        $records = $custom_model->getAllProductsList($product_fields, $whereCondArr, "product_id", "DESC");
 
         $category_name_records = array();
         foreach ($records as $key => $value)
