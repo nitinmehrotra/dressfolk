@@ -99,14 +99,26 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                         </div>
                                                         <div class="custom-footer-content">
                                                             <ul class="footer-list">
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('login'); ?>" title="Login"><span>Login</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('cart'); ?>" title="View Cart"><span>View Cart</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist"><span>My Wishlist</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('checkout'); ?>" title="Checkout"><span>Checkout</span></a></span>
-                                                                </li>
+                                                                <?php
+                                                                if (isset($this->session->userdata['user_id']))
+                                                                {
+                                                                    ?>
+                                                                    <li><span class="widget widget-cms-link"><a href="<?php echo base_url('login'); ?>" title="Login"><span>Login</span></a></span>
+                                                                    </li>
+                                                                    <li><span class="widget widget-cms-link"><a href="<?php echo base_url('signup'); ?>" title="Sign Up"><span>Sign Up</span></a></span>
+                                                                    </li>
+                                                                    <?php
+                                                                }
+                                                                else
+                                                                {
+                                                                    ?>
+                                                                    <li><span class="widget widget-cms-link"><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist"><span>My Wishlist</span></a></span>
+                                                                    </li>
+                                                                    <li><span class="widget widget-cms-link"><a href="<?php echo base_url('cart'); ?>" title="View Cart"><span>View Cart</span></a></span>
+                                                                    </li>
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </ul>
                                                         </div>
                                                     </div>

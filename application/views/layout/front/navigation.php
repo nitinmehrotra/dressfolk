@@ -293,8 +293,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                                 if (isset($this->session->userdata['user_id']))
                                 {
                                     ?>
-                                    <li class="first" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
-                                    <li ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                    <li class="first"><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
                                     <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
                                     <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
                                     <?php
@@ -307,7 +306,15 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     <?php
                                 }
                                 ?>
-                                <li class=" last"><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
+                                <li ><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
+                                <?php
+                                if (isset($this->session->userdata['user_id']))
+                                {
+                                    ?>
+                                    <li class="last" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
+                                    <?php
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div>
