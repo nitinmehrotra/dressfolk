@@ -436,4 +436,30 @@ class Products extends CI_Controller
         echo json_encode(array('response' => $msg, 'text' => $returnText));
     }
 
+    public function myWishlist()
+    {
+        $custom_model = new Custom_model();
+        $whereCondArr = array('product_status' => '1');
+        $fields = 'product_id, product_title, product_price, product_url_key, pi_image_path, cc_name';
+        $records = $custom_model->getMyWishlistRecords($fields, $whereCondArr, 'wishlist_id', "DESC");
+
+        $category_name_records = array();
+        foreach ($records as $key => $value)
+        {
+            $category_name_records[] = $value['cc_name'];
+        }
+
+        $pageHeading = 'My Wishlist';
+        $data["records"] = $records;
+        $data["category_name_records"] = $category_name_records;
+        $data["product_page_heading"] = $pageHeading;
+        $breadcrumbArray = array(
+            'My Wishlist' => base_url("my-wishlist"),
+        );
+        $data["breadcrumbArray"] = $breadcrumbArray;
+        $data["meta_title"] = $pageHeading . " | " . SITE_NAME;
+        $this->template->write_view("content", "pages/products/products-wishlist", $data);
+        $this->template->render();
+    }
+
 }

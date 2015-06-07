@@ -523,60 +523,67 @@
                             </div>
                             <ul class="products-grid itemgrid itemgrid-adaptive products-itemgrid-3col show-grid">
                                 <?php
-                                foreach ($records as $pKey => $pValue)
+                                if (!empty($records))
                                 {
-                                    $product_url = getProductUrl($pValue['product_url_key']);
-                                    $product_title = stripslashes($pValue['product_title']);
-                                    $product_image_1 = getImage('');
-                                    $product_image_2 = getImage('');
-                                    $product_price = $pValue['product_price'];
-                                    ?>
-                                    <li class="item effect-pageLeft">
-                                        <div class="product-action">
-                                            <!-- // Product Label -->
-                                            <div class="product-new-label">New</div>       
-                                            <!-- // End Product Label -->
-                                            <a class="product-image" href="<?php echo $product_url; ?>" title="<?php echo $product_title; ?>">
-                                                <img class="lazyOwl img-responsive" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>"/>
-                                                <img class="img-responsive alt-img lazy" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>" />
-                                            </a>
+                                    foreach ($records as $pKey => $pValue)
+                                    {
+                                        $product_url = getProductUrl($pValue['product_url_key']);
+                                        $product_title = stripslashes($pValue['product_title']);
+                                        $product_image_1 = getImage('');
+                                        $product_image_2 = getImage('');
+                                        $product_price = $pValue['product_price'];
+                                        ?>
+                                        <li class="item effect-pageLeft">
+                                            <div class="product-action">
+                                                <!-- // Product Label -->
+                                                <div class="product-new-label">New</div>       
+                                                <!-- // End Product Label -->
+                                                <a class="product-image" href="<?php echo $product_url; ?>" title="<?php echo $product_title; ?>">
+                                                    <img class="lazyOwl img-responsive" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>"/>
+                                                    <img class="img-responsive alt-img lazy" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>" />
+                                                </a>
 
-                                            <div class="actions">
-                                                <div class="action-list quickview hidden-xs">
-                                                    <div class="quickview-wrapper" onclick="quickview(this);" data-url="<?php echo $product_url; ?>">
-                                                        <i class="fa fa-search-plus"></i>
+                                                <div class="actions">
+                                                    <div class="action-list quickview hidden-xs">
+                                                        <div class="quickview-wrapper" onclick="quickview(this);" data-url="<?php echo $product_url; ?>">
+                                                            <i class="fa fa-search-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <!-- // Product Button Add To Link -->
+                                                    <div class="action-list">
+                                                        <ul class="add-to-links">
+                                                            <li><a href="javascript:void();" class="link-wishlist wishlist-action bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- // End Product Button Add To Link -->
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <h3 class="product-name">
+                                                    <a href="<?php echo $product_url ?>" title="<?php echo $product_title; ?>"><?php echo $product_title; ?></a>
+                                                </h3>
+                                                <!-- // Product Rating Summary -->
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                        <div class="rating" style="width:87%"></div>
                                                     </div>
                                                 </div>
-                                                <!-- // Product Button Add To Link -->
-                                                <div class="action-list">
-                                                    <ul class="add-to-links">
-                                                        <li><a href="javascript:void();" class="link-wishlist wishlist-action bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <!-- // End Product Button Add To Link -->
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h3 class="product-name">
-                                                <a href="<?php echo $product_url ?>" title="<?php echo $product_title; ?>"><?php echo $product_title; ?></a>
-                                            </h3>
-                                            <!-- // Product Rating Summary -->
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div class="rating" style="width:87%"></div>
-                                                </div>
-                                            </div>
-                                            <!-- // End Product Rating Summary -->
+                                                <!-- // End Product Rating Summary -->
 
-                                            <div class="price-box">
-                                                <p class="special-price">
-                                                    <span class="price-label">Price:</span>
-                                                    <span class="price"><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_price, 2); ?></span>
-                                                </p>
+                                                <div class="price-box">
+                                                    <p class="special-price">
+                                                        <span class="price-label">Price:</span>
+                                                        <span class="price"><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_price, 2); ?></span>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <?php
+                                        </li>
+                                        <?php
+                                    }
+                                }
+                                else
+                                {
+                                    echo '<h4>No results found</h4>';
                                 }
                                 ?>
                             </ul>
