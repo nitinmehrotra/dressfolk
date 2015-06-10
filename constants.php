@@ -1,8 +1,5 @@
 <?php
 
-echo '<pre>';
-print_r($_SESSION);die;
-
 if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dressfolk.com" || $_SERVER["HTTP_HOST"] == "52.74.252.225")
 {
     define("SITE_BASE_URL", "http://" . $_SERVER["HTTP_HOST"]);    // When running on server    
