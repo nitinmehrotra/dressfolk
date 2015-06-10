@@ -10,7 +10,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
         <div class="container">
             <div class="footer-container">
                 <div class="row show-grid">
-                    <div class="block-container footer-top" id="block-aa5040fa696cd0c51b7fe650ec239ef1">
+                    <div class="block-container footer-top" id="block-footer">
                         <div class="">
                             <div class="">
                                 <div class="about-social col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -82,9 +82,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                         </div>
                                                         <div class="custom-footer-content">
                                                             <ul class="footer-list">
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('product-recall'); ?>" title="Product Recall"><span>Product Recall</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('gift-vouchers'); ?>" title="Gift Vouchers"><span>Gift Vouchers</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('all-products'); ?>" title="All Products"><span>All Products</span></a></span>
                                                                 </li>
                                                                 <li><span class="widget widget-cms-link"><a href="<?php echo base_url('return-exchanges'); ?>" title="Returns and Exchanges"><span>Returns and Exchanges</span></a></span>
                                                                 </li>
@@ -101,16 +99,26 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                         </div>
                                                         <div class="custom-footer-content">
                                                             <ul class="footer-list">
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('login'); ?>" title="Login"><span>Login</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('cart'); ?>" title="View Cart"><span>View Cart</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist"><span>My Wishlist</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('checkout'); ?>" title="Checkout"><span>Checkout</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('track-order'); ?>" title="Track my order"><span>Track my order</span></a></span>
-                                                                </li>
+                                                                <?php
+                                                                if (isset($this->session->userdata['user_id']))
+                                                                {
+                                                                    ?>
+                                                                    <li><span class="widget widget-cms-link"><a href="<?php echo base_url('login'); ?>" title="Login"><span>Login</span></a></span>
+                                                                    </li>
+                                                                    <li><span class="widget widget-cms-link"><a href="<?php echo base_url('signup'); ?>" title="Sign Up"><span>Sign Up</span></a></span>
+                                                                    </li>
+                                                                    <?php
+                                                                }
+                                                                else
+                                                                {
+                                                                    ?>
+                                                                    <li><span class="widget widget-cms-link"><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist"><span>My Wishlist</span></a></span>
+                                                                    </li>
+                                                                    <li><span class="widget widget-cms-link"><a href="<?php echo base_url('cart'); ?>" title="View Cart"><span>View Cart</span></a></span>
+                                                                    </li>
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -118,11 +126,12 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                             </div>
                                         </div>
                                     </div>
-                                </div>            </div>
+                                </div>       
+                            </div>
                         </div>
                         <script type="text/javascript">
                             jQuery(document).ready(function () {
-                                jQuery('#block-aa5040fa696cd0c51b7fe650ec239ef1 .owl-carousel').owlCarousel({"enable": false, "pagination": false, "autoPlay": false, "items": 2, "singleItem": false, "lazyLoad": true, "lazyEffect": false, "addClassActive": true, "navigation": false, "navigationText": [null, null]});
+                                jQuery('#block-footer .owl-carousel').owlCarousel({"enable": false, "pagination": false, "autoPlay": false, "items": 2, "singleItem": false, "lazyLoad": true, "lazyEffect": false, "addClassActive": true, "navigation": false, "navigationText": [null, null]});
                             });
                         </script>
                     </div>
@@ -174,5 +183,45 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
     frontendData.enableAjax = true;
 </script>
 <script type="text/javascript" src="<?php echo JS_PATH; ?>/frontend.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        jQuery(document).on('click', 'a.wishlist-action', function (e) {
+            e.preventDefault();
+            var is_loggedin = '<?php echo isset($this->session->userdata['user_id']) == true ? "1" : "0"; ?>';
+            if (is_loggedin == '0')
+            {
+                alert('Please login');
+                return false;
+            }
+            else
+            {
+                var product_id = jQuery(this).attr('data-productid');
+                var obj = jQuery(this);
+                jQuery.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '<?php echo base_url('products/wishlistActionAjax'); ?>',
+                    data: {product_id: product_id},
+                    success: function (response) {
+                        if (response.response == 'added')
+                        {
+                            obj.children().removeClass('fa-heart-o');
+                            obj.find('.fa').addClass('fa-heart');
+                        }
+                        else if (response.response == 'removed')
+                        {
+                            obj.find('.fa').addClass('fa-heart-o');
+                            obj.find('.fa').removeClass('fa-heart');
+                        }
+                        else if (response.response == 'error')
+                        {
+                            alert(response.text);
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
