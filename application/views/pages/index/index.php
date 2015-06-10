@@ -64,17 +64,10 @@
                                                     <i class="fa fa-search-plus"></i>
                                                 </div>
                                             </div>
-                                            <!-- // Product Button Add To Cart -->
-                                            <div class="action-list addtocart">
-                                                <button type="button" title="Add to Cart" class="btn-cart bootstrap-tooltip" data-toggle="tooltip" data-placement="left" onclick="setLocationCache('#')">
-                                                    <span><span><i class="fa fa-shopping-cart"></i></span></span>
-                                                </button>
-                                            </div>
-                                            <!-- // End Product Button Add To Cart -->
                                             <!-- // Product Button Add To Link -->
                                             <div class="action-list">
                                                 <ul class="add-to-links">
-                                                    <li><a href="#" class="link-wishlist bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="javascript:void();" class="link-wishlist wishlist-action bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
                                                 </ul>
                                             </div>
                                             <!-- // End Product Button Add To Link -->

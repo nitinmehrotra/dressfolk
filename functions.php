@@ -1,5 +1,18 @@
 <?php
 
+function initWebsiteConfig()
+{
+    $db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    $sql = 'SELECT wcg_key, wcg_content FROM ' . TABLE_WEBSITE_CONFIG;
+    $query = mysqli_query($db, $sql);
+    while ($row = mysqli_fetch_assoc($query))
+    {
+        define(strtoupper($row['wcg_key']), $row['wcg_content']);
+    }
+}
+
+initWebsiteConfig();
+
 function getGoogleAdCode()
 {
     $str = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

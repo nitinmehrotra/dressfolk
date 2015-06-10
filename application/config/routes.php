@@ -59,6 +59,9 @@
     $route['signup'] = 'index/signup';
     $route['forgot-password'] = 'index/forgotPassword';
     
+    $route['all-products'] = 'products/allProductsList';
+    $route['my-wishlist'] = 'products/myWishlist';
+    
     $route['products/view/(:any)'] = 'products/productDetail/$1';
     
     $route['my-account'] = 'user/myAccount';

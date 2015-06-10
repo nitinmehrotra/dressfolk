@@ -110,8 +110,8 @@ class Products extends CI_Controller
         }
         $whereCondArr['product_status'] = '1';
 
-        $fields = 'product_id, product_title, product_code, product_price, product_description, pi_image_path, pi_image_title, cc_name, pc_name, seller_fullname, seller_company_name';
-        $records = $custom_model->getAllProductsList($fields, $whereCondArr, "product_id", "DESC");
+        $product_fields = 'product_id, product_title, product_price, product_url_key, pi_image_path, cc_name';
+        $records = $custom_model->getAllProductsList($product_fields, $whereCondArr, "product_id", "DESC");
 
         $category_name_records = array();
         foreach ($records as $key => $value)
@@ -204,13 +204,8 @@ class Products extends CI_Controller
         }
     }
 
-    public function addToCart($redirect_url = NULL)
+    public function addToCart()
     {
-        if ($redirect_url == NULL)
-        {
-            $redirect_url = base_url();
-        }
-
         if ($this->input->post())
         {
             $model = new Common_model();
@@ -259,7 +254,7 @@ class Products extends CI_Controller
         }
         else
         {
-            redirect($redirect_url);
+            redirect(base_url());
         }
     }
 
@@ -400,6 +395,71 @@ class Products extends CI_Controller
         {
             redirect(base_url());
         }
+    }
+
+    public function wishlistActionAjax()
+    {
+        if (isset($this->session->userdata["user_id"]) && $this->input->post())
+        {
+            $model = new Common_model();
+            $arr = $this->input->post();
+
+            $user_id = $this->session->userdata["user_id"];
+            $product_id = getEncryptedString($arr['product_id'], 'decode');
+
+            $is_exists = $model->is_exists('wishlist_id', TABLE_WISHLIST, array('wishlist_product_id' => $product_id, 'wishlist_user_id' => $user_id));
+            if (empty($is_exists))
+            {
+                $data_array = array(
+                    'wishlist_product_id' => $product_id,
+                    'wishlist_user_id' => $user_id,
+                    'wishlist_ipaddress' => USER_IP,
+                    'wishlist_useragent' => USER_AGENT
+                );
+                $model->insertData(TABLE_WISHLIST, $data_array);
+                $returnText = 'Product added to wishlist';
+                $msg = 'added';
+            }
+            else
+            {
+                $model->deleteData(TABLE_WISHLIST, array('wishlist_product_id' => $product_id, 'wishlist_user_id' => $user_id));
+                $returnText = 'Product removed from wishlist';
+                $msg = 'removed';
+            }
+        }
+        else
+        {
+            $msg = 'error';
+            $returnText = 'Please login to add product to your wishlist';
+        }
+
+        echo json_encode(array('response' => $msg, 'text' => $returnText));
+    }
+
+    public function myWishlist()
+    {
+        $custom_model = new Custom_model();
+        $whereCondArr = array('product_status' => '1');
+        $fields = 'product_id, product_title, product_price, product_url_key, pi_image_path, cc_name';
+        $records = $custom_model->getMyWishlistRecords($fields, $whereCondArr, 'wishlist_id', "DESC");
+
+        $category_name_records = array();
+        foreach ($records as $key => $value)
+        {
+            $category_name_records[] = $value['cc_name'];
+        }
+
+        $pageHeading = 'My Wishlist';
+        $data["records"] = $records;
+        $data["category_name_records"] = $category_name_records;
+        $data["product_page_heading"] = $pageHeading;
+        $breadcrumbArray = array(
+            'My Wishlist' => base_url("my-wishlist"),
+        );
+        $data["breadcrumbArray"] = $breadcrumbArray;
+        $data["meta_title"] = $pageHeading . " | " . SITE_NAME;
+        $this->template->write_view("content", "pages/products/products-wishlist", $data);
+        $this->template->render();
     }
 
 }

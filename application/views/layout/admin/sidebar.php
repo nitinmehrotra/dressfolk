@@ -57,7 +57,8 @@
             </a>
             <ul class="sub">
                 <li><a href="<?php echo base_url_admin("staticcontent"); ?>">Static Content</a></li>
-                <li><a href="<?php echo base_url_admin("websiteContact"); ?>">Website Contact</a></li>
+                <li><a href="<?php echo base_url_admin("websiteConfig"); ?>">Website Configuration</a></li>
+                <li><a href="<?php echo base_url_admin("websiteContact"); ?>">Contact Form</a></li>
             </ul>
         </li>
         <li class="">

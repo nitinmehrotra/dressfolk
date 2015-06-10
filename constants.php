@@ -2,7 +2,7 @@
 
 if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dressfolk.com")
 {
-    define("SITE_BASE_URL", "http://dressfolk.com/");    // When running on server    
+    define("SITE_BASE_URL", "http://dressfolk.com/testing/");    // When running on server    
     define("FACEBOOK_APP_ID", "");
     define("FACEBOOK_SECRET_ID", "");
     define('RAZORPAY_KEY', '');
@@ -16,10 +16,10 @@ if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dr
 //            header("Location:$redirect");
 //        }
 
-    $host = '';
-    $username = '';
-    $database = '';
-    $password = '';
+    $host = 'dressfolk.db.10641467.hostedresource.com';
+    $username = 'dressfolk';
+    $database = 'dressfolk';
+    $password = 'Dress@nitin123';
     $db_debug = FALSE;
 }
 elseif ($_SERVER["REMOTE_ADDR"] == "127.0.0.1")
@@ -67,14 +67,6 @@ define("PAYPAL_EMAIL", "dressfolk@gmail.com");
 define("TWITTER_DATA_WIDGET_ID", "1234567890");
 define("FACEBOOK_CALLBACK_URL", SITE_BASE_URL . "index/loginWithFacebook");
 
-define("SITE_NAME", "Dressfolk");
-define("SITE_TAGLINE", "Some tagline for dressfolk");
-define("SITE_TITLE", SITE_NAME . " | " . SITE_TAGLINE);
-define("SITE_EMAIL", "support@dressfolk.com");
-define("SITE_EMAIL_GMAIL", "dressfolk@gmail.com");
-define("SITE_CONTACT_NUMBER", "+91-9876543210");
-define("SITE_URL", "http://dressfolk.com");
-//    define("SITE_BASE_URL", dirname($_SERVER['PHP_SELF']));
 define("SITE_HOST_URL", "http://" . $_SERVER['HTTP_HOST']);
 define("SITE_HTTP_URL", "http://" . $_SERVER['HTTP_HOST'] . SITE_BASE_URL);
 

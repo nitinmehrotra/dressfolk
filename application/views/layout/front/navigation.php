@@ -93,9 +93,6 @@ foreach ($cc_data as $ccKey => $ccValue)
                                             }
                                             ?>
                                         </div>
-                                        <div class="menu-static-blocks ulmenu-block ulmenu-block-right pull-right grid12-3">
-                                            <img class="img-responsive" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/menu/men.jpg" alt="" />
-                                        </div>
                                     </div>
                                 </li>     
                                 <?php
@@ -222,8 +219,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                             <div class="main-navigation">
                                 <ul class="top-navigation">
                                     <li class="level0 home level-top  active m-dropdown parent">
-                                        <a href="<?php echo base_url(); ?>"
-                                           class="level-top"><span>Home</span></a>
+                                        <a href="<?php echo base_url(); ?>" class="level-top"><span>Home</span></a>
                                     </li>
                                     <?php
                                     foreach ($pc_records as $pcKey => $pcValue)
@@ -246,9 +242,6 @@ foreach ($cc_data as $ccKey => $ccValue)
                                                         echo '</ul></li></ul>';
                                                     }
                                                     ?>
-                                                </div>
-                                                <div class="menu-static-blocks ulmenu-block ulmenu-block-right pull-right grid12-3">
-                                                    <img class="img-responsive" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/menu/men.jpg" alt="" />
                                                 </div>
                                             </div>
                                         </li>         
@@ -300,8 +293,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                                 if (isset($this->session->userdata['user_id']))
                                 {
                                     ?>
-                                    <li class="first" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
-                                    <li ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                    <li class="first"><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
                                     <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
                                     <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
                                     <?php
@@ -314,7 +306,15 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     <?php
                                 }
                                 ?>
-                                <li class=" last"><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
+                                <li ><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
+                                <?php
+                                if (isset($this->session->userdata['user_id']))
+                                {
+                                    ?>
+                                    <li class="last" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
+                                    <?php
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div>

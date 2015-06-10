@@ -12,8 +12,8 @@ class Index extends CI_Controller
     {
         $data = array();
         $custom_model = new Custom_model();
-        $product_fields='product_id, product_title, product_price, product_url_key, pi_image_path';
-        $products_Arr = $custom_model->getAllProductsList($product_fields, array('product_status'=>'1'), 'pd_id', 'DESC', 8);
+        $product_fields = 'product_id, product_title, product_price, product_url_key, pi_image_path';
+        $products_Arr = $custom_model->getAllProductsList($product_fields, array('product_status' => '1'), 'pd_id', 'DESC', 8);
 
         $data['products_arr'] = $products_Arr;
         $this->template->write_view("content", "pages/index/index", $data);
