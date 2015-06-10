@@ -1,8 +1,5 @@
 <?php
 
-echo '<pre>';
-print_r($_SERVER);die;
-
 if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dressfolk.com" || $_SERVER["HTTP_HOST"] == "52.74.252.225")
 {
     define("SITE_BASE_URL", "http://" . $_SERVER["HTTP_HOST"]);    // When running on server    
@@ -11,6 +8,8 @@ if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dr
     define('RAZORPAY_KEY', '');
     define('RAZORPAY_SECRET', '');
     define('SEO_INDEX', 'nofollow, noindex');
+    
+    echo SITE_BASE_URL;die;
 
     // redirect to HTTPS 
 //        if ($_SERVER['HTTPS'] != "on")
