@@ -7,9 +7,7 @@ if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dr
     define("FACEBOOK_SECRET_ID", "");
     define('RAZORPAY_KEY', '');
     define('RAZORPAY_SECRET', '');
-    define('SEO_INDEX', 'nofollow, noindex');
-    
-    echo SITE_BASE_URL;die;
+    define('SEO_INDEX', 'nofollow, noindex');    
 
     // redirect to HTTPS 
 //        if ($_SERVER['HTTPS'] != "on")
