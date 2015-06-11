@@ -2,12 +2,12 @@
 
 if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dressfolk.com" || $_SERVER["HTTP_HOST"] == "52.74.252.225")
 {
-    define("SITE_BASE_URL", "http://" . $_SERVER["HTTP_HOST"]);    // When running on server    
+    define("SITE_BASE_URL", "http://" . $_SERVER["HTTP_HOST"] . '/');    // When running on server    
     define("FACEBOOK_APP_ID", "");
     define("FACEBOOK_SECRET_ID", "");
     define('RAZORPAY_KEY', '');
     define('RAZORPAY_SECRET', '');
-    define('SEO_INDEX', 'nofollow, noindex');    
+    define('SEO_INDEX', 'nofollow, noindex');
 
     // redirect to HTTPS 
 //        if ($_SERVER['HTTPS'] != "on")
