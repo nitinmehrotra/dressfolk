@@ -5,7 +5,7 @@
         <!-- BEGIN PAGE HEADER-->
         <div class="row-fluid">
             <div class="span12">	
-                <h3 class="page-title">Users</h3>
+                <h3 class="page-title">Sellers</h3>
             </div>
         </div>
         <!-- END PAGE HEADER-->
@@ -53,18 +53,18 @@
                                             <td class="center"><?php echo $seller_status; ?></td>
                                             <td class="center">
                                                 <a href="<?php echo base_url_admin("sellers/sellerDetail/" . $seller_id); ?>" title="View Detail"><i class="icon-search"></i>&nbsp;Details</a><br/>
-                                                <a href="<?php echo base_url_admin("sellers/editUser/" . $seller_id); ?>"><i class="icon-pencil"></i>&nbsp;Edit</a><br/>
+                                                <a href="<?php echo base_url_admin("sellers/editSeller/" . $seller_id); ?>"><i class="icon-pencil"></i>&nbsp;Edit</a><br/>
                                                 <?php
                                                 if ($a_value["seller_status"] == '1')
                                                 {
                                                     ?>
-                                                    <a href="<?php echo base_url_admin("sellers/deactivateUser/" . $seller_id); ?>" onclick="return confirm('Are you sure to deactivate <?php echo $full_name; ?> ?');"><i class="icon-warning-sign"></i>&nbsp;Deactivate</a><br/>
+                                                    <a href="<?php echo base_url_admin("sellers/deactivateSeller/" . $seller_id); ?>" onclick="return confirm('Are you sure to deactivate <?php echo $full_name; ?> ?');"><i class="icon-warning-sign"></i>&nbsp;Deactivate</a><br/>
                                                     <?php
                                                 }
                                                 else
                                                 {
                                                     ?>   
-                                                        <a href="<?php echo base_url_admin("sellers/activateUser/" . $seller_id); ?>" onclick="return confirm('Are you sure to activate <?php echo $full_name; ?> ?');"><i class="icon-check"></i>&nbsp;Activate</a><br/>                                    
+                                                        <a href="<?php echo base_url_admin("sellers/activateSeller/" . $seller_id); ?>" onclick="return confirm('Are you sure to activate <?php echo $full_name; ?> ?');"><i class="icon-check"></i>&nbsp;Activate</a><br/>                                    
                                                         <?php
                                                     }
                                                     ?>
