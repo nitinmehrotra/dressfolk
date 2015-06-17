@@ -59,64 +59,6 @@
 
                     <!-- BEGIN TOP NAVIGATION MENU -->					
                     <ul class="nav pull-right">
-                        <?php
-                            $inbox_records = array();
-
-                            $inbox_records = $model->fetchSelectedData("wc_id, wc_message, wc_fullname, wc_timestamp", TABLE_WEBSITE_CONTACT, array("wc_processed !=" => "0", "wc_processed !=" => "1"), "wc_id", "DESC", "6");
-                            $unprocessed_count = count($inbox_records);
-                        ?>
-                        <!-- BEGIN INBOX DROPDOWN -->
-                        <li class="dropdown" id="header_inbox_bar" style="margin-top: 8px">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-envelope-alt"></i>
-                                <?php
-                                    if ($unprocessed_count != 0)
-                                    {
-                                        echo '<span class="badge">' . $unprocessed_count . '</span>';
-                                    }
-                                ?>
-                            </a>
-                            <ul class="dropdown-menu extended inbox">
-                                <?php
-                                    if ($unprocessed_count != 0)
-                                    {
-                                        echo '<li>
-                                                    <p>You have ' . $unprocessed_count . ' new messages</p>
-                                                </li>';
-                                    }
-
-                                    if (!empty($inbox_records))
-                                    {
-                                        foreach ($inbox_records as $inKey => $invalue)
-                                        {
-                                            ?>
-                                            <li>
-                                                <a href="<?php echo base_url_admin("websiteContact/" . $invalue["wc_id"]); ?>">
-                                                    <span class="subject">
-                                                        <span class="from"><?php echo $invalue["wc_fullname"] ?></span>
-                                                        <span class="time"><?php echo getTimeAgo(strtotime($invalue["wc_timestamp"])); ?></span>
-                                                    </span>
-                                                    <span class="message">
-                                                        <?php echo substr(stripslashes($invalue["wc_message"]), 0, 100) . "..."; ?>
-                                                    </span>  
-                                                </a>
-                                            </li>
-                                            <?php
-                                        }
-                                    }
-                                    else
-                                    {
-                                        echo '<li><a href="#"><span class="message">You have no unprocessed messages.</span></a></li>';
-                                    }
-                                ?>
-
-                                <li class="external">
-                                    <a href="<?php echo base_url_admin("websiteContact"); ?>">See all messages <i class="m-icon-swapright"></i></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- BEGIN USER LOGIN DROPDOWN -->
-
                         <li class="dropdown user">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img alt="<?php echo ucwords($this->session->userdata["admin_username"]); ?>" src="<?php echo ADMIN_ASSETS_PATH; ?>/images/avatar.png" />
