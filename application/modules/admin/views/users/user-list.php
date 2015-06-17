@@ -53,7 +53,7 @@
                                             <td class="center"><?php echo $user_status; ?></td>
                                             <td class="center">
                                                 <a href="<?php echo base_url_admin("users/userDetail/" . $user_id); ?>" title="View Detail"><i class="icon-search"></i>&nbsp;Details</a><br/>
-                                                <a href="<?php echo base_url_admin("users/editUser/" . $user_id); ?>"><i class="icon-pencil"></i>&nbsp;Edit</a><br/>
+                                                <!--<a href="<?php echo base_url_admin("users/editUser/" . $user_id); ?>"><i class="icon-pencil"></i>&nbsp;Edit</a><br/>-->
                                                 <?php
                                                 if ($a_value["user_status"] == '1')
                                                 {
