@@ -31,7 +31,6 @@ class Categories extends CI_Controller
 
     public function addParentCategory()
     {
-        $model = new Common_model();
         if ($this->input->post())
         {
             $arr = $this->input->post();
@@ -39,19 +38,13 @@ class Categories extends CI_Controller
             $pc_id = $arr["pc_id"];
             $pc_name = $arr["pc_name"];
 
-            $pc_url = getUniqueParentCategoryURL($pc_name);
-            $data_array = array(
-                'pc_name' => addslashes($pc_name),
-                'pc_url' => $pc_url
-            );
-
             if (empty($pc_id))
             {
                 //insert
                 $is_exists = $model->is_exists("pc_id", TABLE_PARENT_CATEGORY, array("pc_name" => $pc_name));
                 if (empty($is_exists))
                 {
-                    $model->insertData(TABLE_PARENT_CATEGORY, $data_array);
+                    $model->insertData(TABLE_PARENT_CATEGORY, $arr);
                     $this->session->set_flashdata("success", "Parent category added");
                     redirect(base_url_admin("categories/parentCategories"));
                 }
@@ -67,7 +60,7 @@ class Categories extends CI_Controller
                 $is_exists = $model->is_exists("pc_id", TABLE_PARENT_CATEGORY, array("pc_name" => $pc_name, "pc_id != " => $pc_id));
                 if (empty($is_exists))
                 {
-                    $model->updateData(TABLE_PARENT_CATEGORY, $data_array, array("pc_id" => $pc_id));
+                    $model->updateData(TABLE_PARENT_CATEGORY, $arr, array("pc_id" => $pc_id));
                     $this->session->set_flashdata("success", "Parent category edited");
                     redirect(base_url_admin("categories/parentCategories"));
                 }
@@ -80,6 +73,7 @@ class Categories extends CI_Controller
         }
         else
         {
+            $model = new Common_model();
             $data["form_action"] = "";
             $data["form_heading"] = "Add Parent Category";
             $this->template->write_view("content", "categories/parent-category-form", $data);
@@ -121,20 +115,14 @@ class Categories extends CI_Controller
 
     public function addChildCategory()
     {
-        $model = new Common_model();
         if ($this->input->post())
         {
             $arr = $this->input->post();
 //                prd($arr);
             $cc_id = $arr["cc_id"];
+            $arr["cc_pc_id"] = $arr["pc_id"];
+            unset($arr["pc_id"]);
             $cc_name = $arr["cc_name"];
-
-            $cc_url = getUniqueChildCategoryURL($cc_name);
-            $data_array = array(
-                'cc_name' => addslashes($cc_name),
-                'cc_url' => $cc_url,
-                'cc_pc_id' => $arr["pc_id"],
-            );
 
             if (empty($cc_id))
             {
@@ -142,7 +130,7 @@ class Categories extends CI_Controller
                 $is_exists = $model->is_exists("cc_id", TABLE_CHILD_CATEGORY, array("cc_name" => $cc_name));
                 if (empty($is_exists))
                 {
-                    $model->insertData(TABLE_CHILD_CATEGORY, $data_array);
+                    $model->insertData(TABLE_CHILD_CATEGORY, $arr);
                     $this->session->set_flashdata("success", "Child category added");
                     redirect(base_url_admin("categories/childCategories"));
                 }
@@ -158,7 +146,7 @@ class Categories extends CI_Controller
                 $is_exists = $model->is_exists("cc_id", TABLE_CHILD_CATEGORY, array("cc_name" => $cc_name, "cc_id != " => $cc_id));
                 if (empty($is_exists))
                 {
-                    $model->updateData(TABLE_CHILD_CATEGORY, $data_array, array("cc_id" => $cc_id));
+                    $model->updateData(TABLE_CHILD_CATEGORY, $arr, array("cc_id" => $cc_id));
                     $this->session->set_flashdata("success", "Child category edited");
                     redirect(base_url_admin("categories/childCategories"));
                 }
@@ -171,6 +159,7 @@ class Categories extends CI_Controller
         }
         else
         {
+            $model = new Common_model();
             $data["form_action"] = "";
             $data["parent_cat_array"] = $model->fetchSelectedData("*", TABLE_PARENT_CATEGORY, array(), "pc_name");
             $data["form_heading"] = "Add Child Category";

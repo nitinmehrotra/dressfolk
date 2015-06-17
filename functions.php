@@ -1,5 +1,63 @@
 <?php
 
+function getUniqueParentCategoryURL($pc_name, $id = NULL)
+{
+    require_once APPPATH . '/models/common_model.php';
+    $model = new Common_model();
+    $pc_name = strtolower(str_replace(' ', '-', trim($pc_name)));
+    $pc_name = str_replace('\'', '', $pc_name);
+    $pc_name = str_replace('"', '', $pc_name);
+    $pc_name = str_replace('(', '', $pc_name);
+    $pc_name = str_replace(')', '', $pc_name);
+    $pc_name = str_replace('&', '', $pc_name);
+    $pc_name = str_replace('--', '', $pc_name);
+    $pc_name = str_replace('$', '', $pc_name);
+    $pc_name = str_replace('@', '', $pc_name);
+
+    $whereCondArr = array('pc_url' => $pc_name);
+    if ($id != NULL)
+    {
+        $whereCondArr['pc_id !='] = $id;
+    }
+    $is_exists = $model->is_exists('pc_id', TABLE_PARENT_CATEGORY, $whereCondArr);
+    if (!empty($is_exists))
+    {
+        $pc_name = $pc_name . '-' . rand(0, 999);
+        $pc_name = getUniqueParentCategoryURL($pc_name);
+    }
+
+    return $pc_name;
+}
+
+function getUniqueChildCategoryURL($cc_name, $id = NULL)
+{
+    require_once APPPATH . '/models/common_model.php';
+    $model = new Common_model();
+    $cc_name = strtolower(str_replace(' ', '-', trim($cc_name)));
+    $cc_name = str_replace('\'', '', $cc_name);
+    $cc_name = str_replace('"', '', $cc_name);
+    $cc_name = str_replace('(', '', $cc_name);
+    $cc_name = str_replace(')', '', $cc_name);
+    $cc_name = str_replace('&', '', $cc_name);
+    $cc_name = str_replace('--', '', $cc_name);
+    $cc_name = str_replace('$', '', $cc_name);
+    $cc_name = str_replace('@', '', $cc_name);
+
+    $whereCondArr = array('cc_url' => $cc_name);
+    if ($id != NULL)
+    {
+        $whereCondArr['cc_id !='] = $id;
+    }
+    $is_exists = $model->is_exists('cc_id', TABLE_CHILD_CATEGORY, $whereCondArr);
+    if (!empty($is_exists))
+    {
+        $cc_name = $cc_name . '-' . rand(0, 999);
+        $cc_name = getUniqueChildCategoryURL($cc_name);
+    }
+
+    return $cc_name;
+}
+
 function initWebsiteConfig()
 {
     $db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
