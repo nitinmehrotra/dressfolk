@@ -333,8 +333,8 @@ foreach ($cc_data as $ccKey => $ccValue)
                             <div class="slide-inner-content">
                                 <div class="slider-image"><img class="images-resposive" alt="slider 01" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide1.jpg" /></div>
                                 <div class="slider-text">
-                                    <h2 class="slider-title"><span>You can have anything you want <br /> if you dress for it </span></h2>
-                                    <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+                                    <h2 class="slider-title"><span><?php echo SLIDER_TEXT_ONE; ?></span></h2>
+                                    <!--<p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>-->
                                 </div>
                             </div>
                         </div>         
@@ -342,8 +342,8 @@ foreach ($cc_data as $ccKey => $ccValue)
                             <div class="slide-inner-content">
                                 <div class="slider-image"><img class="images-resposive" alt="slider 02" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide2.jpg" /></div>
                                 <div class="slider-text">
-                                    <h2 class="slider-title"><span>Trendy is the last stage before tacky</span></h2>
-                                    <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+                                    <h2 class="slider-title"><span><?php echo SLIDER_TEXT_TWO; ?></span></h2>
+                                    <!--<p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>-->
                                 </div>
                             </div>
                         </div>          
@@ -351,8 +351,8 @@ foreach ($cc_data as $ccKey => $ccValue)
                             <div class="slide-inner-content">
                                 <div class="slider-image"><img class="images-resposive" alt="slider 01" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/slide/slide3.jpg" /></div>
                                 <div class="slider-text">
-                                    <h2 class="slider-title"><span>it's about something else <br/> that comes from within you</span></h2>
-                                    <p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>
+                                    <h2 class="slider-title"><span><?php echo SLIDER_TEXT_THREE; ?></span></h2>
+                                    <!--<p class="slider-desc"><span> Learn about our <a class="slider-link">Shop now</a></span></p>-->
                                 </div>
                             </div>
                         </div>        
