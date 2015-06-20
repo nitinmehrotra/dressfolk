@@ -527,6 +527,7 @@
                                 {
                                     foreach ($records as $pKey => $pValue)
                                     {
+                                        $product_id = $pValue['product_id'];
                                         $product_url = getProductUrl($pValue['product_url_key']);
                                         $product_title = stripslashes($pValue['product_title']);
                                         $product_image_1 = getImage('');
@@ -552,7 +553,7 @@
                                                     <!-- // Product Button Add To Link -->
                                                     <div class="action-list">
                                                         <ul class="add-to-links">
-                                                            <li><a href="javascript:void();" class="link-wishlist wishlist-action bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist"><i class="fa fa-heart"></i></a></li>
+                                                            <li><a href="javascript:void();" class="link-wishlist wishlist-action bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist" data-productid="<?php echo getEncryptedString($product_id); ?>"><i class="fa fa-heart"></i></a></li>
                                                         </ul>
                                                     </div>
                                                     <!-- // End Product Button Add To Link -->
