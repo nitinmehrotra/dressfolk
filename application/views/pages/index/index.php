@@ -11,7 +11,8 @@
         <div class="site-preface"></div>
         <div class="container">
             <div class="row show-grid">
-                <div class="widget widget-static-block"><div class="home-banner">
+                <div class="widget widget-static-block">
+                    <div class="home-banner">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="inner-banner">
                                 <div class="overlay">
@@ -34,7 +35,8 @@
                                 <div class="banner-img"><span class="text">Pants</span><img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/pant-banner.jpg" /></div>
                             </div>
                         </div> 
-                    </div></div>
+                    </div>
+                </div>
                 <div class="widget-products-new home-new-product" id="block-4e8ee2e7dccf59d2682a0d27c4713f19">
                     <h3 class="title-widget"><span>New Products</span></h3>
                     <div class="category-products">
@@ -93,6 +95,71 @@
                         </ul>
                     </div>
                 </div>
+                <?php
+                if (!empty($featured_product_arr))
+                {
+                    ?>
+                    <div class="widget-products-new home-new-product" id="block-4e8ee2e7dccf59d2682a0d27c4713f19">
+                        <h3 class="title-widget"><span>Featured Products</span></h3>
+                        <div class="category-products">
+                            <ul class="products-grid  owl-carousel">
+                                <?php
+                                foreach ($featured_product_arr as $pKey => $pValue)
+                                {
+                                    $product_id = $pValue['product_id'];
+                                    $product_url = getProductUrl($pValue['product_url_key']);
+                                    $product_title = stripslashes($pValue['product_title']);
+                                    $product_image_1 = getImage('');
+                                    $product_image_2 = getImage('');
+                                    $product_price = $pValue['product_price'];
+                                    ?>
+                                    <li class="item effect-pageLeft">
+                                        <div class="product-action">
+                                            <!-- // Product Label -->
+                                            <div class="product-new-label">Featured</div>       
+                                            <!-- // End Product Label -->
+                                            <a class="product-image" href="<?php echo $product_url; ?>" title="<?php echo $product_title; ?>">
+                                                <img class="lazyOwl img-responsive" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>"/>
+                                                <img class="img-responsive alt-img lazy" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>" />
+                                            </a>
+
+                                            <div class="actions">
+                                                <div class="action-list quickview hidden-xs">
+                                                    <div class="quickview-wrapper" onclick="quickview(this);" data-url="<?php echo $product_url; ?>">
+                                                        <i class="fa fa-search-plus"></i>
+                                                    </div>
+                                                </div>
+                                                <!-- // Product Button Add To Link -->
+                                                <div class="action-list">
+                                                    <ul class="add-to-links">
+                                                        <li><a href="javascript:void();" class="link-wishlist wishlist-action bootstrap-tooltip" data-toggle="tooltip" data-placement="left" title="Wishlist" data-productid="<?php echo getEncryptedString($product_id); ?>"><i class="fa fa-heart"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <!-- // End Product Button Add To Link -->
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h3 class="product-name">
+                                                <a href="<?php echo $product_url ?>" title="<?php echo $product_title; ?>"><?php echo $product_title; ?></a>
+                                            </h3>
+
+                                            <div class="price-box">
+                                                <p class="special-price">
+                                                    <span class="price-label">Price:</span>
+                                                    <span class="price"><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_price, 2); ?></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
                 <script type="text/javascript">
                     jQuery(document).ready(function () {
                         widgetConfig.init('block-4e8ee2e7dccf59d2682a0d27c4713f19', {

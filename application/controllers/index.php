@@ -11,11 +11,15 @@ class Index extends CI_Controller
     public function index()
     {
         $data = array();
+        $model = new Common_model();
         $custom_model = new Custom_model();
         $product_fields = 'product_id, product_title, product_price, product_url_key, pi_image_path';
         $products_Arr = $custom_model->getAllProductsList($product_fields, array('product_status' => '1'), 'pd_id', 'DESC', 8);
+        // to fetch featured products
+        $featured_product_arr = $custom_model->getFeaturedProducts($product_fields, array('feature_start_time <=' => date('Y-m-d'), 'feature_end_time >=' => date('Y-m-d'), 'feature_status' => '1'), 'rand()', 'ASC', 8);
 
         $data['products_arr'] = $products_Arr;
+        $data['featured_products_arr'] = $featured_product_arr;
         $this->template->write_view("content", "pages/index/index", $data);
         $this->template->render();
     }
