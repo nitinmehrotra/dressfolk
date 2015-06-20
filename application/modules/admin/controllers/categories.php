@@ -140,7 +140,7 @@ class Categories extends CI_Controller
             {
                 //insert
                 $is_exists = $model->is_exists("cc_id", TABLE_CHILD_CATEGORY, array("cc_name" => $cc_name));
-                if (empty($is_exists))
+                if (empty($is_exists) == TRUE)
                 {
                     $model->insertData(TABLE_CHILD_CATEGORY, $data_array);
                     $this->session->set_flashdata("success", "Child category added");

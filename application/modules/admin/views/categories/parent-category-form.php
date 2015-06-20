@@ -16,15 +16,6 @@ else
 if (!isset($form_action))
     $form_action = "";
 
-if (empty($result["pc_id"]))
-{
-    ?>
-    <style>
-        #pc_name_box{display: none;}
-        .submit-bttn{display: none;}
-    </style>
-    <?php
-}
 ?>
 
 <!-- BEGIN PAGE -->  
