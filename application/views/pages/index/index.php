@@ -77,13 +77,6 @@
                                         <h3 class="product-name">
                                             <a href="<?php echo $product_url ?>" title="<?php echo $product_title; ?>"><?php echo $product_title; ?></a>
                                         </h3>
-                                        <!-- // Product Rating Summary -->
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <div class="rating" style="width:87%"></div>
-                                            </div>
-                                        </div>
-                                        <!-- // End Product Rating Summary -->
 
                                         <div class="price-box">
                                             <p class="special-price">
