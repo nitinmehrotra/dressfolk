@@ -1,30 +1,30 @@
 <?php
-    $result = array();
-    if (isset($record))
+$result = array();
+if (isset($record))
+{
+    foreach ($record as $key => $value)
     {
-        foreach ($record as $key => $value)
-        {
-            $result[$key] = $value;
-        }
-        $result["dc_start_time"] = date("Y-m-d H:i", $result["dc_start_time"]);
-        $result["dc_end_time"] = date("Y-m-d H:i", $result["dc_end_time"]);
+        $result[$key] = $value;
     }
-    else
-    {
-        $result["dc_id"] = "";
-        $result["dc_title"] = "";
-        $result["dc_code"] = "";
-        $result["dc_cc_id"] = "";
-        $result["dc_start_time"] = "";
-        $result["dc_end_time"] = "";
-        $result["dc_count"] = "0";
-        $result["dc_count_available"] = "0";
-        $result["dc_percent"] = "0";
-        $result["dc_status"] = "";
-    }
+    $result["dc_start_time"] = date("Y-m-d H:i", strtotime($result["dc_start_time"]));
+    $result["dc_end_time"] = date("Y-m-d H:i", strtotime($result["dc_end_time"]));
+}
+else
+{
+    $result["dc_id"] = "";
+    $result["dc_title"] = "";
+    $result["dc_code"] = "";
+    $result["dc_cc_id"] = "";
+    $result["dc_start_time"] = "";
+    $result["dc_end_time"] = "";
+    $result["dc_count"] = "0";
+    $result["dc_count_available"] = "0";
+    $result["dc_percent"] = "0";
+    $result["dc_status"] = "";
+}
 
-    if (!isset($form_action))
-        $form_action = "";
+if (!isset($form_action))
+    $form_action = "";
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo ADMIN_ASSETS_PATH; ?>/bootstrap-datetimepicker/datetimepicker.css"/>
@@ -97,25 +97,25 @@
 
                                     <select name="dc_cc_id" class="span6 m-wrap" id="cc_id">
                                         <?php
-                                            if (!empty($child_cat_array))
+                                        if (!empty($child_cat_array))
+                                        {
+                                            echo '<option value="">All</option>';
+                                            foreach ($child_cat_array as $ccKey => $ccValue)
                                             {
-                                                echo '<option value="">All</option>';
-                                                foreach ($child_cat_array as $ccKey => $ccValue)
-                                                {
-                                                    $cc_id = $ccValue["cc_id"];
-                                                    $cc_name = $ccValue["cc_name"];
+                                                $cc_id = $ccValue["cc_id"];
+                                                $cc_name = $ccValue["cc_name"];
 
-                                                    $selected = "";
-                                                    if ($result["dc_cc_id"] == $cc_id)
-                                                        $selected = "selected='selected'";
+                                                $selected = "";
+                                                if ($result["dc_cc_id"] == $cc_id)
+                                                    $selected = "selected='selected'";
 
-                                                    echo '<option value="' . $cc_id . '" ' . $selected . '>' . $cc_name . '</option>';
-                                                }
+                                                echo '<option value="' . $cc_id . '" ' . $selected . '>' . $cc_name . '</option>';
                                             }
-                                            else
-                                            {
-                                                echo '<option>No data</option>';
-                                            }
+                                        }
+                                        else
+                                        {
+                                            echo '<option>No data</option>';
+                                        }
                                         ?>
                                     </select>
                                 </div>
@@ -163,57 +163,57 @@
 
 <script type="text/javascript" src="<?php echo ADMIN_ASSETS_PATH; ?>/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <script>
-                                $(document).ready(function() {
-                                    $("#cc_id").change(function() {
-                                        $("#pc_select_box").html("Loading...");
-                                        var cc_id = $(this).val();
-                                        if (cc_id !== "")
-                                        {
-                                            $.ajax({
-                                                url: "<?php echo base_url("admin/categories/getParentCategoriesAjax"); ?>" + "/" + cc_id,
-                                                success: function(response) {
-                                                    $("#pc_select_box").html(response);
-                                                }
-                                            });
-                                        }
-                                        else
-                                        {
-                                            $("#pc_select_box").html("");
-                                        }
-                                    });
+    $(document).ready(function () {
+        $("#cc_id").change(function () {
+            $("#pc_select_box").html("Loading...");
+            var cc_id = $(this).val();
+            if (cc_id !== "")
+            {
+                $.ajax({
+                    url: "<?php echo base_url("admin/categories/getParentCategoriesAjax"); ?>" + "/" + cc_id,
+                    success: function (response) {
+                        $("#pc_select_box").html(response);
+                    }
+                });
+            }
+            else
+            {
+                $("#pc_select_box").html("");
+            }
+        });
 
-                                    $("#pc_id").live("change", function() {
-                                        $("#cc_select_box").html("Loading...");
-                                        var pc_id = $(this).val();
-                                        if (pc_id !== "")
-                                        {
-                                            $.ajax({
-                                                url: "<?php echo base_url("admin/categories/getChildCategoriesAjax"); ?>" + "/" + pc_id,
-                                                success: function(response) {
-                                                    $("#cc_select_box").html(response);
-                                                }
-                                            });
-                                        }
-                                        else
-                                        {
-                                            $("#cc_select_box").html("");
-                                        }
-                                    });
+        $("#pc_id").live("change", function () {
+            $("#cc_select_box").html("Loading...");
+            var pc_id = $(this).val();
+            if (pc_id !== "")
+            {
+                $.ajax({
+                    url: "<?php echo base_url("admin/categories/getChildCategoriesAjax"); ?>" + "/" + pc_id,
+                    success: function (response) {
+                        $("#cc_select_box").html(response);
+                    }
+                });
+            }
+            else
+            {
+                $("#cc_select_box").html("");
+            }
+        });
 
-                                    $("#pc_id").live("change", function() {
-                                        var pc_id = $(this).val();
-                                        if (pc_id != "")
-                                        {
-                                            $("#cc_name_box").show();
-                                            $(".submit-bttn").show();
-                                        }
-                                        else
-                                        {
-                                            $("#cc_name_box").hide();
-                                            $(".submit-bttn").hide();
-                                        }
-                                    });
+        $("#pc_id").live("change", function () {
+            var pc_id = $(this).val();
+            if (pc_id != "")
+            {
+                $("#cc_name_box").show();
+                $(".submit-bttn").show();
+            }
+            else
+            {
+                $("#cc_name_box").hide();
+                $(".submit-bttn").hide();
+            }
+        });
 
-                                    $(".datetimepicker").datetimepicker();
-                                });
+        $(".datetimepicker").datetimepicker();
+    });
 </script>

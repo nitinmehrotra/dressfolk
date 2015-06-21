@@ -60,7 +60,7 @@
                                         $dc_percent = $a_value["dc_percent"];
                                         $start_time = date("d-M-Y h:i A", strtotime($a_value["dc_start_time"]));
                                         $end_time = date("d-M-Y h:i A", strtotime($a_value["dc_end_time"]));
-                                        $dc_status = $a_value["dc_status"] == '1' ? 'Active' : 'Deactivated';
+                                        $dc_status = $a_value["dc_status"] == '1' ? 'Deactivate' : 'Activate';
                                         ?>
                                         <tr>
                                             <td><a href="<?php echo base_url_admin("discountcoupon/detail/$dc_id"); ?>" title="View Coupon Detail"><?php echo $dc_title . " (" . $dc_code . ")"; ?></a></td>
