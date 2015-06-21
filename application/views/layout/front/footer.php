@@ -183,8 +183,11 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
     frontendData.enableAjax = true;
 </script>
 <script type="text/javascript" src="<?php echo JS_PATH; ?>/frontend.js"></script>
+<script type="text/javascript" src="<?php echo JS_PATH; ?>/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script>
     jQuery(document).ready(function () {
+        jQuery('.datepicker').datepicker();
+
         jQuery(document).on('click', 'a.wishlist-action', function (e) {
             e.preventDefault();
             var is_loggedin = '<?php echo isset($this->session->userdata['user_id']) == true ? "1" : "0"; ?>';

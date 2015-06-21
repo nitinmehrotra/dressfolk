@@ -20,34 +20,23 @@ class User extends CI_Controller
         if ($this->input->post())
         {
             $arr = $this->input->post();
-            $user_email = strtolower($arr["email"]);
-
-            $is_exists = $model->is_exists("user_id", TABLE_USERS, array("user_email" => $user_email, 'user_id !=' => $user_id));
-            if (empty($is_exists))
-            {
-                $data_array = array(
-                    'user_fullname' => addslashes($arr['fullname']),
-                    'user_contact' => substr($arr['contact'], -10, 10),
-                    'user_gender' => strtolower($arr['gender']),
-                    'user_ipaddress' => USER_IP,
-                    'user_useragent' => USER_AGENT,
-                );
-                $model->updateData(TABLE_USERS, $data_array, array('user_id' => $user_id));
-
-                $this->session->userdata['user_fullname'] = $arr['fullname'];
-
-                $this->session->set_flashdata("success", "Account details updated");
-            }
-            else
-            {
-                $this->session->set_flashdata("error", "<strong>Sorry!</strong> Email already exists.");
-            }
+            $data_array = array(
+                'user_fullname' => addslashes($arr['fullname']),
+                'user_contact' => substr($arr['contact'], -10, 10),
+                'user_gender' => strtolower($arr['gender']),
+                'user_dob' => empty($arr['dob']) == TRUE ? NULL : (date('Y-m-d', strtotime($arr['dob']))),
+                'user_ipaddress' => USER_IP,
+                'user_useragent' => USER_AGENT,
+            );
+            $model->updateData(TABLE_USERS, $data_array, array('user_id' => $user_id));
+            $this->session->userdata['user_fullname'] = $arr['fullname'];
+            $this->session->set_flashdata("success", "Account details updated");
             redirect(base_url('my-account'));
         }
         else
         {
             $data = array();
-            $fields = 'user_fullname, user_gender, user_contact';
+            $fields = 'user_fullname, user_gender, user_contact, user_dob';
             $record = $model->fetchSelectedData($fields, TABLE_USERS, array('user_id' => $user_id));
 
             $breadcrumbArray = array(
