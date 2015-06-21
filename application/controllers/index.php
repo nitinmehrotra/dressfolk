@@ -157,5 +157,17 @@ class Index extends CI_Controller
             $model->insertData(TABLE_NEWSLETTER, $newsletter_data_array);
         }
     }
+    
+    public function reviewUs()
+    {
+        $data = array();
+        $breadcrumbArray = array(
+            'Review Us' => base_url('review-us')
+        );
+        $data["breadcrumbArray"] = $breadcrumbArray;
+        $data['meta_title'] = 'Review Us | ' . SITE_NAME;
+        $this->template->write_view("content", "pages/index/review-us", $data);
+        $this->template->render();
+    }
 
 }

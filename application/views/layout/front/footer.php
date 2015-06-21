@@ -90,6 +90,8 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                                 </li>
                                                                 <li><span class="widget widget-cms-link"><a href="<?php echo base_url('faq'); ?>" title="Help &amp; FAQs"><span>Help &amp; FAQs</span></a></span>
                                                                 </li>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('review-us'); ?>" title="Review Us"><span>Review Us</span></a></span>
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>

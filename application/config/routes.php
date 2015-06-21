@@ -65,6 +65,7 @@
     $route['products/view/(:any)'] = 'products/productDetail/$1';
     
     $route['my-account'] = 'user/myAccount';
+    $route['review-us'] = 'index/reviewUs';
 
     /* End of file routes.php */
 /* Location: ./application/config/routes.php */
