@@ -132,18 +132,18 @@ $product_title = stripslashes($record['product_title']);
                                             <div class="add-to-cart">
                                                 <div class="input-box pull-left">
                                                     <div class="reduced items" onclick="var result = document.getElementById('qty');
-                                                                                var qty = result.value;
-                                                                                if (!isNaN(qty) && qty > 1)
-                                                                                result.value--;
-                                                                                return false;">
+                                                            var qty = result.value;
+                                                            if (!isNaN(qty) && qty > 1)
+                                                                result.value--;
+                                                            return false;">
                                                         <i class="fa fa-minus"></i>
                                                     </div>
                                                     <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty" />
                                                     <div class="increase items" onclick="var result = document.getElementById('qty');
-                                                                                var qty = result.value;
-                                                                                if (!isNaN(qty))
-                                                                                result.value++;
-                                                                                return false;">
+                                                            var qty = result.value;
+                                                            if (!isNaN(qty))
+                                                                result.value++;
+                                                            return false;">
                                                         <i class="fa fa-plus"></i>
                                                     </div>
                                                 </div>
@@ -192,10 +192,10 @@ $product_title = stripslashes($record['product_title']);
                                 <div class="tab-pane last" id="product_tabs_tabreviews">
                                     <div class="product-tabs-content-inner clearfix">
                                         <div class="box-collateral box-reviews" id="customer-reviews">
-<?php
-if ($is_reviewed == FALSE)
-{
-    ?>
+                                            <?php
+                                            if ($is_reviewed == FALSE)
+                                            {
+                                                ?>
                                                 <div class="form-add">
                                                     <h2>Write Your Own Review</h2>
                                                     <form action="<?php echo base_url('products/saveProductReview'); ?>" method="post" id="review-form">
@@ -260,30 +260,30 @@ if ($is_reviewed == FALSE)
                                                             </ul>
                                                         </fieldset>
                                                         <div class="buttons-set">
-    <?php
-    $onlick = '';
-    if (!isset($this->session->userdata['user_id']))
-    {
-        $onlick = 'onclick="alert(\'Please login to review\');return false;"';
-    }
-    ?>
+                                                            <?php
+                                                            $onlick = '';
+                                                            if (!isset($this->session->userdata['user_id']))
+                                                            {
+                                                                $onlick = 'onclick="alert(\'Please login to review\');return false;"';
+                                                            }
+                                                            ?>
                                                             <button type="submit" title="Submit Review" class="button" <?php echo $onlick; ?>><span><span>Submit Review</span></span></button>
                                                         </div>
                                                     </form>
                                                 </div>
-    <?php
-}
-else
-{
-    echo '<h4>You have already reviewed this product</h4>';
-}
-?>
+                                                <?php
+                                            }
+                                            else
+                                            {
+                                                echo '<h4>You have already reviewed this product</h4>';
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>                       
-<?php echo $this->load->view('pages/products/related-products', array('product_id' => $record['product_id'])); ?>                                               
+                        <?php echo $this->load->view('pages/products/related-products', array('product_id' => $record['product_id'])); ?>                                               
                     </div>
                 </div>
             </div>
@@ -292,139 +292,139 @@ else
 </div>
 
 <script type="text/javascript">
-                    decorateTable('product-attribute-specs-table');
+    decorateTable('product-attribute-specs-table');
 //    var optionsPrice = new Product.OptionsPrice([]);
-                    dataZoom = {};
-                    dataZoom.position = 'inside'
+    dataZoom = {};
+    dataZoom.position = 'inside'
 
-                    var lifetime = 3600;
-                    var expireAt = Mage.Cookies.expires;
-                    if (lifetime > 0) {
-            expireAt = new Date();
-                    expireAt.setTime(expireAt.getTime() + lifetime * 1000);
-            }
-            Mage.Cookies.set('external_no_cache', 1, expireAt);
-                    //<![CDATA[
-                    var addTagFormJs = new VarienForm('addTagForm');
-                    function submitTagForm() {
-                    if (addTagFormJs.validator.validate()) {
-                    addTagFormJs.form.submit();
-                    }
-                    }
-            //]]>
+    var lifetime = 3600;
+    var expireAt = Mage.Cookies.expires;
+    if (lifetime > 0) {
+        expireAt = new Date();
+        expireAt.setTime(expireAt.getTime() + lifetime * 1000);
+    }
+    Mage.Cookies.set('external_no_cache', 1, expireAt);
+    //<![CDATA[
+    var addTagFormJs = new VarienForm('addTagForm');
+    function submitTagForm() {
+        if (addTagFormJs.validator.validate()) {
+            addTagFormJs.form.submit();
+        }
+    }
+    //]]>
 
-            //<![CDATA[
-            var dataForm = new VarienForm('review-form');
-                    Validation.addAllThese(
-                            [
-                                    ['validate-rating', 'Please select one of each of the ratings above', function (v) {
-                                    var trs = $('product-review-table').select('tr');
-                                            var inputs;
-                                            var error = 1;
-                                            for (var j = 0; j < trs.length; j++) {
-                                    var tr = trs[j];
-                                            if (j > 0) {
-                                    inputs = tr.select('input');
-                                            for (i in inputs) {
+    //<![CDATA[
+    var dataForm = new VarienForm('review-form');
+    Validation.addAllThese(
+            [
+                ['validate-rating', 'Please select one of each of the ratings above', function (v) {
+                        var trs = $('product-review-table').select('tr');
+                        var inputs;
+                        var error = 1;
+                        for (var j = 0; j < trs.length; j++) {
+                            var tr = trs[j];
+                            if (j > 0) {
+                                inputs = tr.select('input');
+                                for (i in inputs) {
                                     if (inputs[i].checked == true) {
-                                    error = 0;
+                                        error = 0;
                                     }
-                                    }
+                                }
 
-                                    if (error == 1) {
+                                if (error == 1) {
                                     return false;
-                                    } else {
+                                } else {
                                     error = 1;
-                                    }
-                                    }
-                                    }
-                                    return true;
-                                    }]
-                            ]
-                            );
-                    //]]>
+                                }
+                            }
+                        }
+                        return true;
+                    }]
+            ]
+            );
+    //]]>
 
-                    jQuery(function ($) {
-                    var carCount = $('.product-img-box .verticl-carousel').find('a').length;
-                            if (carCount <= 3) {
-                    $('.product-img-box .more-views-nav').hide();
-                    }
-                    $(".product-img-box #carousel-up").on("click", function () {
-                    if (!$(".product-img-box .verticl-carousel").is(':animated')) {
-                    var bottom = $(".product-img-box .verticl-carousel > a:last-child");
-                            var clone = $(".product-img-box .verticl-carousel > a:last-child").clone();
-                            clone.prependTo(".product-img-box .verticl-carousel");
-                            $(".product-img-box .verticl-carousel").animate({
+    jQuery(function ($) {
+        var carCount = $('.product-img-box .verticl-carousel').find('a').length;
+        if (carCount <= 3) {
+            $('.product-img-box .more-views-nav').hide();
+        }
+        $(".product-img-box #carousel-up").on("click", function () {
+            if (!$(".product-img-box .verticl-carousel").is(':animated')) {
+                var bottom = $(".product-img-box .verticl-carousel > a:last-child");
+                var clone = $(".product-img-box .verticl-carousel > a:last-child").clone();
+                clone.prependTo(".product-img-box .verticl-carousel");
+                $(".product-img-box .verticl-carousel").animate({
                     "top": "-=85"
-                    }, 0).stop().animate({
+                }, 0).stop().animate({
                     "top": '+=85'
-                    }, 250, function () {
+                }, 250, function () {
                     bottom.remove();
-                    });
-                            ProductMediaManager.init();
-                    }
-                    });
-                            $(".product-img-box #carousel-down").on("click", function () {
-                    if (!$(".product-img-box .verticl-carousel").is(':animated')) {
-                    var top = $(".product-img-box .verticl-carousel > a:first-child");
-                            var clone = $(".product-img-box .verticl-carousel > a:first-child").clone();
-                            clone.appendTo(".product-img-box .verticl-carousel");
-                            $(".product-img-box .verticl-carousel").animate({
+                });
+                ProductMediaManager.init();
+            }
+        });
+        $(".product-img-box #carousel-down").on("click", function () {
+            if (!$(".product-img-box .verticl-carousel").is(':animated')) {
+                var top = $(".product-img-box .verticl-carousel > a:first-child");
+                var clone = $(".product-img-box .verticl-carousel > a:first-child").clone();
+                clone.appendTo(".product-img-box .verticl-carousel");
+                $(".product-img-box .verticl-carousel").animate({
                     "top": '-=85'
-                    }, 250, function () {
+                }, 250, function () {
                     top.remove();
-                            $(".product-img-box .verticl-carousel").animate({
-                    "top": "+=85"
+                    $(".product-img-box .verticl-carousel").animate({
+                        "top": "+=85"
                     }, 0);
-                    });
-                            ProductMediaManager.init();
-                    }
-                    });
-                    });
-                    //<![CDATA[
-                    var productAddToCartForm = new VarienForm('product_addtocart_form');
-                    productAddToCartForm.submit = function (button, url) {
-                    if (this.validator.validate()) {
-                    var form = this.form;
-                            var oldUrl = form.action;
-                            if (url) {
-                    form.action = url;
-                    }
-                    var e = null;
-                            try {
-                            this.form.submit();
-                            } catch (e) {
-                    }
-                    this.form.action = oldUrl;
-                            if (e) {
-                    throw e;
-                    }
+                });
+                ProductMediaManager.init();
+            }
+        });
+    });
+    //<![CDATA[
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+    productAddToCartForm.submit = function (button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+            if (url) {
+                form.action = url;
+            }
+            var e = null;
+            try {
+                this.form.submit();
+            } catch (e) {
+            }
+            this.form.action = oldUrl;
+            if (e) {
+                throw e;
+            }
 
-                    if (button && button != 'undefined') {
-                    button.disabled = true;
-                    }
-                    }
-                    }.bind(productAddToCartForm);
-                    productAddToCartForm.submitLight = function (button, url) {
-                    if (this.validator) {
-                    var nv = Validation.methods;
-                            delete Validation.methods['required-entry'];
-                            delete Validation.methods['validate-one-required'];
-                            delete Validation.methods['validate-one-required-by-name'];
-                            // Remove custom datetime validators
-                            for (var methodName in Validation.methods) {
-                    if (methodName.match(/^validate-datetime-.*/i)) {
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+        }
+    }.bind(productAddToCartForm);
+    productAddToCartForm.submitLight = function (button, url) {
+        if (this.validator) {
+            var nv = Validation.methods;
+            delete Validation.methods['required-entry'];
+            delete Validation.methods['validate-one-required'];
+            delete Validation.methods['validate-one-required-by-name'];
+            // Remove custom datetime validators
+            for (var methodName in Validation.methods) {
+                if (methodName.match(/^validate-datetime-.*/i)) {
                     delete Validation.methods[methodName];
-                    }
-                    }
-                    if (this.validator.validate()) {
-                    if (url) {
+                }
+            }
+            if (this.validator.validate()) {
+                if (url) {
                     this.form.action = url;
-                    }
-                    this.form.submit();
-                    }
-                    Object.extend(Validation.methods, nv);
-                    }
-                    }.bind(productAddToCartForm);
-                    //]]>
+                }
+                this.form.submit();
+            }
+            Object.extend(Validation.methods, nv);
+        }
+    }.bind(productAddToCartForm);
+    //]]>
 </script>
