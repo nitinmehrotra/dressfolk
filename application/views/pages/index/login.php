@@ -36,7 +36,10 @@
                                 <div class="col-2 registered-users">
                                     <div class="content">
                                         <h2>Registered Customers</h2>
-                                        <p>If you have an account with us, please log in.</p>
+                                        <div class="text-center">
+                                            <button type="submit" class="button" title="Login with Facebook"><span><span>Login with Facebook</span></span></button>
+                                        </div>
+                                        <p>Or, If you have an account with us, please log in.</p>
                                         <input type="hidden" name="url" value="<?php echo isset($_GET['next']) == true ? $_GET['next'] : base_url(); ?>"/>
                                         <ul class="form-list">
                                             <li>
