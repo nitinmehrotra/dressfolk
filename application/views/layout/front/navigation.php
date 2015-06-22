@@ -368,7 +368,7 @@ foreach ($cc_data as $ccKey => $ccValue)
             <div class="header-search">
                 <div class="container">
                     <div class="row">
-                        <form id="search_mini_form" action="" method="get">
+                        <form id="search_mini_form" action="<?php echo base_url('products/search'); ?>" method="get">
                             <div class="input-group form-search">
                                 <span class="input-group-btn category-filter">
                                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
@@ -387,56 +387,9 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     </ul>
                                 </span>
                                 <input type="hidden" name="cat" value=""/>
-                                <input id="search"
-                                       type="search"
-                                       name="q"
-                                       value=""
-                                       class="input-text required-entry"
-                                       maxlength="128"
-                                       />
+                                <input id="search" type="search" name="q" value="" class="input-text required-entry" maxlength="128" />
                                 <button type="submit" title="Search" class="search-button"><span><span><i class="fa fa-search"></i></span></span></button>
                             </div>
-                            <div id="search_autocomplete" class="search-autocomplete" style="display: none"></div>
-                            <script type="text/javascript">
-                                //<![CDATA[
-                                var CatSearch = Class.create(Varien.searchForm, {
-                                    initAutocomplete: function (url, destinationElement) {
-                                        new Ajax.Autocompleter(this.field, destinationElement, url, {
-                                            paramName: this.field.name,
-                                            method: 'get',
-                                            minChars: 2,
-                                            updateElement: this._selectAutocompleteItem.bind(this),
-                                            onShow: function (element, update) {
-                                                if (!update.style.position || update.style.position == 'absolute') {
-                                                    update.style.position = 'absolute';
-                                                    Position.clone(element, update, {
-                                                        setHeight: false,
-                                                        offsetTop: element.offsetHeight
-                                                    });
-                                                }
-                                                Effect.Appear(update, {duration: 0});
-                                            }
-                                        });
-                                    },
-                                    initSearchFilter: function (field, target) {
-                                        var fieldElm = this.form.down('input[name="' + field + '"]');
-                                        if (!fieldElm)
-                                            return;
-                                        var targetElm = this.form.down(target);
-                                        this.form.select('.form-search .dropdown-menu a').each(function (item) {
-                                            Event.observe(item, 'click', function () {
-                                                fieldElm.value = item.readAttribute('data-value');
-                                                if (targetElm)
-                                                    targetElm.update(item.innerHTML);
-                                            });
-                                        });
-                                    }
-                                });
-                                var searchForm = new CatSearch('search_mini_form', 'search', '');
-                                searchForm.initAutocomplete('http://puro.icotheme.com/catalogsearch/ajax/suggest/', 'search_autocomplete');
-                                searchForm.initSearchFilter('cat', '.category-label');
-                                //]]>
-                            </script>
                         </form>
                     </div>
                 </div>

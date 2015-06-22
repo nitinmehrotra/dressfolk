@@ -295,12 +295,13 @@ class Products extends CI_Controller
 
     public function search()
     {
-        if ($this->input->get("search"))
+        if ($this->input->get("q"))
         {
             $model = new Common_model();
             $custom_model = new Custom_model();
             $category_name_records = array();
-            $query = urldecode($this->input->get("search"));
+            $cat = urldecode($this->input->get("cat"));
+            $query = urldecode($this->input->get("q"));
 
             $whereCondArr = array(
                 'product_title' => $query,
@@ -312,7 +313,12 @@ class Products extends CI_Controller
                 $whereString .= ' OR ' . $wKey . ' LIKE "%' . $wValue . '%" ';
             }
 
-            $product_fields = '*';
+            if (!empty($cat))
+            {
+                $whereString .=' AND product_child_category = ' . $cat;
+            }
+
+            $product_fields = 'product_id, product_title, product_price, product_url_key, pi_image_path, cc_name';
             $productWhereCondStr = '(' . $whereString . ') AND product_status = "1"';
             $records = $custom_model->getAllSearchProductsList($product_fields, $productWhereCondStr, 'rand()');
 
