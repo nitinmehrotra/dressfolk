@@ -157,17 +157,52 @@ class Index extends CI_Controller
             $model->insertData(TABLE_NEWSLETTER, $newsletter_data_array);
         }
     }
-    
+
     public function reviewUs()
     {
-        $data = array();
-        $breadcrumbArray = array(
-            'Review Us' => base_url('review-us')
-        );
-        $data["breadcrumbArray"] = $breadcrumbArray;
-        $data['meta_title'] = 'Review Us | ' . SITE_NAME;
-        $this->template->write_view("content", "pages/index/review-us", $data);
-        $this->template->render();
+        if ($this->input->post())
+        {
+            if (isset($this->session->userdata["user_id"]))
+            {
+                $model = new Common_model();
+                $arr = $this->input->post();
+
+                $comment = addslashes($arr['comment']);
+                $rating = $arr['rating'];
+                $overall_rating = ($rating['value'] + $rating['quality'] + $rating['price']) / count($rating);
+                $data_array = array(
+                    'rating_product_id' => 0,
+                    'rating_user_id' => $this->session->userdata['user_id'],
+                    'rating_count' => $overall_rating,
+                    'rating_value' => $rating['value'],
+                    'rating_quality' => $rating['quality'],
+                    'rating_price' => $rating['price'],
+                    'rating_comment' => $comment,
+                    'rating_ipaddress' => USER_IP,
+                    'rating_useragent' => USER_AGENT,
+                    'rating_is_general' => '1'
+                );
+                $model->insertData(TABLE_RATINGS, $data_array);
+
+                $this->session->set_flashdata('success', 'Thank you for your valuable feedback. We appreciate it.');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Please login in order to leave us a feedback');
+            }
+            redirect(base_url('review-us'));
+        }
+        else
+        {
+            $data = array();
+            $breadcrumbArray = array(
+                'Review Us' => base_url('review-us')
+            );
+            $data["breadcrumbArray"] = $breadcrumbArray;
+            $data['meta_title'] = 'Review Us | ' . SITE_NAME;
+            $this->template->write_view("content", "pages/index/review-us", $data);
+            $this->template->render();
+        }
     }
 
 }
