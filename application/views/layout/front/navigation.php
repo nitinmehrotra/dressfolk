@@ -61,6 +61,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                                 }
                                 ?>
                                 <li><a href="<?php echo base_url('blog'); ?>">Blog</a></li>
+                                <li><a href="<?php echo base_url('testimonials'); ?>">Testimonials</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -99,14 +100,15 @@ foreach ($cc_data as $ccKey => $ccValue)
                             }
                             ?>
                             <li class="level0 level-top link-external"><a href="<?php echo base_url('blog'); ?>" class="level-top"><span>Blog</span></a></li>
+                            <li class="level0 level-top link-external"><a href="<?php echo base_url('testimonials'); ?>" class="level-top"><span>Testimonials</span></a></li>
                         </ul>
                     </div>
                 </div>
                 <!-- navigation EOF -->               
                 <div class="header-logo pull-left">
-                    <a href="<?php echo base_url(); ?>" title="Puro Theme" class="logo">
-                        <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/homepage/logo_puro_2.png" alt="Puro Theme" />
-                        <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="Puro Theme" />
+                    <a href="<?php echo base_url(); ?>" title="<?php echo SITE_NAME;?>" class="logo">
+                        <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/homepage/logo_puro_2.png" alt="<?php echo SITE_NAME;?>" />
+                        <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="<?php echo SITE_NAME;?>" />
                     </a>
                 </div>
                 <div class="right-header-menu">
@@ -155,7 +157,8 @@ foreach ($cc_data as $ccKey => $ccValue)
                                         <?php
                                     }
                                     ?>
-                                    <li class=" last"><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
+                                    <li class=""><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
+                                    <li class=" last"><a href="<?php echo base_url('testimonials'); ?>" title="Testimonials" >Testimonials</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -164,9 +167,9 @@ foreach ($cc_data as $ccKey => $ccValue)
             </div>
         </div>
         <div id="main-header" class="main-header hidden-xs">
-            <a href="<?php echo base_url(); ?>" title="Puro Theme" class="logo">
-                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/<?php echo $path == 'index/index' ? 'homepage/logo_puro.png' : 'logo_puro_1_1.png'; ?>" alt="Puro Theme" />
-                <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="Puro Theme" />
+            <a href="<?php echo base_url(); ?>" title="<?php echo SITE_NAME;?>" class="logo">
+                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/<?php echo $path == 'index/index' ? 'homepage/logo_puro.png' : 'logo_puro_1_1.png'; ?>" alt="<?php echo SITE_NAME;?>" />
+                <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="<?php echo SITE_NAME;?>" />
             </a>
             <div class="wrapper-top-menu container">
                 <div class="row">
@@ -248,11 +251,8 @@ foreach ($cc_data as $ccKey => $ccValue)
                                         <?php
                                     }
                                     ?>
-                                    <li class="level0 level-top link-external">
-                                        <a href="<?php echo base_url('blog'); ?>"class="level-top">
-                                            <span>Blog</span>
-                                        </a>
-                                    </li>
+                                    <li class="level0 level-top link-external"><a href="<?php echo base_url('blog'); ?>"class="level-top"><span>Blog</span></a></li>
+                                    <li class="level0 level-top link-external"><a href="<?php echo base_url('testimonials'); ?>"class="level-top"><span>Testimonials</span></a></li>
                                 </ul>
                             </div>
                         </div>
