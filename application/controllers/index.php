@@ -205,4 +205,18 @@ class Index extends CI_Controller
         }
     }
 
+    public function testimonials()
+    {
+        $custom_model = new Custom_model();
+        $record = $custom_model->getAllGeneralRatings($fields, NULL, 'rating_id', 'DESC', 8);
+        $breadcrumbArray = array(
+            'Testimonials' => base_url('testimonials')
+        );
+        $data["breadcrumbArray"] = $breadcrumbArray;
+        $data['meta_title'] = 'Testimonials | ' . SITE_NAME;
+        $data['record'] = $record;
+        $this->template->write_view("content", "pages/index/testimonials", $data);
+        $this->template->render();
+    }
+
 }

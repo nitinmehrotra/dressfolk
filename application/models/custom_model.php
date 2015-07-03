@@ -288,4 +288,17 @@ class Custom_model extends CI_Model
         return $output;
     }
 
+    public function getAllGeneralRatings($fields, $whereCondArr = NULL, $orderByFieldName = 'rand()', $orderByType = 'ASC', $limit = 12)
+    {
+        if ($whereCondArr == NULL)
+        {
+            $whereCondArr = array();
+        }
+        $whereCondArr['rating_is_general'] = '1';
+
+        $model = new Common_model();
+        $record = $model->getAllDataFromJoin($fields, TABLE_RATINGS . ' as r', array(TABLE_USERS . ' as u' => 'u.user_id = rating_user_id'), 'LEFT', $whereCondArr . $orderByFieldName, $orderByType, $limit);
+        return $record;
+    }
+
 }
