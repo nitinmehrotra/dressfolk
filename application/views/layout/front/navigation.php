@@ -80,21 +80,18 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
                                         <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                     </a>
-                                    <div class="level0 menu-wrap-sub">
-                                        <div class="ulmenu-block ulmenu-block-center menu-items grid12-9 itemgrid itemgrid-3col">
-                                            <?php
-                                            if (!empty($cc_records[$pcValue['pc_id']]))
-                                            {
-                                                echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
-                                                foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
-                                                {
-                                                    echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
-                                                }
-                                                echo '</ul></li></ul>';
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
+                                    <?php
+                                    if (!empty($cc_records[$pcValue['pc_id']]))
+                                    {
+                                        echo '<div class="level0 menu-wrap-sub"><div class="ulmenu-block ulmenu-block-center menu-items grid12-9 itemgrid itemgrid-3col">';
+                                        echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
+                                        foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                        {
+                                            echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                        }
+                                        echo '</ul></li></ul></div></div>';
+                                    }
+                                    ?>
                                 </li>     
                                 <?php
                             }
@@ -106,9 +103,9 @@ foreach ($cc_data as $ccKey => $ccValue)
                 </div>
                 <!-- navigation EOF -->               
                 <div class="header-logo pull-left">
-                    <a href="<?php echo base_url(); ?>" title="<?php echo SITE_NAME;?>" class="logo">
-                        <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/homepage/logo_puro_2.png" alt="<?php echo SITE_NAME;?>" />
-                        <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="<?php echo SITE_NAME;?>" />
+                    <a href="<?php echo base_url(); ?>" title="<?php echo SITE_NAME; ?>" class="logo">
+                        <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/homepage/logo_puro_2.png" alt="<?php echo SITE_NAME; ?>" />
+                        <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="<?php echo SITE_NAME; ?>" />
                     </a>
                 </div>
                 <div class="right-header-menu">
@@ -167,9 +164,9 @@ foreach ($cc_data as $ccKey => $ccValue)
             </div>
         </div>
         <div id="main-header" class="main-header hidden-xs">
-            <a href="<?php echo base_url(); ?>" title="<?php echo SITE_NAME;?>" class="logo">
-                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/<?php echo $path == 'index/index' ? 'homepage/logo_puro.png' : 'logo_puro_1_1.png'; ?>" alt="<?php echo SITE_NAME;?>" />
-                <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="<?php echo SITE_NAME;?>" />
+            <a href="<?php echo base_url(); ?>" title="<?php echo SITE_NAME; ?>" class="logo">
+                <img class="x1" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/<?php echo $path == 'index/index' ? 'homepage/logo_puro.png' : 'logo_puro_1_1.png'; ?>" alt="<?php echo SITE_NAME; ?>" />
+                <img class="logo-sticky" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/puro/logo/logo_puro_1_1.png" alt="<?php echo SITE_NAME; ?>" />
             </a>
             <div class="wrapper-top-menu container">
                 <div class="row">
@@ -231,22 +228,19 @@ foreach ($cc_data as $ccKey => $ccValue)
                                         <li class="level0 nav-2 level-top parent parent">
                                             <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
                                                 <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
-                                            </a>
-                                            <div class="level0 menu-wrap-sub">
-                                                <div class="ulmenu-block ulmenu-block-center menu-items grid12-9 itemgrid itemgrid-3col">
-                                                    <?php
-                                                    if (!empty($cc_records[$pcValue['pc_id']]))
-                                                    {
-                                                        echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
-                                                        foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
-                                                        {
-                                                            echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
-                                                        }
-                                                        echo '</ul></li></ul>';
-                                                    }
-                                                    ?>
-                                                </div>
-                                            </div>
+                                            </a>                                            
+                                            <?php
+                                            if (!empty($cc_records[$pcValue['pc_id']]))
+                                            {
+                                                echo '<div class="level0 menu-wrap-sub"><div class="ulmenu-block ulmenu-block-center menu-items grid12-9 itemgrid itemgrid-3col">';
+                                                echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
+                                                foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                                {
+                                                    echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                                }
+                                                echo '</ul></li></ul></div></div>';
+                                            }
+                                            ?>
                                         </li>         
                                         <?php
                                     }
