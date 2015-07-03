@@ -208,7 +208,8 @@ class Index extends CI_Controller
     public function testimonials()
     {
         $custom_model = new Custom_model();
-        $record = $custom_model->getAllGeneralRatings($fields, NULL, 'rating_id', 'DESC', 8);
+        $record = $custom_model->getAllGeneralRatings('user_fullname, rating_comment', NULL, 'rating_id', 'DESC', 8);
+//        prd($record);
         $breadcrumbArray = array(
             'Testimonials' => base_url('testimonials')
         );

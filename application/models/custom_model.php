@@ -295,9 +295,11 @@ class Custom_model extends CI_Model
             $whereCondArr = array();
         }
         $whereCondArr['rating_is_general'] = '1';
+        $whereCondArr['rating_comment !='] = '';
+        $whereCondArr['user_fullname !='] = '';
 
         $model = new Common_model();
-        $record = $model->getAllDataFromJoin($fields, TABLE_RATINGS . ' as r', array(TABLE_USERS . ' as u' => 'u.user_id = rating_user_id'), 'LEFT', $whereCondArr . $orderByFieldName, $orderByType, $limit);
+        $record = $model->getAllDataFromJoin($fields, TABLE_RATINGS . ' as r', array(TABLE_USERS . ' as u' => 'u.user_id = rating_user_id'), 'LEFT', $whereCondArr, $orderByFieldName, $orderByType, $limit);
         return $record;
     }
 
