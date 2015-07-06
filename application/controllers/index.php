@@ -219,5 +219,33 @@ class Index extends CI_Controller
         $this->template->write_view("content", "pages/index/testimonials", $data);
         $this->template->render();
     }
+    
+         public function loginsocial($network = "facebook")
+        {
+            if (!empty($network) && $network != NULL)
+            {
+                $this->load->library("SocialLib");
+                $socialLib = new SocialLib();
+
+                $login_url = base_url();
+                if ($network == "facebook")
+                {
+                    $login_url = $socialLib->getFacebookLoginUrl();
+                }
+
+                redirect($login_url);
+            }
+            else
+            {
+                redirect(base_url());
+            }
+        }
+
+        public function loginWithFacebook()
+        {
+            $this->load->library("SocialLib");
+            $socialLib = new SocialLib();
+            $socialLib->loginWithFacebook();
+        }
 
 }

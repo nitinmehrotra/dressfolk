@@ -54,6 +54,7 @@
     $route['contact-us'] = 'staticpages/contactUs';
     
     $route['about-us'] = 'staticpages/index/about-us';
+    $route['facebook-login'] = 'index/loginsocial/facebook';
     $route['login'] = 'index/login';
     $route['logout'] = 'index/logout';
     $route['signup'] = 'index/signup';

@@ -37,7 +37,7 @@
                                     <div class="content">
                                         <h2>Registered Customers</h2>
                                         <div class="text-center">
-                                            <button type="submit" class="button" title="Login with Facebook"><span><span>Login with Facebook</span></span></button>
+                                            <button type="submit" class="button" title="Login with Facebook" onclick="window.location = '<?php echo base_url('facebook-login'); ?>';"><span><span>Login with Facebook</span></span></button>
                                         </div>
                                         <p>Or, If you have an account with us, please log in.</p>
                                         <input type="hidden" name="url" value="<?php echo isset($_GET['next']) == true ? $_GET['next'] : base_url(); ?>"/>
