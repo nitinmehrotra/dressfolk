@@ -333,6 +333,9 @@ class Products extends CI_Controller
             }
             else
             {
+                $data_array['product_code'] = getUniqueProductCode();
+                $data_array['product_url_key'] = getUniqueProductURLKey(strtolower(trim($arr['product_title'])));
+
                 $model->insertData(TABLE_PRODUCTS, $data_array);
                 $product_id = $this->db->insert_id();
                 $this->session->set_flashdata('success', 'Product added. Please update the details as well');
