@@ -301,7 +301,7 @@ class Products extends CI_Controller
         redirect(base_url_admin('products/productDetail/' . $product_record[0]['pd_product_id']));
     }
 
-    public function editProduct($product_id)
+    public function editProduct($product_id = NULL)
     {
         $model = new Common_model();
         $custom_model = new Custom_model();
@@ -324,27 +324,39 @@ class Products extends CI_Controller
                 'product_meta_description' => addslashes(getNWordsFromString($arr['product_description'], 40)),
             );
 
-            if ($product_id == NULL)
+            if ($product_id != NULL)
             {
                 $data_array['product_profit_percent'] = $profit_percent_record[0]['cc_profit_percent'];
 
                 $model->updateData(TABLE_PRODUCTS, $data_array, array('product_id' => $product_id));
                 $this->session->set_flashdata('success', 'Product updated. Please update the details as well');
             }
+            else
+            {
+                $model->insertData(TABLE_PRODUCTS, $data_array);
+                $product_id = $this->db->insert_id();
+                $this->session->set_flashdata('success', 'Product added. Please update the details as well');
+            }
 
             redirect(base_url_admin('products/editProductStepTwo/' . $product_id));
         }
         else
         {
-            $product_fields = 'product_id, product_title, product_description, pc_id, cc_id, product_seller_price, product_shipping_charge, product_gift_charge';
-            $detail_fields = 'pd_id';
-            $images_fields = 'pi_id';
-            $record = $custom_model->getAllProductsDetails($product_id, $product_fields, $detail_fields, $images_fields);
-//            prd($record);
+            if ($product_id != NULL)
+            {
+                $product_fields = 'product_id, product_title, product_description, pc_id, cc_id, product_seller_price, product_shipping_charge, product_gift_charge';
+                $detail_fields = 'pd_id';
+                $images_fields = 'pi_id';
+                $record = $custom_model->getAllProductsDetails($product_id, $product_fields, $detail_fields, $images_fields);
+                $data["record"] = $record;
+                $data["form_heading"] = 'Edit Product Detail';
+            }
+            else
+            {
+                $data["form_heading"] = 'Add Product Detail';
+            }
 
-            $data["form_heading"] = 'Edit Product Detail';
             $data["product_parent_category"] = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, array());
-            $data["record"] = $record;
             $this->template->write_view("content", "products/forms/product-form", $data);
             $this->template->render();
         }

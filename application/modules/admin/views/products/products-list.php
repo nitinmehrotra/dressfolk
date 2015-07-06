@@ -19,11 +19,11 @@
                     </div>
                     <div class="portlet-body">
                         <div class="clearfix">
-<!--                            <div class="btn-group">
-                                <a href="<?php echo base_url("admin/products/addProduct"); ?>"><button class="btn green">
+                            <div class="btn-group">
+                                <a href="<?php echo base_url("admin/products/editProduct"); ?>"><button class="btn green">
                                         Add New <i class="icon-plus"></i>
                                     </button></a>
-                            </div>-->
+                            </div>
                         </div>
                         <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                             <thead>

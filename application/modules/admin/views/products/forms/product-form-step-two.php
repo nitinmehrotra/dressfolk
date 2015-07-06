@@ -4,8 +4,8 @@
 </style>
 
 <?php
-    if (!isset($form_action))
-        $form_action = "";
+if (!isset($form_action))
+    $form_action = "";
 ?>
 
 <!-- BEGIN PAGE -->  
@@ -40,6 +40,8 @@
                                 <div class="controls">
                                     <span class='copy-this'>
                                         <?php
+                                        if (isset($record['details_arr']) && !empty($record['details_arr']))
+                                        {
                                             foreach ($record['details_arr'] as $key => $value)
                                             {
                                                 ?>
@@ -77,6 +79,39 @@
                                                 </div>
                                                 <?php
                                             }
+                                        }
+                                        else
+                                        {
+                                            ?>
+                                            <div class='clearfix'>
+                                                <input type='hidden' name='pd_id[]' value=''/>
+                                                <div class='span3' style="margin-left: 0">
+                                                    <label>Size<span class="required">*</span></label>
+                                                    <select class='' required="required" name='product_size[]'>
+                                                        <?php
+                                                        $size_array = array('S', 'M', 'L', 'XL', 'XXL', 'XXXL', 'Zero');
+                                                        foreach ($size_array as $size)
+                                                        {
+                                                            echo '<option value="' . $size . '" ' . $size_selected . '>' . $size . '</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class='span3'>
+                                                    <label>Color<span class="required">*</span></label>
+                                                    <input type='text' name='product_color[]' required="required" class="" value="" placeholder="(eg.:- Blue)"/>
+                                                </div>
+                                                <div class='span3'>
+                                                    <label>Available quantity with you<span class="required">*</span></label>
+                                                    <input type='text' name='product_quantity[]' required="required" class="" value="" placeholder="(eg.:- 100)"/>
+                                                </div>
+                                                <div class='span3'>
+                                                    <label>Min. quantity customer shall order<span class="required">*</span></label>
+                                                    <input type='text' name='product_min_quantity[]' required="required" class="" value="" placeholder="(eg.:- 10)"/>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
                                         ?>
                                     </span>
                                 </div>
