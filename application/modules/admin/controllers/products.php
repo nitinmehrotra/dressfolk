@@ -246,7 +246,7 @@ class Products extends CI_Controller
             $record = $custom_model->getAllProductsDetails($product_id, $product_fields, $detail_fields, $images_fields, NULL);
 //                prd($record);
 
-            $data["record"] = $record;
+            $data["record"] = $record[0];
             $this->template->write_view("content", "products/product-detail", $data);
             $this->template->render();
         }
@@ -367,6 +367,7 @@ class Products extends CI_Controller
         $model = new Common_model();
         $custom_model = new Custom_model();
 
+        $model->deleteData(TABLE_PRODUCT_DETAILS, array('pd_product_id' => $product_id));
         if ($this->input->post() && isset($product_id))
         {
             $arr = $this->input->post();
@@ -374,18 +375,23 @@ class Products extends CI_Controller
             foreach ($arr['pd_id'] as $key => $value)
             {
                 $data_array = array(
+                    'pd_product_id' => $product_id,
                     'pd_size' => ($arr['product_size'][$key]),
                     'pd_color_name' => ucwords($arr['product_color'][$key]),
                     'pd_quantity' => ($arr['product_quantity'][$key]),
                     'pd_min_quantity' => ($arr['product_min_quantity'][$key]),
+                    'pd_ipaddress' => USER_IP,
+                    'pd_useragent' => USER_AGENT,
+                    'pd_status' => '1'
                 );
 
-                // update
-                $model->updateData(TABLE_PRODUCT_DETAILS, $data_array, array('pd_product_id' => $product_id, 'pd_id' => $value));
-                $this->session->set_flashdata('success', 'Product details updated.');
-
-                redirect(base_url_admin('products/editProductStepThree/' . $product_id));
+//                update
+//                $model->updateData(TABLE_PRODUCT_DETAILS, $data_array, array('pd_product_id' => $product_id, 'pd_id' => $value));
+                $model->insertData(TABLE_PRODUCT_DETAILS, $data_array);
             }
+
+            $this->session->set_flashdata('success', 'Product details updated.');
+            redirect(base_url_admin('products/editProductStepThree/' . $product_id));
         }
         else
         {
