@@ -440,7 +440,7 @@ class Products extends CI_Controller
                 }
             }
 
-            redirect(base_url_seller('products/productDetail/' . $product_id));
+            redirect(base_url_admin('products/productDetail/' . $product_id));
         }
         else
         {
@@ -463,6 +463,21 @@ class Products extends CI_Controller
         {
             $model->deleteData(TABLE_PRODUCT_IMAGES, array('pi_id' => $pi_id));
         }
+        return TRUE;
+    }
+
+    public function deleteAllImages($product_id)
+    {
+        $model = new Common_model();
+        $records = $model->fetchSelectedData('pi_id, pi_image_path', TABLE_PRODUCT_IMAGES, array('pi_product_id' => $product_id, 'pi_image_path !=' => ''));
+        foreach ($records as $key => $value)
+        {
+            if (unlink($value['pi_image_path']))
+            {
+                $model->deleteData(TABLE_PRODUCT_IMAGES, array('pi_id' => $value['pi_id']));
+            }
+        }
+        return TRUE;
     }
 
     public function getChildCategoriesAjax($pc_id)

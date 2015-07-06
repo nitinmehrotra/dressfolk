@@ -122,7 +122,7 @@ define("PRODUCT_IMG_PATH_SMALL", "resources/product-images/small");
 
 define("PRODUCT_DESC_MIN_LENGTH", 300);
 
-define("MIN_PRODUCT_IMAGES", 3);
+define("MIN_PRODUCT_IMAGES", 1);
 define("MAX_PRODUCT_IMAGES", 5);
 
 define("SHIPPING_PARTNER", "gati");
