@@ -240,13 +240,13 @@ class Products extends CI_Controller
             $custom_model = new Custom_model();
             $data = array();
 
-            $product_fields = 'product_id, product_code, product_title, product_description, product_price, product_seller_price, product_profit_percent, product_shipping_charge, product_gift_charge, product_status, product_verified, seller_fullname, seller_company_name, seller_id, product_status';
+            $product_fields = '*';
             $detail_fields = 'pd_id, pd_size, pd_color_name, pd_quantity, pd_min_quantity, pd_status';
             $images_fields = 'pi_id, pi_image_title, pi_image_path';
             $record = $custom_model->getAllProductsDetails($product_id, $product_fields, $detail_fields, $images_fields, NULL);
-//                prd($record);
+//            prd($record);
 
-            $data["record"] = $record[0];
+            $data["record"] = $record;
             $this->template->write_view("content", "products/product-detail", $data);
             $this->template->render();
         }
