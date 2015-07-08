@@ -3,8 +3,8 @@
 if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dressfolk.com" || $_SERVER["HTTP_HOST"] == "52.74.252.225")
 {
     define("SITE_BASE_URL", "http://" . $_SERVER["HTTP_HOST"] . '/');    // When running on server    
-    define("FACEBOOK_APP_ID", "");
-    define("FACEBOOK_SECRET_ID", "");
+    define("FACEBOOK_APP_ID", "1617392668502474");
+    define("FACEBOOK_SECRET_ID", "9ae58cff839433198517d293b48a6862");
     define('RAZORPAY_KEY', '');
     define('RAZORPAY_SECRET', '');
     define('SEO_INDEX', 'nofollow, noindex');
@@ -25,8 +25,8 @@ if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dr
 elseif ($_SERVER["REMOTE_ADDR"] == "127.0.0.1")
 {
     define("SITE_BASE_URL", "http://localhost/work/svn/dressfolk/");    // When running locally
-    define("FACEBOOK_APP_ID", "");
-    define("FACEBOOK_SECRET_ID", "");
+    define("FACEBOOK_APP_ID", "292613977575643");
+    define("FACEBOOK_SECRET_ID", "b116142f82ea815501c7768f46ec2d0c");
     define('RAZORPAY_KEY', '');
     define('RAZORPAY_SECRET', '');
     define('SEO_INDEX', 'nofollow, noindex');
