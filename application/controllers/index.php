@@ -18,8 +18,11 @@ class Index extends CI_Controller
         // to fetch featured products
         $featured_product_arr = $custom_model->getFeaturedProducts($product_fields, array('feature_start_time <=' => date('Y-m-d'), 'feature_end_time >=' => date('Y-m-d'), 'feature_status' => '1'), 'rand()', 'ASC', 8);
 
+        $category_images_records = $model->fetchSelectedData('pc_name, pc_url, pc_image', TABLE_PARENT_CATEGORY, array('pc_display' => '1'));
+
         $data['products_arr'] = $products_Arr;
         $data['featured_products_arr'] = $featured_product_arr;
+        $data['category_images_records'] = $category_images_records;
         $this->template->write_view("content", "pages/index/index", $data);
         $this->template->render();
     }
@@ -219,33 +222,33 @@ class Index extends CI_Controller
         $this->template->write_view("content", "pages/index/testimonials", $data);
         $this->template->render();
     }
-    
-         public function loginsocial($network = "facebook")
-        {
-            if (!empty($network) && $network != NULL)
-            {
-                $this->load->library("SocialLib");
-                $socialLib = new SocialLib();
 
-                $login_url = base_url();
-                if ($network == "facebook")
-                {
-                    $login_url = $socialLib->getFacebookLoginUrl();
-                }
-
-                redirect($login_url);
-            }
-            else
-            {
-                redirect(base_url());
-            }
-        }
-
-        public function loginWithFacebook()
+    public function loginsocial($network = "facebook")
+    {
+        if (!empty($network) && $network != NULL)
         {
             $this->load->library("SocialLib");
             $socialLib = new SocialLib();
-            $socialLib->loginWithFacebook();
+
+            $login_url = base_url();
+            if ($network == "facebook")
+            {
+                $login_url = $socialLib->getFacebookLoginUrl();
+            }
+
+            redirect($login_url);
         }
+        else
+        {
+            redirect(base_url());
+        }
+    }
+
+    public function loginWithFacebook()
+    {
+        $this->load->library("SocialLib");
+        $socialLib = new SocialLib();
+        $socialLib->loginWithFacebook();
+    }
 
 }

@@ -5,28 +5,27 @@
             <div class="row show-grid">
                 <div class="widget widget-static-block">
                     <div class="home-banner">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="inner-banner">
-                                <div class="overlay">
-                                    <span class="widget widget-category-link"><a href="#"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span>
+                        <?php
+                        foreach ($category_images_records as $cKey => $cValue)
+                        {
+                            $category_name = stripslashes($cValue['pc_name']);
+                            $category_url = base_url($cValue['pc_url']);
+                            $image = getImage($cValue['pc_image']);
+                            ?>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner-banner">
+                                    <div class="overlay">
+                                        <span class="widget widget-category-link"><a href="<?php echo $category_url; ?>"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span>
+                                    </div>
+                                    <div class="banner-img">
+                                        <span class="text"><?php echo $category_name ?></span>
+                                        <img alt="<?php echo $category_name ?>" src="<?php echo $image; ?>" class="pull-right"/>
+                                    </div>
                                 </div>
-                                <div class="banner-img"><span class="text">Shoes</span><img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/Shoes-banner.jpg" /></div>
                             </div>
-                            <div class="inner-banner">
-                                <div class="overlay"><span class="widget widget-category-link"><a href="#"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span></div>
-                                <div class="banner-img"><span class="text">Shirts</span><img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/shirt-banner.jpg" /></div>
-                            </div>
-                        </div> 
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="inner-banner">
-                                <div class="overlay"><span class="widget widget-category-link"><a href="#"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span></div>
-                                <div class="banner-img"><span class="text">Bag</span><img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/bags-banner.jpg" /></div>
-                            </div>
-                            <div class="inner-banner">
-                                <div class="overlay"><span class="widget widget-category-link"><a href="#"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span></div>
-                                <div class="banner-img"><span class="text">Pants</span><img alt="" src="<?php echo FRONT_ASSETS_PATH; ?>/wysiwyg/icotheme/pant-banner.jpg" /></div>
-                            </div>
-                        </div> 
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="widget-products-new home-new-product" id="block-4e8ee2e7dccf59d2682a0d27c4713f19">
