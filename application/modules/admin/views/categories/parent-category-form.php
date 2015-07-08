@@ -47,13 +47,20 @@ if (!isset($form_action))
                     </div>
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form action="<?php echo $form_action; ?>" method="post" class="form-horizontal">
+                        <form action="<?php echo $form_action; ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                             <input type="hidden" name="pc_id" value="<?php echo set_value("pc_id", $result["pc_id"]); ?>"/>
 
                             <div class="control-group">
                                 <label class="control-label">Parent Category Name<span class="required">*</span></label>
                                 <div class="controls">
                                     <input type="text" name="pc_name" required="required" value="<?php echo set_value("pc_name", $result["pc_name"]); ?>" data-required="1" class="span6 m-wrap"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Image<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="file" name="pc_img" class="span6 m-wrap"/>
                                 </div>
                             </div>
 

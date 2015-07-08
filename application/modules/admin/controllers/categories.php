@@ -36,6 +36,7 @@ class Categories extends CI_Controller
         {
             $arr = $this->input->post();
 //                prd($arr);
+//            prd($_FILES);
             $pc_id = $arr["pc_id"];
             $pc_name = $arr["pc_name"];
 
@@ -52,6 +53,13 @@ class Categories extends CI_Controller
                 if (empty($is_exists))
                 {
                     $model->insertData(TABLE_PARENT_CATEGORY, $data_array);
+                    $pc_id = $this->db->insert_id();
+
+                    if (isset($_FILES['pc_img']) && !empty($_FILES['pc_img']))
+                    {
+                        $this->uploadCategoryImage($pc_id, $_FILES['pc_img']);
+                    }
+
                     $this->session->set_flashdata("success", "Parent category added");
                     redirect(base_url_admin("categories/parentCategories"));
                 }
@@ -68,6 +76,12 @@ class Categories extends CI_Controller
                 if (empty($is_exists))
                 {
                     $model->updateData(TABLE_PARENT_CATEGORY, $data_array, array("pc_id" => $pc_id));
+
+                    if (isset($_FILES['pc_img']) && !empty($_FILES['pc_img']))
+                    {
+                        $this->uploadCategoryImage($pc_id, $_FILES['pc_img']);
+                    }
+
                     $this->session->set_flashdata("success", "Parent category edited");
                     redirect(base_url_admin("categories/parentCategories"));
                 }
@@ -264,6 +278,24 @@ class Categories extends CI_Controller
         $model->updateData(TABLE_PARENT_CATEGORY, array('pc_display' => $status_code), array('pc_id' => $pc_id));
         $this->session->set_flashdata('success', 'Category homepage display status changed');
         redirect(base_url_admin('categories/parentCategories'));
+    }
+
+    public function uploadCategoryImage($pc_id, $file_array)
+    {
+        $model = new Common_model();
+        $record = $model->fetchSelectedData('pc_image', TABLE_PARENT_CATEGORY, array('pc_id' => $pc_id));
+        if (!empty($record))
+        {
+            @unlink($record[0]['pc_image']);
+        }
+
+        $file_ext = getFileExtension($file_array['name']);
+        $base_path = CATEGORY_IMG_PATH;
+        $destFilename = $pc_id . '-' . getRandomNumberLength($file_array['name'], 12) . '.' . $file_ext;
+        $width = CATEGORY_IMG_WIDTH;
+        uploadImage($file_array['tmp_name'], $destFilename, $base_path, $width);
+        $model->updateData(TABLE_PARENT_CATEGORY, array('pc_image' => $base_path . '/' . $destFilename), array('pc_id' => $pc_id));
+        return TRUE;
     }
 
 }
