@@ -258,6 +258,12 @@ class Categories extends CI_Controller
         }
     }
 
-}
+    public function changeHomepageDisplayStatus($pc_id, $status_code)
+    {
+        $model = new Common_model();
+        $model->updateData(TABLE_PARENT_CATEGORY, array('pc_display' => $status_code), array('pc_id' => $pc_id));
+        $this->session->set_flashdata('success', 'Category homepage display status changed');
+        redirect(base_url_admin('categories/parentCategories'));
+    }
 
-?>
+}
