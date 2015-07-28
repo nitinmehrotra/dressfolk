@@ -400,7 +400,7 @@ function getUniqueProductURLKey($product_title, $suffix = NULL)
     require_once APPPATH . '/models/common_model.php';
     $model = new Common_model();
     $product_title = str_replace(' ', '-', urldecode($product_title));
-    $is_exists = $model->is_exists('product_code', TABLE_PRODUCTS, array('product_code' => $product_title));
+    $is_exists = $model->is_exists('product_url_key', TABLE_PRODUCTS, array('product_url_key' => $product_title));
     if (!empty($is_exists))
     {
         $suffix = '-' . getRandomNumberLength($product_title, 2);
