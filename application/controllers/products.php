@@ -300,7 +300,7 @@ class Products extends CI_Controller
             $model = new Common_model();
             $custom_model = new Custom_model();
             $category_name_records = array();
-            $cat = urldecode($this->input->get("cat"));
+            $cat = urldecode($this->input->get("cat_id"));
             $query = urldecode($this->input->get("q"));
 
             $whereCondArr = array(
@@ -315,8 +315,8 @@ class Products extends CI_Controller
 
             if (!empty($cat))
             {
-                $whereString .=' AND product_child_category = ' . $cat;
-            }
+                $whereString .=' AND pc_id = ' . $cat;
+            }            
 
             $product_fields = 'product_id, product_title, product_price, product_url_key, pi_image_path, cc_name';
             $productWhereCondStr = '(' . $whereString . ') AND product_status = "1"';
