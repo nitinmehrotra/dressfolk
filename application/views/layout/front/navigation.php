@@ -234,8 +234,8 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                         <?php
                                     }
                                     ?>
-                                    <li class="level0 level-top link-external"><a href="<?php echo base_url('blog'); ?>"class="level-top"><span>Blog</span></a></li>
-                                    <li class="level0 level-top link-external"><a href="<?php echo base_url('testimonials'); ?>"class="level-top"><span>Testimonials</span></a></li>
+                                    <li class="level0 level-top link-external"><a href="<?php echo base_url('blog'); ?>" class="level-top"><span>Blog</span></a></li>
+                                    <li class="level0 level-top link-external"><a href="<?php echo base_url('testimonials'); ?>" class="level-top"><span>Testimonials</span></a></li>
                                 </ul>
                             </div>
                         </div>
