@@ -139,14 +139,14 @@ class Custom_model extends CI_Model
     {
         if ($product_fields == NULL)
         {
-            $product_fields = 'product_id, product_title, product_code, product_price, product_description, pi_image_path, pi_image_title, cc_name, pc_name, seller_fullname, seller_company_name';
+            $product_fields = 'product_id, product_title, product_code, product_price, product_description, pi_image_path, pi_image_title, cc_name, pc_name, seller_fullname, seller_company_name, product_url_key';
         }
 
         $result = $this->db->select($product_fields);
         $result = $this->db->group_by('product_id');
-        $result = $result->join(TABLE_CHILD_CATEGORY . " as cc", "cc.cc_id=p.product_child_category", "INNER");
-        $result = $result->join(TABLE_PARENT_CATEGORY . " as pc", "pc.pc_id=cc.cc_pc_id", "INNER");
-        $result = $result->join(TABLE_SELLER . " as s", "s.seller_id=p.product_seller_id", "INNER");
+        $result = $result->join(TABLE_CHILD_CATEGORY . " as cc", "cc.cc_id=p.product_child_category", "LEFT");
+        $result = $result->join(TABLE_PARENT_CATEGORY . " as pc", "pc.pc_id=cc.cc_pc_id", "LEFT");
+        $result = $result->join(TABLE_SELLER . " as s", "s.seller_id=p.product_seller_id", "LEFT");
         $result = $result->join(TABLE_PRODUCT_IMAGES . " as pi", "product_id = pi_product_id AND pi_primary = 1", "LEFT");
         $result = $result->join(TABLE_PRODUCT_DETAILS . " as pd", "product_id = pd_product_id", "LEFT");
 
