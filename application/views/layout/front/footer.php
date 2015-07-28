@@ -187,6 +187,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
 <script type="text/javascript" src="<?php echo JS_PATH; ?>/frontend.js"></script>
 <script type="text/javascript" src="<?php echo JS_PATH; ?>/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script>
+    $ = jQuery;
     jQuery(document).ready(function () {
         jQuery('.datepicker').datepicker();
 
@@ -226,7 +227,14 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                 });
             }
         });
-    });
+
+        $('.form-search ul.dropdown-menu li a').click(function () {
+            var cat_id = $(this).attr('data-value');
+            var cat_name = $(this).html();
+            $('.category-filter button span.category-label').html(cat_name);
+            $('.search_cat_id').val(cat_id);
+        })
+    })
 </script>
 </body>
 </html>

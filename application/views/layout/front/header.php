@@ -38,6 +38,7 @@ $path = $controller . "/" . $method;
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/style.css" media="all" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/print.css" media="print" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/custom.css" />
+        <script type="text/javascript" src="<?php echo JS_PATH; ?>/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo JS_PATH; ?>/5164f243df82e4cc8456f4bdf354ac03.js"></script>
         <script type="text/javascript">
             //<![CDATA[

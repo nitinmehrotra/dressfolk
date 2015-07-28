@@ -369,7 +369,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                         ?>
                                     </ul>
                                 </span>
-                                <input type="hidden" name="cat" value=""/>
+                                <input type="hidden" name="cat" class="search_cat_id" value=""/>
                                 <input id="search" type="search" name="q" value="" class="input-text required-entry" maxlength="128" />
                                 <button type="submit" title="Search" class="search-button"><span><span><i class="fa fa-search"></i></span></span></button>
                             </div>
