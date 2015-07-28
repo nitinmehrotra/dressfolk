@@ -4,19 +4,8 @@ $method = $this->router->fetch_method();
 $path = $controller . "/" . $method;
 
 $model = new Common_model();
-$pc_id_array = array();
-$cc_records = array();
-$pc_records = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, NULL, 'pc_name', 'ASC', 5);
-foreach ($pc_records as $pc)
-{
-    $pc_id_array[] = $pc['pc_id'];
-}
-$cc_sql = 'SELECT cc_pc_id, cc_id, cc_name, cc_url FROM ' . TABLE_CHILD_CATEGORY . ' as cc WHERE cc_pc_id IN (' . implode(', ', $pc_id_array) . ') ORDER BY cc_name LIMIT 0,4';
-$cc_data = $model->db->query($cc_sql)->result_array();
-foreach ($cc_data as $ccKey => $ccValue)
-{
-    $cc_records[$ccValue['cc_pc_id']][] = $ccValue;
-}
+$custom_model = new Custom_model();
+$nested_category = $custom_model->getNestedCategories(5, 4);
 ?>
 <header class="header-wrapper">
     <div class="header-container">
@@ -38,7 +27,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                             <ul class="nav-accordion nav-mobile-accordion">
                                 <li><a href="<?php echo base_url(); ?>">Home</a></li>
                                 <?php
-                                foreach ($pc_records as $pcKey => $pcValue)
+                                foreach ($nested_category as $pcKey => $pcValue)
                                 {
                                     ?>
                                     <li class="level0 nav-7 level-top parent">
@@ -46,12 +35,12 @@ foreach ($cc_data as $ccKey => $ccValue)
                                             <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                         </a>
                                         <?php
-                                        if (!empty($cc_records[$pcValue['pc_id']]))
+                                        if (!empty($pcValue['cc_records']))
                                         {
                                             echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
-                                            foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                            foreach ($pcValue['cc_records'] as $ccKey => $ccValue)
                                             {
-                                                echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                                echo '<li class="level2 nav-7-1-1 first"><a href="' . $ccValue['cc_url'] . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
                                             }
                                             echo '</ul></li></ul>';
                                         }
@@ -73,7 +62,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                                 <a href="<?php echo base_url(); ?>" class="level-top"><span>Home</span></a>
                             </li>
                             <?php
-                            foreach ($pc_records as $pcKey => $pcValue)
+                            foreach ($nested_category as $pcKey => $pcValue)
                             {
                                 ?>
                                 <li class="level0 nav-2 level-top parent parent">
@@ -81,13 +70,13 @@ foreach ($cc_data as $ccKey => $ccValue)
                                         <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                     </a>
                                     <?php
-                                    if (!empty($cc_records[$pcValue['pc_id']]))
+                                    if (!empty($pcValue['cc_records']))
                                     {
                                         echo '<div class="level0 menu-wrap-sub"><div class="ulmenu-block ulmenu-block-center menu-items grid12-9 itemgrid itemgrid-3col">';
                                         echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
-                                        foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                        foreach ($pcValue['cc_records'] as $ccKey => $ccValue)
                                         {
-                                            echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                            echo '<li class="level2 nav-7-1-1 first"><a href="' . $ccValue['cc_url'] . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
                                         }
                                         echo '</ul></li></ul></div></div>';
                                     }
@@ -188,7 +177,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                                     <ul class="nav-accordion nav-mobile-accordion">
                                         <li><a href="<?php echo base_url(); ?>">Home</a></li>
                                         <?php
-                                        foreach ($pc_records as $pcKey => $pcValue)
+                                        foreach ($nested_category as $pcKey => $pcValue)
                                         {
                                             ?>
                                             <li class="level0 nav-7 level-top parent">
@@ -197,12 +186,12 @@ foreach ($cc_data as $ccKey => $ccValue)
                                                 </a>
 
                                                 <?php
-                                                if (!empty($cc_records[$pcValue['pc_id']]))
+                                                if (!empty($pcValue['cc_records']))
                                                 {
                                                     echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
-                                                    foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                                    foreach ($pcValue['cc_records'] as $ccKey => $ccValue)
                                                     {
-                                                        echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                                        echo '<li class="level2 nav-7-1-1 first"><a href="' . $ccValue['cc_url'] . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
                                                     }
                                                     echo '</ul></li></ul>';
                                                 }
@@ -222,7 +211,7 @@ foreach ($cc_data as $ccKey => $ccValue)
                                         <a href="<?php echo base_url(); ?>" class="level-top"><span>Home</span></a>
                                     </li>
                                     <?php
-                                    foreach ($pc_records as $pcKey => $pcValue)
+                                    foreach ($nested_category as $pcKey => $pcValue)
                                     {
                                         ?>
                                         <li class="level0 nav-2 level-top parent parent">
@@ -230,13 +219,13 @@ foreach ($cc_data as $ccKey => $ccValue)
                                                 <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                             </a>                                            
                                             <?php
-                                            if (!empty($cc_records[$pcValue['pc_id']]))
+                                            if (!empty($pcValue['cc_records']))
                                             {
                                                 echo '<div class="level0 menu-wrap-sub"><div class="ulmenu-block ulmenu-block-center menu-items grid12-9 itemgrid itemgrid-3col">';
                                                 echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
-                                                foreach ($cc_records[$pcValue['pc_id']] as $ccKey => $ccValue)
+                                                foreach ($pcValue['cc_records'] as $ccKey => $ccValue)
                                                 {
-                                                    echo '<li class="level2 nav-7-1-1 first"><a href="' . $cc_records[$pcValue['pc_id']][$ccKey]['cc_url'] . '"><span>' . stripslashes($cc_records[$pcValue['pc_id']][$ccKey]['cc_name']) . '</span></a></li>';
+                                                    echo '<li class="level2 nav-7-1-1 first"><a href="' . $ccValue['cc_url'] . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
                                                 }
                                                 echo '</ul></li></ul></div></div>';
                                             }

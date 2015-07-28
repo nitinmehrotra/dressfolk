@@ -85,8 +85,8 @@ class Custom_model extends CI_Model
         {
             $result = $result->limit($limit);
         }
-        
-        $result=$result->group_by('product_id');
+
+        $result = $result->group_by('product_id');
 
         if ($product_id != NULL || $product_id != 0)
         {
@@ -303,6 +303,19 @@ class Custom_model extends CI_Model
         $model = new Common_model();
         $record = $model->getAllDataFromJoin($fields, TABLE_RATINGS . ' as r', array(TABLE_USERS . ' as u' => 'u.user_id = rating_user_id'), 'LEFT', $whereCondArr, $orderByFieldName, $orderByType, $limit);
         return $record;
+    }
+
+    public function getNestedCategories($pc_limit = NULL, $cc_limit = NULL)
+    {
+        $model = new Common_model();
+        $pc_records = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, NULL, 'pc_name', 'ASC', $pc_limit);
+        foreach ($pc_records as $key => $value)
+        {
+            $cc_records = $model->fetchSelectedData('cc_pc_id, cc_id, cc_name, cc_url', TABLE_CHILD_CATEGORY, array('cc_pc_id' => $value['pc_id']), 'cc_name', 'ASC', $cc_limit);
+            $pc_records[$key]['cc_records'] = $cc_records;
+        }
+
+        return $pc_records;
     }
 
 }
