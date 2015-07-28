@@ -99,6 +99,7 @@ class Staticpages extends CI_Controller
                 "Contact Us" => base_url("contact-us")
             );
             $data["breadcrumbArray"] = $breadcrumbArray;
+            $data["meta_title"] = 'Contact Us | ' . SITE_NAME;
 
             $this->template->write_view("content", "pages/static/contact-us", $data);
             $this->template->render();
