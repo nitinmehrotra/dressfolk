@@ -53,8 +53,8 @@
                                     {
                                         $product_url = getProductUrl($pValue['product_url_key']);
                                         $product_title = stripslashes($pValue['product_title']);
-                                        $product_image_1 = getImage('');
-                                        $product_image_2 = getImage('');
+                                        $product_image_1 = getImage($pValue['pi_image_path']);
+                                        $product_image_2 = getImage($pValue['pi_image_path']);
                                         $product_price = $pValue['product_price'];
                                         ?>
                                         <li class="item effect-pageLeft">
