@@ -362,7 +362,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)" data-value="">All</a></li>
                                         <?php
-                                        foreach ($pc_records as $pcKey => $pcValue)
+                                        foreach ($nested_category as $pcKey => $pcValue)
                                         {
                                             echo '<li><a href="javascript:void(0)" data-value="' . $pcValue['pc_id'] . '">' . stripslashes($pcValue['pc_name']) . '</a></li>';
                                         }
