@@ -31,7 +31,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                 {
                                     ?>
                                     <li class="level0 nav-7 level-top parent">
-                                        <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
+                                        <a href="<?php echo base_url('products/category/' . $pcValue['pc_url']); ?>" class="level-top">
                                             <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                         </a>
                                         <?php
@@ -40,7 +40,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                             echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
                                             foreach ($pcValue['cc_records'] as $ccKey => $ccValue)
                                             {
-                                                echo '<li class="level2 nav-7-1-1 first"><a href="' . base_url('products/category/' . $pcValue['pc_url'] . '/' . $ccValue['cc_url']) . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
+                                                echo '<li class="level2 nav-7-1-1 first"><a href="' . base_url('products/categories/' . $pcValue['pc_url'] . '/' . $ccValue['cc_url']) . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
                                             }
                                             echo '</ul></li></ul>';
                                         }
@@ -66,7 +66,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                             {
                                 ?>
                                 <li class="level0 nav-2 level-top parent parent">
-                                    <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
+                                    <a href="<?php echo base_url('products/category/' . $pcValue['pc_url']); ?>" class="level-top">
                                         <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                     </a>
                                     <?php
@@ -76,7 +76,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                         echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
                                         foreach ($pcValue['cc_records'] as $ccKey => $ccValue)
                                         {
-                                            echo '<li class="level2 nav-7-1-1 first"><a href="' . base_url('products/category/' . $pcValue['pc_url'] . '/' . $ccValue['cc_url']) . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
+                                            echo '<li class="level2 nav-7-1-1 first"><a href="' . base_url('products/categories/' . $pcValue['pc_url'] . '/' . $ccValue['cc_url']) . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
                                         }
                                         echo '</ul></li></ul></div></div>';
                                     }
@@ -181,7 +181,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                         {
                                             ?>
                                             <li class="level0 nav-7 level-top parent">
-                                                <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
+                                                <a href="<?php echo base_url('products/category/' . $pcValue['pc_url']); ?>" class="level-top">
                                                     <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                                 </a>
 
@@ -191,7 +191,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                                     echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
                                                     foreach ($pcValue['cc_records'] as $ccKey => $ccValue)
                                                     {
-                                                        echo '<li class="level2 nav-7-1-1 first"><a href="' . base_url('products/category/' . $pcValue['pc_url'] . '/' . $ccValue['cc_url']) . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
+                                                        echo '<li class="level2 nav-7-1-1 first"><a href="' . base_url('products/categories/' . $pcValue['pc_url'] . '/' . $ccValue['cc_url']) . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
                                                     }
                                                     echo '</ul></li></ul>';
                                                 }
@@ -215,7 +215,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                     {
                                         ?>
                                         <li class="level0 nav-2 level-top parent parent">
-                                            <a href="<?php echo base_url($pcValue['pc_url']); ?>" class="level-top">
+                                            <a href="<?php echo base_url('products/category/' . $pcValue['pc_url']); ?>" class="level-top">
                                                 <span><?php echo stripslashes($pcValue['pc_name']); ?></span>
                                             </a>                                            
                                             <?php
@@ -225,7 +225,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                                 echo '<ul class="level0"><li class="level1 item nav-7-1 first parent"><ul class="level1">';
                                                 foreach ($pcValue['cc_records'] as $ccKey => $ccValue)
                                                 {
-                                                    echo '<li class="level2 nav-7-1-1 first"><a href="' . base_url('products/category/' . $pcValue['pc_url'] . '/' . $ccValue['cc_url']) . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
+                                                    echo '<li class="level2 nav-7-1-1 first"><a href="' . base_url('products/categories/' . $pcValue['pc_url'] . '/' . $ccValue['cc_url']) . '"><span>' . stripslashes($ccValue['cc_name']) . '</span></a></li>';
                                                 }
                                                 echo '</ul></li></ul></div></div>';
                                             }

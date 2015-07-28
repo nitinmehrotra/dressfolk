@@ -64,7 +64,8 @@
     $route['my-wishlist'] = 'products/myWishlist';
     
     $route['products/view/(:any)'] = 'products/productDetail/$1';
-    $route['products/category/(:any)/(:any)'] = 'products/viewProductCatList/$1/$2';
+    $route['products/categories/(:any)/(:any)'] = 'products/viewProductCatList/$1/$2';
+    $route['products/category/(:any)'] = 'products/viewProductParentCatList/$1';
     
     $route['my-account'] = 'user/myAccount';
     $route['review-us'] = 'index/reviewUs';

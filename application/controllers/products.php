@@ -475,4 +475,11 @@ class Products extends CI_Controller
         $this->productsList($cat_record[0]['cc_name']);
     }
 
+    public function viewProductParentCatList($pc_url)
+    {
+        $model = new Common_model();
+        $cat_record = $model->fetchSelectedData('pc_name', TABLE_PARENT_CATEGORY, array('pc_url' => $pc_url));
+        $this->childList($cat_record[0]['pc_name']);
+    }
+
 }
