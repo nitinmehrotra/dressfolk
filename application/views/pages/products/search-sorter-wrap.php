@@ -23,11 +23,11 @@
                 </ul>
             </div>
         </div>
-        <div class="direction-list">
+<!--        <div class="direction-list">
             <a class="direction direction-up"
                href="women-dir=desc&order=position.html"
                title="Set Descending Direction"><i
                     class="fa fa-arrow-down"></i></a>
-        </div>
+        </div>-->
     </div>
 </div>
