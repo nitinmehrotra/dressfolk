@@ -84,12 +84,6 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                             <ul class="footer-list">
                                                                 <li><span class="widget widget-cms-link"><a href="<?php echo base_url('all-products'); ?>" title="All Products"><span>All Products</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('return-exchanges'); ?>" title="Returns and Exchanges"><span>Returns and Exchanges</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('shipping-options'); ?>" title="Shipping Options"><span>Shipping Options</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('faq'); ?>" title="Help &amp; FAQs"><span>Help &amp; FAQs</span></a></span>
-                                                                </li>
                                                                 <li><span class="widget widget-cms-link"><a href="<?php echo base_url('review-us'); ?>" title="Review Us"><span>Review Us</span></a></span>
                                                                 </li>
                                                             </ul>
