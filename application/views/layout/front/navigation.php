@@ -293,14 +293,6 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                 }
                                 ?>
                                 <li ><a href="<?php echo base_url('blog'); ?>" title="Blog" >Blog</a></li>
-                                <?php
-                                if (isset($this->session->userdata['user_id']))
-                                {
-                                    ?>
-                                    <li class="last" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
-                                    <?php
-                                }
-                                ?>
                             </ul>
                         </div>
                     </div>
