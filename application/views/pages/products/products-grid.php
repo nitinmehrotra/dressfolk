@@ -15,31 +15,6 @@
                                             <div class="col-lg-9">
                                                 <?php $this->load->view('pages/products/search-sorter-wrap'); ?>
                                             </div>
-                                            <div class="col-lg-3">
-                                                <div class="pager">
-                                                    <div class="pages">
-                                                        <ol>
-
-
-
-                                                            <li class="current">1</li>
-                                                            <li><a href="women-p=2.html">2</a></li>
-
-
-
-
-                                                            <li class="last">
-                                                                <a class="next i-next" href="women-p=2.html" title="Next">
-                                                                    <i class="fa fa-angle-right"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ol>
-
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -105,59 +80,6 @@
                                 ?>
                             </ul>
                             <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
-                            <div class="toolbar-bottom">
-                                <div class="toolbar">
-                                    <div class="row">
-                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                            <div class="row">
-                                                <div class="col-lg-9">
-                                                    <?php $this->load->view('pages/products/search-sorter-wrap'); ?>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="pager">
-
-
-
-
-                                                        <div class="pages">
-                                                            <ol>
-
-
-
-                                                                <li class="current">1</li>
-                                                                <li><a href="women-p=2.html">2</a></li>
-
-
-
-
-                                                                <li class="last">
-                                                                    <a class="next i-next" href="women-p=2.html" title="Next">
-                                                                        <i class="fa fa-angle-right"></i>
-                                                                    </a>
-                                                                </li>
-                                                            </ol>
-
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="view-mode">
-                                                <span class="active"><div class="fs1" aria-hidden="true" data-icon=""></div></span>
-                                                <span class="non-active">
-                                                    <a href="women-mode=list.html" title="List"
-                                                       class="list">
-                                                        <div class="fs1" aria-hidden="true" data-icon="d"></div>
-                                                    </a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <script type="text/javascript">
