@@ -49,26 +49,6 @@ $nested_category = $custom_model->getNestedCategories();
         </div>
         <div class="block-content">
             <dl id="narrow-by-list">
-                <dt>Category</dt>
-                <dd>
-                    <ol>
-                        <li>
-                            <a href="women-cat=27.html">
-                                Styliest Bag                                <span class="count">9</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="women-cat=28.html">
-                                Material Bag                                <span class="count">9</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="women-cat=29.html">
-                                Shoes                                <span class="count">9</span>
-                            </a>
-                        </li>
-                    </ol>
-                </dd>
                 <dt>Price</dt>
                 <dd>
                     <ol>
@@ -80,46 +60,6 @@ $nested_category = $custom_model->getNestedCategories();
                         <li>
                             <a href="women-price=200-.html">
                                 <span class="price">$200.00</span> and above                                <span class="count">12</span>
-                            </a>
-                        </li>
-                    </ol>
-                </dd>
-                <dt>Manufacturer</dt>
-                <dd>
-                    <ol class="configurable-swatch-list">
-                        <li>
-                            <a href="women-manufacturer=21.html" class="swatch-link">
-                                <span class="swatch-label">
-                                    Chanel                                    </span>
-                                <span class="count">1</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="women-manufacturer=9.html" class="swatch-link">
-                                <span class="swatch-label">
-                                    Gucci                                    </span>
-                                <span class="count">1</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="women-manufacturer=19.html" class="swatch-link">
-                                <span class="swatch-label">
-                                    Hermes                                    </span>
-                                <span class="count">1</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="women-manufacturer=22.html" class="swatch-link">
-                                <span class="swatch-label">
-                                    HM                                    </span>
-                                <span class="count">1</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="women-manufacturer=20.html" class="swatch-link">
-                                <span class="swatch-label">
-                                    Zara                                    </span>
-                                <span class="count">1</span>
                             </a>
                         </li>
                     </ol>
