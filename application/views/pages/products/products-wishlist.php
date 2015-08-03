@@ -63,8 +63,8 @@
                                                 <div class="product-new-label">New</div>       
                                                 <!-- // End Product Label -->
                                                 <a class="product-image" href="<?php echo $product_url; ?>" title="<?php echo $product_title; ?>">
-                                                    <img class="lazyOwl img-responsive" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>"/>
-                                                    <img class="img-responsive alt-img lazy" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>" />
+                                                    <img class="lazyOwl img-responsive" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_1; ?>" src="<?php echo $product_image_1; ?>" alt="<?php echo $product_title; ?>" style="display: block;"/>
+                                                    <img class="img-responsive alt-img lazy" data-src="<?php echo $product_image_2; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo $product_image_2; ?>" alt="<?php echo $product_title; ?>" style="display: block;"/>
                                                 </a>
 
                                                 <div class="actions">
