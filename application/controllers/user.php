@@ -80,4 +80,56 @@ class User extends CI_Controller
         redirect(base_url('my-account'));
     }
 
+    public function myAddresses()
+    {
+        $model = new Common_model();
+        $user_id = $this->session->userdata['user_id'];
+
+        if ($this->input->post())
+        {
+            $arr = $this->input->post();
+
+            $location_data = parse_address_google($arr['location']);
+            $address_array = array(
+                'ua_user_id' => $user_id,
+                'ua_line1' => addslashes($arr['address_line1']),
+                'ua_line2' => addslashes($arr['address_line2']),
+                'ua_landmark' => addslashes($arr['landmark']),
+                'ua_location' => addslashes($arr['location']),
+                'ua_postcode' => addslashes($arr['pincode']),
+                'ua_city' => $location_data['city'],
+                'ua_state' => $location_data['state'],
+                'ua_country' => $location_data['country'],
+                'ua_status' => '1',
+                'ua_ipaddress' => USER_IP,
+                'ua_useragent' => USER_AGENT
+            );
+            $model->insertData(TABLE_USER_ADDRESSES, $address_array);
+            $this->session->set_flashdata("success", "Address successfully added");
+            redirect(base_url('my-addresses'));
+        }
+        else
+        {
+            $records = $model->fetchSelectedData('*', TABLE_USER_ADDRESSES, array('ua_user_id' => $user_id, 'ua_deleted' => '0'), 'ua_id', 'DESC');
+
+            $breadcrumbArray = array(
+                'My Addresses' => base_url('my-addresses')
+            );
+            $data["breadcrumbArray"] = $breadcrumbArray;
+            $data['records'] = $records;
+            $data['meta_title'] = 'My addresses | ' . SITE_NAME;
+            $this->template->write_view("content", "pages/user/my-addresses", $data);
+            $this->template->render();
+        }
+    }
+
+    public function removeAddress($ua_id)
+    {
+        $model = new Common_model();
+        $user_id = $this->session->userdata['user_id'];
+        $model->updateData(TABLE_USER_ADDRESSES, array('ua_deleted' => '1'), array('ua_id' => $ua_id, 'ua_user_id' => $user_id));
+        $this->session->set_flashdata("success", "Address successfully removed");
+        redirect(base_url('my-addresses'));
+    }
+
 }

@@ -131,6 +131,7 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                         ?>
                                         <li class="first" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
                                         <li ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                        <li ><a href="<?php echo base_url('my-addresses'); ?>" title="My Addresses" >My Addresses</a></li>
                                         <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
                                         <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
                                         <?php
@@ -276,7 +277,9 @@ $nested_category = $custom_model->getNestedCategories(5, 4);
                                 if (isset($this->session->userdata['user_id']))
                                 {
                                     ?>
-                                    <li class="first"><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                    <li class="first" ><a href="<?php echo base_url('logout'); ?>" title="Logout" >Logout</a></li>
+                                    <li ><a href="<?php echo base_url('my-account'); ?>" title="My Account" >My Account</a></li>
+                                    <li ><a href="<?php echo base_url('my-addresses'); ?>" title="My Addresses" >My Addresses</a></li>
                                     <li ><a href="<?php echo base_url('my-wishlist'); ?>" title="My Wishlist" >My Wishlist</a></li>
                                     <li ><a href="<?php echo base_url('cart'); ?>" title="My Cart" class="top-link-cart">My Cart</a></li>
                                     <?php

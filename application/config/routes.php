@@ -68,6 +68,7 @@
     $route['products/category/(:any)'] = 'products/viewProductParentCatList/$1';
     
     $route['my-account'] = 'user/myAccount';
+    $route['my-addresses'] = 'user/myAddresses';
     $route['review-us'] = 'index/reviewUs';
     $route['testimonials'] = 'index/testimonials';
 
