@@ -1,11 +1,3 @@
-<div class="main-breadcrumbs">
-    <div class="container">
-        <div class="row show-grid">
-            <div class="col-lg-12">
-            </div>
-        </div>
-    </div>
-</div>
 <div class="main-wrapper">
     <div class="main">
         <div class="site-preface"></div>

@@ -1,46 +1,47 @@
+<link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/../testimonial_page/style.css" media="screen">
+
 <div class="main-wrapper">
-    <div class="container">
-        <div class="main">
+    <div class="main">
+        <div class="site-preface"></div>
+        <div class="container">
             <div class="row show-grid">
-                <div class="col-lg-12">
-                    <div class="site-preface"></div>
-                </div>
             </div>
+        </div>
+        <div class="container">
             <div class="row show-grid">
-                <div class="col-lg-12">
-                </div>
-            </div>
-            <div class="row show-grid">
-                <div class="col-lg-12">
+                <div class="col-md-12 clearfix">
                     <div class="col-main">
-                        <div class="std">
-                            <div class="page-title text-center">
-                                <h1>Testimonials</h1>
+                        <div class="account-create">
+                            <div class="page-title">
+                                <h1 style="margin: 0">Testimonials</h1>
                             </div>
-                            <?php
-                            if (!empty($record))
-                            {
-                                foreach ($record as $key => $value)
-                                {
-                                    ?>
-                                    <div class="testimonial-row">
-                                        <h4><?php echo stripslashes($value['user_fullname']); ?></h4>
-                                        <p><?php echo stripslashes($value['rating_comment']); ?></p>
-                                    </div>
-                                    <?php
-                                }
-                            }
-                            else
-                            {
-                                ?>
-                            <div class="text-center"><p>Testimonials coming soon!</p></div>
-                                <?php
-                            }
-                            ?>
-                        </div>     
+                        </div>
                     </div>
                 </div>
+
+                <section class="cd-container col-md-12" id="cd-timeline">
+                    <!-- cd-timeline-content -->
+                    <div class="cd-timeline-block">
+                        <div class="cd-timeline-img cd-picture">
+                            <img alt="" src="<?php echo CSS_PATH; ?>/../testimonial_page/male.png">
+                        </div><!-- cd-timeline-img -->
+                        <div class="cd-timeline-content">
+                            <h2>Sheila Makil</h2>
+                            <p>I would highly recommend Kashmir Box as the go-to online-site to do 
+                                shopping for Kashmiri products from the comfort of your home. I am very 
+                                impressed with their quick responses to my un-ending queries and they 
+                                kept me informed at every stage on the progress of the custom-made rug I
+                                ordered through them. They made sure that the rug was delivered in a 
+                                safe and timely manner to its destination. The colors and design is 
+                                exactly to my liking and I look forward to showing it off in my home. A 
+                                big thank you to all you folks out there at Kashmir Box and keep up the 
+                                good work !
+                            </p>
+                        </div><!-- cd-timeline-content -->
+                    </div>
             </div>
         </div>
     </div>
 </div>
+
+
