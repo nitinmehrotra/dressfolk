@@ -96,7 +96,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                         <div class="custom-footer-content">
                                                             <ul class="footer-list">
                                                                 <?php
-                                                                if (isset($this->session->userdata['user_id']))
+                                                                if (!isset($this->session->userdata['user_id']))
                                                                 {
                                                                     ?>
                                                                     <li><span class="widget widget-cms-link"><a href="<?php echo base_url('login'); ?>" title="Login"><span>Login</span></a></span>
