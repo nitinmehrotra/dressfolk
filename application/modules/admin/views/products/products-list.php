@@ -30,7 +30,6 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Category</th>
-                                    <th>Seller's Margin</th>
                                     <th>Selling Price</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -55,7 +54,6 @@
                                                 <p><?php echo $product_title; ?> (<strong><?php echo $product_code; ?></strong>)</p>
                                             </td>
                                             <td><?php echo $category; ?></td>
-                                            <td><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_seller_price, 2); ?></td>
                                             <td><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_cost_price, 2); ?></td>
                                             <td class="center"><?php echo $product_status; ?></td>
                                             <td class="center">
