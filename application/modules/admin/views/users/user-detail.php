@@ -38,7 +38,7 @@
                                     <li><span>Gender: </span><span><?php echo ucwords($record['user_gender']); ?></span></li>
                                     <li><span>Last modified: </span><span><?php echo date('d-M-Y h:i A', strtotime($record['user_timestamp'])); ?></span></li>
                                     <li><span>Joined on: </span><span><?php echo date('d-M-Y h:i A', strtotime($record['user_joined_date'])); ?></span></li>
-                                    <li><span>Added By: </span><span><?php echo $record['user_added_by']; ?></span></li>
+                                    <!--<li><span>Added By: </span><span><?php echo $record['user_added_by']; ?></span></li>-->
                                 </ul>
                             </div>
 
