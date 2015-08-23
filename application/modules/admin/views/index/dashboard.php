@@ -39,22 +39,6 @@
                     </div>
                 </div>
                 <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
-                    <div class="dashboard-stat purple">
-                        <div class="visual">
-                            <i class="icon-user-md"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                <?php echo number_format($total_sellers); ?>
-                            </div>
-                            <div class="desc">Sellers</div>
-                        </div>
-                        <a class="more" href="<?php echo base_url("admin/sellers"); ?>">
-                            View all <i class="m-icon-swapright m-icon-white"></i>
-                        </a>						
-                    </div>
-                </div>
-                <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
                     <div class="dashboard-stat green">
                         <div class="visual">
                             <i class="icon-th-large"></i>
@@ -66,22 +50,6 @@
                             <div class="desc">Products</div>
                         </div>
                         <a class="more" href="<?php echo base_url_admin("products"); ?>">
-                            View all <i class="m-icon-swapright m-icon-white"></i>
-                        </a>						
-                    </div>
-                </div>
-                <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
-                    <div class="dashboard-stat yellow">
-                        <div class="visual">
-                            <i class="icon-money"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                <?php echo DEFAULT_CURRENCY_SYMBOL . number_format($total_earnings, 2); ?>
-                            </div>
-                            <div class="desc">Earnings</div>
-                        </div>
-                        <a class="more" href="<?php echo base_url("#"); ?>">
                             View all <i class="m-icon-swapright m-icon-white"></i>
                         </a>						
                     </div>
