@@ -29,7 +29,11 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                 </div>
                                 <div class="list-footer col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <div class="row">
-                                        <?php // echo $this->load->view('layout/front/footer-newsletter-subscribe'); ?>
+
+                                        <?php
+                                        echo $this->load->view('layout/front/footer-newsletter-subscribe');
+                                        ?>
+
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-links">
                                             <div class="footer-links">
                                                 <div class="row">
