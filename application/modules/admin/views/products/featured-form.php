@@ -13,8 +13,8 @@ else
     $result["product_id"] = "";
     $result["product_title"] = "";
     $result["product_code"] = "";
-    $result["feature_end_time"] = "";
-    $result["feature_start_time"] = "";
+    $result["feature_end_time"] = date('Y-m-d');
+    $result["feature_start_time"] = date('Y-m-d');
     $result["feature_status"] = "";
 }
 
