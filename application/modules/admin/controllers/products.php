@@ -377,12 +377,21 @@ class Products extends CI_Controller
 
             foreach ($arr['pd_id'] as $key => $value)
             {
+                if (empty($arr['product_min_quantity'][$key]))
+                {
+                    $product_min_quantity = 1;
+                }
+                else
+                {
+                    $product_min_quantity = $arr['product_min_quantity'][$key];
+                }
+
                 $data_array = array(
                     'pd_product_id' => $product_id,
                     'pd_size' => ($arr['product_size'][$key]),
                     'pd_color_name' => ucwords($arr['product_color'][$key]),
                     'pd_quantity' => ($arr['product_quantity'][$key]),
-                    'pd_min_quantity' => ($arr['product_min_quantity'][$key]),
+                    'pd_min_quantity' => $product_min_quantity,
                     'pd_ipaddress' => USER_IP,
                     'pd_useragent' => USER_AGENT,
                     'pd_status' => '1'

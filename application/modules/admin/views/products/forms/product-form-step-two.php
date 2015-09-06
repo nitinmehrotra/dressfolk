@@ -73,8 +73,8 @@ if (!isset($form_action))
                                                         <input type='text' name='product_quantity[]' required="required" class="" value="<?php echo $value['pd_quantity']; ?>" placeholder="(eg.:- 100)"/>
                                                     </div>
                                                     <div class='span3'>
-                                                        <label>Min. quantity customer shall order<span class="required">*</span></label>
-                                                        <input type='text' name='product_min_quantity[]' required="required" class="" value="<?php echo $value['pd_min_quantity']; ?>" placeholder="(eg.:- 10)"/>
+                                                        <label>Min. quantity customer shall order</label>
+                                                        <input type='text' name='product_min_quantity[]' class="" value="<?php echo $value['pd_min_quantity']; ?>" placeholder="(eg.:- 10)"/>
                                                     </div>
                                                 </div>
                                                 <?php
