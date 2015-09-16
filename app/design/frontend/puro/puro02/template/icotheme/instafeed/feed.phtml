@@ -1,0 +1,54 @@
+<?php
+/**
+ * @copyright   Copyright (C)2015 IcoTheme.com. All Rights Reserved.
+ */
+?>
+<?php
+$title = $this->getConfig('widget_title');
+$showby = $this->getConfig('show_by');
+$clientid = $this->getConfig('clientid');
+$accesstoken = $this->getConfig('accesstoken');
+$userid = $this->getConfig('userid');
+$tagname = $this->getConfig('tag_name');
+$locationid = $this->getConfig('location_id');
+$sortby = $this->getConfig('sortby');
+$links = $this->getConfig('links');
+$limit = $this->getConfig('limit');
+$resolution = $this->getConfig('resolution');
+$custom_template = $this->getConfig('custom_template');
+?>
+<div class="block-instafeed <?php echo $this->getConfig('classes') ?>">
+    <?php if ($title): ?>
+        <div class="container">
+            <div class="title-wrapper">
+                <h3 class="title-widget">
+                    <span class="title"><?php echo $title ?></span>
+                </h3>
+                <span class="arrow-left"></span>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    <?php endif ?>
+    <div id="instafeed"></div>
+    <script type="text/javascript">
+        var userFeed = new Instafeed({
+            get: '<?php echo $showby;?>',
+            <?php if($showby == 'user'):?>
+            userId: <?php echo $userid;?>,
+            <?php endif;?>
+            <?php if($showby == 'popular' || $showby == 'tagged'):?>
+            tagName: '<?php echo $tagname;?>',
+            <?php endif;?>
+            <?php if($showby == 'location_id'):?>
+            locationId: <?php echo $locationid;?>,
+            <?php endif;?>
+            accessToken: '<?php echo $accesstoken;?>',
+            template: '<?php echo $custom_template;?>',
+            links: <?php echo $links;?>,
+            limit: <?php echo $limit;?>,
+            resolution: '<?php echo $resolution;?>',
+            sortBy: '<?php echo $sortby;?>'
+        });
+        userFeed.run();
+    </script>
+</div>
