@@ -33,10 +33,12 @@ $path = $controller . "/" . $method;
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
         <link rel="icon" href="<?php echo IMAGES_PATH; ?>/favicon.ico" type="image/x-icon"/>
         <link rel="shortcut icon" href="<?php echo IMAGES_PATH; ?>/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="<?php echo JS_PATH; ?>/bootstrap-datepicker/css/datepicker.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/owl.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/style.css" media="all" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/print.css" media="print" />
         <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>/custom.css" />
+        <script type="text/javascript" src="<?php echo JS_PATH; ?>/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo JS_PATH; ?>/5164f243df82e4cc8456f4bdf354ac03.js"></script>
         <script type="text/javascript">
             //<![CDATA[

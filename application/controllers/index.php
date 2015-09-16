@@ -11,11 +11,18 @@ class Index extends CI_Controller
     public function index()
     {
         $data = array();
+        $model = new Common_model();
         $custom_model = new Custom_model();
         $product_fields = 'product_id, product_title, product_price, product_url_key, pi_image_path';
         $products_Arr = $custom_model->getAllProductsList($product_fields, array('product_status' => '1'), 'pd_id', 'DESC', 8);
+        // to fetch featured products
+        $featured_product_arr = $custom_model->getFeaturedProducts($product_fields, array('feature_start_time <=' => date('Y-m-d'), 'feature_end_time >=' => date('Y-m-d'), 'feature_status' => '1'), 'rand()', 'ASC', 8);
+
+        $category_images_records = $model->fetchSelectedData('pc_name, pc_url, pc_image', TABLE_PARENT_CATEGORY, array('pc_display' => '1'));
 
         $data['products_arr'] = $products_Arr;
+        $data['featured_products_arr'] = $featured_product_arr;
+        $data['category_images_records'] = $category_images_records;
         $this->template->write_view("content", "pages/index/index", $data);
         $this->template->render();
     }
@@ -152,6 +159,96 @@ class Index extends CI_Controller
             );
             $model->insertData(TABLE_NEWSLETTER, $newsletter_data_array);
         }
+    }
+
+    public function reviewUs()
+    {
+        if ($this->input->post())
+        {
+            if (isset($this->session->userdata["user_id"]))
+            {
+                $model = new Common_model();
+                $arr = $this->input->post();
+
+                $comment = addslashes($arr['comment']);
+                $rating = $arr['rating'];
+                $overall_rating = ($rating['value'] + $rating['quality'] + $rating['price']) / count($rating);
+                $data_array = array(
+                    'rating_product_id' => 0,
+                    'rating_user_id' => $this->session->userdata['user_id'],
+                    'rating_count' => $overall_rating,
+                    'rating_value' => $rating['value'],
+                    'rating_quality' => $rating['quality'],
+                    'rating_price' => $rating['price'],
+                    'rating_comment' => $comment,
+                    'rating_ipaddress' => USER_IP,
+                    'rating_useragent' => USER_AGENT,
+                    'rating_is_general' => '1'
+                );
+                $model->insertData(TABLE_RATINGS, $data_array);
+
+                $this->session->set_flashdata('success', 'Thank you for your valuable feedback. We appreciate it.');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Please login in order to leave us a feedback');
+            }
+            redirect(base_url('review-us'));
+        }
+        else
+        {
+            $data = array();
+            $breadcrumbArray = array(
+                'Review Us' => base_url('review-us')
+            );
+            $data["breadcrumbArray"] = $breadcrumbArray;
+            $data['meta_title'] = 'Review Us | ' . SITE_NAME;
+            $this->template->write_view("content", "pages/index/review-us", $data);
+            $this->template->render();
+        }
+    }
+
+    public function testimonials()
+    {
+        $custom_model = new Custom_model();
+        $record = $custom_model->getAllGeneralRatings('user_fullname, user_gender, rating_comment', NULL, 'rating_id', 'DESC', 8);
+//        prd($record);
+        $breadcrumbArray = array(
+            'Testimonials' => base_url('testimonials')
+        );
+        $data["breadcrumbArray"] = $breadcrumbArray;
+        $data['meta_title'] = 'Testimonials | ' . SITE_NAME;
+        $data['record'] = $record;
+        $this->template->write_view("content", "pages/index/testimonials", $data);
+        $this->template->render();
+    }
+
+    public function loginsocial($network = "facebook")
+    {
+        if (!empty($network) && $network != NULL)
+        {
+            $this->load->library("SocialLib");
+            $socialLib = new SocialLib();
+
+            $login_url = base_url();
+            if ($network == "facebook")
+            {
+                $login_url = $socialLib->getFacebookLoginUrl();
+            }
+
+            redirect($login_url);
+        }
+        else
+        {
+            redirect(base_url());
+        }
+    }
+
+    public function loginWithFacebook()
+    {
+        $this->load->library("SocialLib");
+        $socialLib = new SocialLib();
+        $socialLib->loginWithFacebook();
     }
 
 }

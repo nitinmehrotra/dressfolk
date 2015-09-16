@@ -19,18 +19,17 @@
                     </div>
                     <div class="portlet-body">
                         <div class="clearfix">
-<!--                            <div class="btn-group">
-                                <a href="<?php echo base_url("admin/products/addProduct"); ?>"><button class="btn green">
+                            <div class="btn-group">
+                                <a href="<?php echo base_url("admin/products/editProduct"); ?>"><button class="btn green">
                                         Add New <i class="icon-plus"></i>
                                     </button></a>
-                            </div>-->
+                            </div>
                         </div>
                         <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                             <thead>
                                 <tr>
                                     <th>Title</th>
                                     <th>Category</th>
-                                    <th>Seller's Margin</th>
                                     <th>Selling Price</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -55,7 +54,6 @@
                                                 <p><?php echo $product_title; ?> (<strong><?php echo $product_code; ?></strong>)</p>
                                             </td>
                                             <td><?php echo $category; ?></td>
-                                            <td><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_seller_price, 2); ?></td>
                                             <td><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_cost_price, 2); ?></td>
                                             <td class="center"><?php echo $product_status; ?></td>
                                             <td class="center">

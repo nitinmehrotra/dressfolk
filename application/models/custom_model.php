@@ -74,7 +74,7 @@ class Custom_model extends CI_Model
         $result = $result->join(TABLE_PRODUCT_IMAGES . " as pi", "pi.pi_product_id=p.product_id", "LEFT");
         $result = $result->join(TABLE_CHILD_CATEGORY . " as cc", "cc.cc_id=p.product_child_category", "INNER");
         $result = $result->join(TABLE_PARENT_CATEGORY . " as pc", "pc.pc_id=cc.cc_pc_id", "INNER");
-        $result = $result->join(TABLE_SELLER . " as s", "s.seller_id=p.product_seller_id", "INNER");
+        $result = $result->join(TABLE_SELLER . " as s", "s.seller_id=p.product_seller_id", "LEFT");
 
         if ($orderByFieldName != NULL)
         {
@@ -85,6 +85,8 @@ class Custom_model extends CI_Model
         {
             $result = $result->limit($limit);
         }
+
+        $result = $result->group_by('product_id');
 
         if ($product_id != NULL || $product_id != 0)
         {
@@ -113,7 +115,6 @@ class Custom_model extends CI_Model
         $result = $this->db->group_by('product_id');
         $result = $result->join(TABLE_CHILD_CATEGORY . " as cc", "cc.cc_id=p.product_child_category", "INNER");
         $result = $result->join(TABLE_PARENT_CATEGORY . " as pc", "pc.pc_id=cc.cc_pc_id", "INNER");
-        $result = $result->join(TABLE_GRAND_CATEGORY . " as gc", "gc.gc_id=pc.pc_gc_id", "INNER");
         $result = $result->join(TABLE_SELLER . " as s", "s.seller_id=p.product_seller_id", "INNER");
         $result = $result->join(TABLE_PRODUCT_IMAGES . " as pi", "product_id = pi_product_id AND pi_primary = 1", "LEFT");
         $result = $result->join(TABLE_PRODUCT_DETAILS . " as pd", "product_id = pd_product_id", "LEFT");
@@ -138,14 +139,14 @@ class Custom_model extends CI_Model
     {
         if ($product_fields == NULL)
         {
-            $product_fields = 'product_id, product_title, product_code, product_price, product_description, pi_image_path, pi_image_title, cc_name, pc_name, seller_fullname, seller_company_name';
+            $product_fields = 'product_id, product_title, product_code, product_price, product_description, pi_image_path, pi_image_title, cc_name, pc_name, seller_fullname, seller_company_name, product_url_key';
         }
 
         $result = $this->db->select($product_fields);
         $result = $this->db->group_by('product_id');
-        $result = $result->join(TABLE_CHILD_CATEGORY . " as cc", "cc.cc_id=p.product_child_category", "INNER");
-        $result = $result->join(TABLE_PARENT_CATEGORY . " as pc", "pc.pc_id=cc.cc_pc_id", "INNER");
-        $result = $result->join(TABLE_SELLER . " as s", "s.seller_id=p.product_seller_id", "INNER");
+        $result = $result->join(TABLE_CHILD_CATEGORY . " as cc", "cc.cc_id=p.product_child_category", "LEFT");
+        $result = $result->join(TABLE_PARENT_CATEGORY . " as pc", "pc.pc_id=cc.cc_pc_id", "LEFT");
+        $result = $result->join(TABLE_SELLER . " as s", "s.seller_id=p.product_seller_id", "LEFT");
         $result = $result->join(TABLE_PRODUCT_IMAGES . " as pi", "product_id = pi_product_id AND pi_primary = 1", "LEFT");
         $result = $result->join(TABLE_PRODUCT_DETAILS . " as pd", "product_id = pd_product_id", "LEFT");
 
@@ -287,6 +288,34 @@ class Custom_model extends CI_Model
         $productWhereCondArr['product_child_category'] = $record[0]['product_child_category'];
         $output = $this->getAllProductsList($product_fields, $productWhereCondArr, $orderByFieldName, $orderByType, $limit);
         return $output;
+    }
+
+    public function getAllGeneralRatings($fields, $whereCondArr = NULL, $orderByFieldName = 'rand()', $orderByType = 'ASC', $limit = 12)
+    {
+        if ($whereCondArr == NULL)
+        {
+            $whereCondArr = array();
+        }
+        $whereCondArr['rating_is_general'] = '1';
+        $whereCondArr['rating_comment !='] = '';
+        $whereCondArr['user_fullname !='] = '';
+
+        $model = new Common_model();
+        $record = $model->getAllDataFromJoin($fields, TABLE_RATINGS . ' as r', array(TABLE_USERS . ' as u' => 'u.user_id = rating_user_id'), 'LEFT', $whereCondArr, $orderByFieldName, $orderByType, $limit);
+        return $record;
+    }
+
+    public function getNestedCategories($pc_limit = NULL, $cc_limit = NULL)
+    {
+        $model = new Common_model();
+        $pc_records = $model->fetchSelectedData('*', TABLE_PARENT_CATEGORY, NULL, 'pc_name', 'ASC', $pc_limit);
+        foreach ($pc_records as $key => $value)
+        {
+            $cc_records = $model->fetchSelectedData('cc_pc_id, cc_id, cc_name, cc_url', TABLE_CHILD_CATEGORY, array('cc_pc_id' => $value['pc_id']), 'cc_name', 'ASC', $cc_limit);
+            $pc_records[$key]['cc_records'] = $cc_records;
+        }
+
+        return $pc_records;
     }
 
 }

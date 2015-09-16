@@ -10,61 +10,7 @@
                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                         <div class="row">
                                             <div class="col-lg-9">
-                                                <div class="sorter_wrap">
-                                                    <div class="sort-by">
-                                                        <div class="select-new">
-                                                            <div class="select-inner">
-                                                                <span>Sort by: </span>
-                                                                <div class="overwrite-sortby">Position</div>
-                                                                <ul class="sort_by">
-                                                                    <li>
-                                                                        <a href="women-dir=asc&order=position.html">Position</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="women-dir=asc&order=name.html">Name</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="women-dir=asc&order=price.html">Price</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="women-dir=asc&order=color.html">Color</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="women-dir=asc&order=size.html">Size</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="direction-list">
-                                                            <a class="direction direction-up"
-                                                               href="women-dir=desc&order=position.html"
-                                                               title="Set Descending Direction"><i
-                                                                    class="fa fa-arrow-down"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="limiter_wrap">
-                                                    <div class="limiter">
-                                                        <div class="select-new">
-                                                            <div class="select-inner">
-                                                                <div class="overwrite-limiter">12 items/page</div>
-                                                                <ul class="limiter">
-                                                                    <li>
-                                                                        <a href="women-limit=12.html"
-                                                                           class="">12</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="women-limit=24.html"
-                                                                           class="">24</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="women-limit=36.html"
-                                                                           class="">36</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>                                 </div>
-                                                </div>
+                                                <?php $this->load->view('pages/products/search-sorter-wrap'); ?>
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="pager">
@@ -107,8 +53,8 @@
                                     {
                                         $product_url = getProductUrl($pValue['product_url_key']);
                                         $product_title = stripslashes($pValue['product_title']);
-                                        $product_image_1 = getImage('');
-                                        $product_image_2 = getImage('');
+                                        $product_image_1 = getImage($pValue['pi_image_path']);
+                                        $product_image_2 = getImage($pValue['pi_image_path']);
                                         $product_price = $pValue['product_price'];
                                         ?>
                                         <li class="item effect-pageLeft">
@@ -117,8 +63,8 @@
                                                 <div class="product-new-label">New</div>       
                                                 <!-- // End Product Label -->
                                                 <a class="product-image" href="<?php echo $product_url; ?>" title="<?php echo $product_title; ?>">
-                                                    <img class="lazyOwl img-responsive" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>"/>
-                                                    <img class="img-responsive alt-img lazy" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo IMAGES_PATH; ?>/AjaxLoader.gif" alt="<?php echo $product_title; ?>" />
+                                                    <img class="lazyOwl img-responsive" data-src="<?php echo $product_image_1; ?>" data-srcX2="<?php echo $product_image_1; ?>" src="<?php echo $product_image_1; ?>" alt="<?php echo $product_title; ?>" style="display: block;"/>
+                                                    <img class="img-responsive alt-img lazy" data-src="<?php echo $product_image_2; ?>" data-srcX2="<?php echo $product_image_2; ?>" src="<?php echo $product_image_2; ?>" alt="<?php echo $product_title; ?>" style="display: block;"/>
                                                 </a>
 
                                                 <div class="actions">

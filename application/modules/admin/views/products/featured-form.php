@@ -1,26 +1,26 @@
 <?php
-    $result = array();
-    if (isset($record))
+$result = array();
+if (isset($record))
+{
+    foreach ($record as $key => $value)
     {
-        foreach ($record as $key => $value)
-        {
-            $result[$key] = $value;
-        }
+        $result[$key] = $value;
     }
-    else
-    {
-        $result["feature_id"] = "";
-        $result["product_id"] = "";
-        $result["product_title"] = "";
-        $result["product_code"] = "";
-        $result["end_time"] = "";
-        $result["start_time"] = "";
-        $result["feature_status"] = "";
-    }
+}
+else
+{
+    $result["feature_id"] = "";
+    $result["product_id"] = "";
+    $result["product_title"] = "";
+    $result["product_code"] = "";
+    $result["feature_end_time"] = date('Y-m-d');
+    $result["feature_start_time"] = date('Y-m-d');
+    $result["feature_status"] = "";
+}
 
-    if (!isset($form_action))
-        $form_action = "";
-    
+if (!isset($form_action))
+    $form_action = "";
+
 //    prd($result);
 ?>
 
@@ -60,28 +60,30 @@
                             <div class="control-group">
                                 <label class="control-label">Select Product<span class="required">*</span></label>
                                 <div class="controls">
-                                    <select name="product_id" class="span6 m-wrap">
+                                    <select name="feature_product_id" class="span6 m-wrap">
                                         <?php
-                                            if (!empty($product_array))
+                                        if (!empty($product_array))
+                                        {
+                                            echo '<option>select</option>';
+                                            foreach ($product_array as $gcKey => $gcValue)
                                             {
-                                                echo '<option>select</option>';
-                                                foreach ($product_array as $gcKey => $gcValue)
+                                                $product_id = $gcValue["product_id"];
+                                                $product_title = $gcValue["product_title"];
+                                                $product_code = $gcValue["product_code"];
+
+                                                $selected = "";
+                                                if ($result["feature_product_id"] == $product_id)
                                                 {
-                                                    $product_id = $gcValue["product_id"];
-                                                    $product_title = $gcValue["product_title"];
-                                                    $product_code = $gcValue["product_code"];
-
-                                                    $selected = "";
-                                                    if ($result["product_id"] == $product_id)
-                                                        $selected = "selected='selected'";
-
-                                                    echo '<option value="' . $product_id . '" ' . $selected . '>' . $product_title . ' (' . $product_code . ')</option>';
+                                                    $selected = "selected='selected'";
                                                 }
+
+                                                echo '<option value="' . $product_id . '" ' . $selected . '>' . $product_title . ' (' . $product_code . ')</option>';
                                             }
-                                            else
-                                            {
-                                                echo '<option>No data</option>';
-                                            }
+                                        }
+                                        else
+                                        {
+                                            echo '<option>No data</option>';
+                                        }
                                         ?>
                                     </select>
                                 </div>
@@ -89,13 +91,13 @@
                             <div class="control-group">
                                 <label class="control-label">Start Date</label>
                                 <div class="controls">
-                                    <input name="start_time" value="<?php echo set_value("start_time", $result["start_time"]); ?>" type="text" class="span6 m-wrap datepicker"/>
+                                    <input name="feature_start_time" value="<?php echo set_value("feature_start_time", date('Y-m-d', strtotime($result["feature_start_time"]))); ?>" type="text" class="span6 m-wrap datepicker"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">End Date</label>
                                 <div class="controls">
-                                    <input name="end_time" value="<?php echo set_value("end_time", $result["end_time"]); ?>" type="text" class="span6 m-wrap datepicker"/>
+                                    <input name="feature_end_time" value="<?php echo set_value("feature_end_time", date('Y-m-d', strtotime($result["feature_end_time"]))); ?>" type="text" class="span6 m-wrap datepicker"/>
                                 </div>
                             </div>
 

@@ -46,15 +46,15 @@
                                         $product_title = $a_value["product_title"];
                                         $product_code = $a_value["product_code"];
                                         $product_cost_price = $a_value["product_price"];
-                                        $a_value["start_time"] = empty($a_value["start_time"]) == TRUE ? 'NA' : (date('d-M-Y h:i A', strtotime($a_value["start_time"])));
-                                        $a_value["end_time"] = empty($a_value["end_time"]) == TRUE ? 'NA' : (date('d-M-Y h:i A', strtotime($a_value["end_time"])));
+                                        $a_value["feature_start_time"] = empty($a_value["feature_start_time"]) == TRUE ? 'NA' : (date('d-M-Y h:i A', strtotime($a_value["feature_start_time"])));
+                                        $a_value["feature_end_time"] = empty($a_value["feature_end_time"]) == TRUE ? 'NA' : (date('d-M-Y h:i A', strtotime($a_value["feature_end_time"])));
                                         $feature_status = $a_value["feature_status"] == '1' ? 'Active' : 'Deactivated';
                                         ?>
                                         <tr>
                                             <td><p><?php echo $product_title; ?> (<strong><?php echo $product_code;?></strong>)</p></td>
                                             <td><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($product_cost_price, 2); ?></td>
-                                            <td><?php echo $a_value["start_time"]; ?></td>
-                                            <td><?php echo $a_value["end_time"] ?></td>
+                                            <td><?php echo $a_value["feature_start_time"]; ?></td>
+                                            <td><?php echo $a_value["feature_end_time"] ?></td>
                                             <td class="center"><?php echo $feature_status; ?></td>
                                             <td class="center">
                                                 <a href="<?php echo base_url("admin/products/editFeaturedProduct/" . $feature_id); ?>"><i class="icon-pencil"></i>&nbsp;Edit</a><br/>

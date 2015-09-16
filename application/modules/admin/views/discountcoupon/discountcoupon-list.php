@@ -31,8 +31,8 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="<?php echo base_url_admin("discountcoupon/"); ?>">All Coupons</a></li>
                                     <li><a href="<?php echo base_url_admin("discountcoupon/index/active"); ?>">Active Coupons</a></li>
-                                    <li><a href="<?php echo base_url_admin("discountcoupon/index/deactive"); ?>">Deactive Coupons</a></li>
-                                    <li><a href="<?php echo base_url_admin("discountcoupon/index/expired"); ?>">Expired Coupons</a></li>
+                                    <li><a href="<?php echo base_url_admin("discountcoupon/index/deactive"); ?>">Deactivate Coupons</a></li>
+                                    <!--<li><a href="<?php echo base_url_admin("discountcoupon/index/expired"); ?>">Expired Coupons</a></li>-->
                                 </ul>
                             </div>
                         </div>
@@ -75,13 +75,13 @@
                                                 if ($a_value["dc_status"] == '0')
                                                 {
                                                     ?>
-                                                    <a href="<?php echo base_url_admin("discountcoupon/changeStatus/" . $dc_id . "/1"); ?>" onclick="return confirm('Are you sure to activate ?');"><i class="icon-check"></i>&nbsp;<?php echo $dc_status; ?></a><br/>
+                                                    <a href="<?php echo base_url_admin("discountcoupon/changeStatus/" . $dc_id . "/1"); ?>" onclick="return confirm('Are you sure to activate ?');"><i class="icon-check"></i>&nbsp;Activate</a><br/>
                                                     <?php
                                                 }
                                                 else
                                                 {
                                                     ?>                                           
-                                                    <a href="<?php echo base_url_admin("discountcoupon/changeStatus/" . $dc_id . "/0"); ?>" onclick="return confirm('Are you sure to deactivate ?');"><i class="icon-remove-circle"></i>&nbsp;<?php echo $dc_status; ?></a><br/>
+                                                    <a href="<?php echo base_url_admin("discountcoupon/changeStatus/" . $dc_id . "/0"); ?>" onclick="return confirm('Are you sure to deactivate ?');"><i class="icon-remove-circle"></i>&nbsp;Deactivate</a><br/>
                                                     <?php
                                                 }
                                                 ?>

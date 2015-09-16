@@ -4,8 +4,8 @@
 </style>
 
 <?php
-    if (!isset($form_action))
-        $form_action = "";
+if (!isset($form_action))
+    $form_action = "";
 ?>
 
 <!-- BEGIN PAGE -->  
@@ -40,36 +40,36 @@
                                 <div class="controls">
                                     <span class='copy-this'>
                                         <?php
-                                            $image_records = $record['images_arr'];
-                                            for ($i = 0; $i <= MAX_PRODUCT_IMAGES - 1; $i++)
+                                        $image_records = $record['images_arr'];
+                                        for ($i = 1; $i <= MAX_PRODUCT_IMAGES - 1; $i++)
+                                        {
+                                            $required_input = '';
+                                            $required_text = '';
+                                            if ($i <= MIN_PRODUCT_IMAGES)
                                             {
-                                                $required_input = '';
-                                                $required_text = '';
-                                                if ($i <= MIN_PRODUCT_IMAGES)
-                                                {
-                                                    $required_input = ' required="required" ';
-                                                    $required_text = '<span class="required">*</span>';
-                                                }
-                                                ?>
-                                                <div class='clearfix'>
-                                                    <input type='hidden' name='pi_id[]' value='<?php echo @$image_records[$i]['pi_id']; ?>'/>
-                                                    <div class='span3'>
-                                                        <label>Select image<?php echo $required_text; ?></label>
-                                                        <input type='file' name='product_img[]' class='m-wrap' <?php echo $required_input; ?> style="max-width: 100%;"/>
-                                                    </div>
-                                                    <div class='span3'>
-                                                        <label>Image Title</label>
-                                                        <input type='text' name='product_img_title[]' class="m-wrap" value="<?php echo @$image_records[$i]['pi_image_title']; ?>" placeholder="(eg.:- Front view)"/>
-                                                    </div>
-                                                    <div class='span3'>
-                                                        <label>Preview</label>
-                                                        <div style="width: 50px;height: 50px">
-                                                            <img src='<?php echo getImage(@$image_records[$i]['pi_image_path']); ?>' alt='no-image' style="max-width: 100%"/>
-                                                        </div>
+                                                $required_input = ' required="required" ';
+                                                $required_text = '<span class="required">*</span>';
+                                            }
+                                            ?>
+                                            <div class='clearfix'>
+                                                <input type='hidden' name='pi_id[]' value='<?php echo @$image_records[$i]['pi_id']; ?>'/>
+                                                <div class='span3'>
+                                                    <label>Select image<?php echo $required_text; ?></label>
+                                                    <input type='file' name='product_img[]' class='m-wrap' <?php echo $required_input; ?> style="max-width: 100%;"/>
+                                                </div>
+                                                <div class='span3'>
+                                                    <label>Image Title</label>
+                                                    <input type='text' name='product_img_title[]' class="m-wrap" value="<?php echo @$image_records[$i]['pi_image_title']; ?>" placeholder="(eg.:- Front view)"/>
+                                                </div>
+                                                <div class='span3'>
+                                                    <label>Preview</label>
+                                                    <div style="width: 50px;height: 50px">
+                                                        <img src='<?php echo getImage(@$image_records[$i]['pi_image_path']); ?>' alt='no-image' style="max-width: 100%"/>
                                                     </div>
                                                 </div>
-                                                <?php
-                                            }
+                                            </div>
+                                            <?php
+                                        }
                                         ?>
                                     </span>
                                 </div>

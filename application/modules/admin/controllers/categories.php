@@ -31,12 +31,20 @@ class Categories extends CI_Controller
 
     public function addParentCategory()
     {
+        $model = new Common_model();
         if ($this->input->post())
         {
             $arr = $this->input->post();
 //                prd($arr);
+//            prd($_FILES);
             $pc_id = $arr["pc_id"];
             $pc_name = $arr["pc_name"];
+
+            $pc_url = getUniqueParentCategoryURL($pc_name);
+            $data_array = array(
+                'pc_name' => addslashes($pc_name),
+                'pc_url' => $pc_url
+            );
 
             if (empty($pc_id))
             {
@@ -44,7 +52,14 @@ class Categories extends CI_Controller
                 $is_exists = $model->is_exists("pc_id", TABLE_PARENT_CATEGORY, array("pc_name" => $pc_name));
                 if (empty($is_exists))
                 {
-                    $model->insertData(TABLE_PARENT_CATEGORY, $arr);
+                    $model->insertData(TABLE_PARENT_CATEGORY, $data_array);
+                    $pc_id = $this->db->insert_id();
+
+                    if (isset($_FILES['pc_img']) && !empty($_FILES['pc_img']))
+                    {
+                        $this->uploadCategoryImage($pc_id, $_FILES['pc_img']);
+                    }
+
                     $this->session->set_flashdata("success", "Parent category added");
                     redirect(base_url_admin("categories/parentCategories"));
                 }
@@ -60,7 +75,13 @@ class Categories extends CI_Controller
                 $is_exists = $model->is_exists("pc_id", TABLE_PARENT_CATEGORY, array("pc_name" => $pc_name, "pc_id != " => $pc_id));
                 if (empty($is_exists))
                 {
-                    $model->updateData(TABLE_PARENT_CATEGORY, $arr, array("pc_id" => $pc_id));
+                    $model->updateData(TABLE_PARENT_CATEGORY, $data_array, array("pc_id" => $pc_id));
+
+                    if (isset($_FILES['pc_img']) && !empty($_FILES['pc_img']))
+                    {
+                        $this->uploadCategoryImage($pc_id, $_FILES['pc_img']);
+                    }
+
                     $this->session->set_flashdata("success", "Parent category edited");
                     redirect(base_url_admin("categories/parentCategories"));
                 }
@@ -73,7 +94,6 @@ class Categories extends CI_Controller
         }
         else
         {
-            $model = new Common_model();
             $data["form_action"] = "";
             $data["form_heading"] = "Add Parent Category";
             $this->template->write_view("content", "categories/parent-category-form", $data);
@@ -115,22 +135,28 @@ class Categories extends CI_Controller
 
     public function addChildCategory()
     {
+        $model = new Common_model();
         if ($this->input->post())
         {
             $arr = $this->input->post();
 //                prd($arr);
             $cc_id = $arr["cc_id"];
-            $arr["cc_pc_id"] = $arr["pc_id"];
-            unset($arr["pc_id"]);
             $cc_name = $arr["cc_name"];
+
+            $cc_url = getUniqueChildCategoryURL($cc_name);
+            $data_array = array(
+                'cc_name' => addslashes($cc_name),
+                'cc_url' => $cc_url,
+                'cc_pc_id' => $arr["pc_id"],
+            );
 
             if (empty($cc_id))
             {
                 //insert
                 $is_exists = $model->is_exists("cc_id", TABLE_CHILD_CATEGORY, array("cc_name" => $cc_name));
-                if (empty($is_exists))
+                if (empty($is_exists) == TRUE)
                 {
-                    $model->insertData(TABLE_CHILD_CATEGORY, $arr);
+                    $model->insertData(TABLE_CHILD_CATEGORY, $data_array);
                     $this->session->set_flashdata("success", "Child category added");
                     redirect(base_url_admin("categories/childCategories"));
                 }
@@ -146,7 +172,7 @@ class Categories extends CI_Controller
                 $is_exists = $model->is_exists("cc_id", TABLE_CHILD_CATEGORY, array("cc_name" => $cc_name, "cc_id != " => $cc_id));
                 if (empty($is_exists))
                 {
-                    $model->updateData(TABLE_CHILD_CATEGORY, $arr, array("cc_id" => $cc_id));
+                    $model->updateData(TABLE_CHILD_CATEGORY, $data_array, array("cc_id" => $cc_id));
                     $this->session->set_flashdata("success", "Child category edited");
                     redirect(base_url_admin("categories/childCategories"));
                 }
@@ -159,7 +185,6 @@ class Categories extends CI_Controller
         }
         else
         {
-            $model = new Common_model();
             $data["form_action"] = "";
             $data["parent_cat_array"] = $model->fetchSelectedData("*", TABLE_PARENT_CATEGORY, array(), "pc_name");
             $data["form_heading"] = "Add Child Category";
@@ -247,6 +272,30 @@ class Categories extends CI_Controller
         }
     }
 
-}
+    public function changeHomepageDisplayStatus($pc_id, $status_code)
+    {
+        $model = new Common_model();
+        $model->updateData(TABLE_PARENT_CATEGORY, array('pc_display' => $status_code), array('pc_id' => $pc_id));
+        $this->session->set_flashdata('success', 'Category homepage display status changed');
+        redirect(base_url_admin('categories/parentCategories'));
+    }
 
-?>
+    public function uploadCategoryImage($pc_id, $file_array)
+    {
+        $model = new Common_model();
+        $record = $model->fetchSelectedData('pc_image', TABLE_PARENT_CATEGORY, array('pc_id' => $pc_id));
+        if (!empty($record))
+        {
+            @unlink($record[0]['pc_image']);
+        }
+
+        $file_ext = getFileExtension($file_array['name']);
+        $base_path = CATEGORY_IMG_PATH;
+        $destFilename = $pc_id . '-' . getRandomNumberLength($file_array['name'], 12) . '.' . $file_ext;
+        $width = CATEGORY_IMG_WIDTH;
+        uploadImage($file_array['tmp_name'], $destFilename, $base_path, $width);
+        $model->updateData(TABLE_PARENT_CATEGORY, array('pc_image' => $base_path . '/' . $destFilename), array('pc_id' => $pc_id));
+        return TRUE;
+    }
+
+}

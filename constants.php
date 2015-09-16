@@ -2,12 +2,12 @@
 
 if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dressfolk.com" || $_SERVER["HTTP_HOST"] == "52.74.252.225")
 {
-    define("SITE_BASE_URL", "http://" . $_SERVER["HTTP_HOST"]);    // When running on server    
-    define("FACEBOOK_APP_ID", "");
-    define("FACEBOOK_SECRET_ID", "");
+    define("SITE_BASE_URL", "http://" . $_SERVER["HTTP_HOST"] . '/');    // When running on server    
+    define("FACEBOOK_APP_ID", "1617392668502474");
+    define("FACEBOOK_SECRET_ID", "9ae58cff839433198517d293b48a6862");
     define('RAZORPAY_KEY', '');
     define('RAZORPAY_SECRET', '');
-    define('SEO_INDEX', 'nofollow, noindex');    
+    define('SEO_INDEX', 'nofollow, noindex');
 
     // redirect to HTTPS 
 //        if ($_SERVER['HTTPS'] != "on")
@@ -25,8 +25,8 @@ if ($_SERVER["HTTP_HOST"] == "www.dressfolk.com" || $_SERVER["HTTP_HOST"] == "dr
 elseif ($_SERVER["REMOTE_ADDR"] == "127.0.0.1")
 {
     define("SITE_BASE_URL", "http://localhost/work/svn/dressfolk/");    // When running locally
-    define("FACEBOOK_APP_ID", "");
-    define("FACEBOOK_SECRET_ID", "");
+    define("FACEBOOK_APP_ID", "292613977575643");
+    define("FACEBOOK_SECRET_ID", "b116142f82ea815501c7768f46ec2d0c");
     define('RAZORPAY_KEY', '');
     define('RAZORPAY_SECRET', '');
     define('SEO_INDEX', 'nofollow, noindex');
@@ -70,8 +70,8 @@ define("FACEBOOK_CALLBACK_URL", SITE_BASE_URL . "index/loginWithFacebook");
 define("SITE_HOST_URL", "http://" . $_SERVER['HTTP_HOST']);
 define("SITE_HTTP_URL", "http://" . $_SERVER['HTTP_HOST'] . SITE_BASE_URL);
 
-define("SEO_KEYWORDS", "designer, sarees, lehenga, turban, bangles, accessories, ethnic, thread, crafts, bridal, wedding, handicraft, party, authentic, embroidery, leading, dealers");
-define("SEO_DESCRIPTION", "We are the leading dealers, exporters and suppliers of Designer, Bandhej, Bridal, Embroidered, Handwork, Party-wear & Printed Sarees, Ethnic Jodhpur Men's/Women's Wear and Accessories, Turbans, Rajasthani Ethnic Turbans.");
+define("SEO_KEYWORDS", "");
+define("SEO_DESCRIPTION", "");
 
 define("ADMIN_TIMEOUT_TIME", 1800);
 define("SELLER_TIMEOUT_TIME", 1800);
@@ -119,10 +119,13 @@ define("PRODUCT_IMG_WIDTH_LARGE", 700);
 define("PRODUCT_IMG_HEIGHT_LARGE", NULL);
 define("PRODUCT_IMG_PATH_LARGE", "resources/product-images");
 define("PRODUCT_IMG_PATH_SMALL", "resources/product-images/small");
+define("CATEGORY_IMG_WIDTH", 400);
+define("CATEGORY_IMG_HEIGHT", 400);
+define("CATEGORY_IMG_PATH", "resources/category-images");
 
 define("PRODUCT_DESC_MIN_LENGTH", 300);
 
-define("MIN_PRODUCT_IMAGES", 3);
+define("MIN_PRODUCT_IMAGES", 1);
 define("MAX_PRODUCT_IMAGES", 5);
 
 define("SHIPPING_PARTNER", "gati");

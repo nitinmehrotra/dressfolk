@@ -41,27 +41,42 @@ if (!isset($form_action))
                         <form action="<?php echo $form_action; ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
                             <div class="control-group">
                                 <label class="control-label">Site Name<span class="required">*</span></label>
-                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_name" required="required" value="<?php echo $alldata['site_name'];?>"></div>
+                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_name" required="required" value="<?php echo $alldata['site_name']; ?>"></div>
                             </div>
-                            
+
                             <div class="control-group">
                                 <label class="control-label">Site Title<span class="required">*</span></label>
-                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_title" required="required" value="<?php echo $alldata['site_title'];?>"></div>
+                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_title" required="required" value="<?php echo $alldata['site_title']; ?>"></div>
                             </div>
-                            
+
                             <div class="control-group">
                                 <label class="control-label">Site Email<span class="required">*</span></label>
-                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_email" required="required" value="<?php echo $alldata['site_email'];?>"></div>
+                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_email" required="required" value="<?php echo $alldata['site_email']; ?>"></div>
                             </div>
-                            
+
                             <div class="control-group">
                                 <label class="control-label">Site Contact Number<span class="required">*</span></label>
-                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_contact_number" required="required" value="<?php echo $alldata['site_contact_number'];?>"></div>
+                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_contact_number" required="required" value="<?php echo $alldata['site_contact_number']; ?>"></div>
                             </div>
-                            
+
                             <div class="control-group">
                                 <label class="control-label">Site URL<span class="required">*</span></label>
-                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_url" required="required" value="<?php echo $alldata['site_url'];?>"></div>
+                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="site_url" required="required" value="<?php echo $alldata['site_url']; ?>"></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Slider Image 1 Text<span class="required">*</span></label>
+                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="slider_text_one" required="required" value="<?php echo ($alldata['slider_text_one']); ?>"></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Slider Image 2 Text<span class="required">*</span></label>
+                                    <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="slider_text_two" required="required" value="<?php echo ($alldata['slider_text_two']); ?>"></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Slider Image 3 Text<span class="required">*</span></label>
+                                <div class="controls"><input class="span6 m-wrap" type="text" data-required="1" name="slider_text_three" required="required" value="<?php echo ($alldata['slider_text_three']); ?>"></div>
                             </div>
 
                             <div class="form-actions submit-bttn">

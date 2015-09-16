@@ -54,6 +54,7 @@
     $route['contact-us'] = 'staticpages/contactUs';
     
     $route['about-us'] = 'staticpages/index/about-us';
+    $route['facebook-login'] = 'index/loginsocial/facebook';
     $route['login'] = 'index/login';
     $route['logout'] = 'index/logout';
     $route['signup'] = 'index/signup';
@@ -63,8 +64,13 @@
     $route['my-wishlist'] = 'products/myWishlist';
     
     $route['products/view/(:any)'] = 'products/productDetail/$1';
+    $route['products/categories/(:any)/(:any)'] = 'products/viewProductCatList/$1/$2';
+    $route['products/category/(:any)'] = 'products/viewProductParentCatList/$1';
     
     $route['my-account'] = 'user/myAccount';
+    $route['my-addresses'] = 'user/myAddresses';
+    $route['review-us'] = 'index/reviewUs';
+    $route['testimonials'] = 'index/testimonials';
 
     /* End of file routes.php */
 /* Location: ./application/config/routes.php */

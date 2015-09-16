@@ -28,13 +28,13 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane profile-classic row-fluid active" id="tab_1_1">
-                            <div class="seller-cover-div clear"><p class="text-right"><a href="#coverModal" role="button" data-toggle="modal" style="background: rgba(0,0,0,0.5);color: #fff;padding: 2px 5px;"><span class="icon-picture"></span>&nbsp;Change Cover</a></p></div>
+                            <!--<div class="seller-cover-div clear"><p class="text-right"><a href="#coverModal" role="button" data-toggle="modal" style="background: rgba(0,0,0,0.5);color: #fff;padding: 2px 5px;"><span class="icon-picture"></span>&nbsp;Change Cover</a></p></div>-->
 
                             <div class="clear">
-                                <div class="span2">
+<!--                                <div class="span2">
                                     <img src="<?php echo getImage($record['seller_logo_image']); ?>" alt="" style="max-width: 100%;"/>
                                     <p><a href="#logoModal" role="button" data-toggle="modal"><span class="icon-picture"></span>&nbsp;Change Logo</a></p>
-                                </div>
+                                </div>-->
                                 <div class="span4">
                                     <h3>Seller details 
                                         <span class="pull-right" style="font-weight: normal;font-size: 16px;">
@@ -51,7 +51,7 @@
                                     </ul>
                                 </div>
 
-                                <div class="span3">
+                                <div class="span4">
                                     <h3>Bank details 
                                         <span class="pull-right" style="font-weight: normal;font-size: 16px;">
                                             <a href="<?php echo base_url_admin('sellers/addSellerBank/' . $record['seller_id']); ?>"><span class="icon-plus"></span></a>
@@ -67,7 +67,7 @@
                                     </ul>
                                 </div>
 
-                                <div class="span3">
+                                <div class="span4">
                                     <h3>Seller documents 
                                         <span class="pull-right" style="font-weight: normal;font-size: 16px;">
                                             <a href="<?php echo base_url_admin('sellers/addSellerDocument/' . $record['seller_id']); ?>"><span class="icon-plus"></span></a>

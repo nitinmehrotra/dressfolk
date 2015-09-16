@@ -7,17 +7,7 @@
             <div class="span12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->			
                 <h3 class="page-title"><?php echo stripslashes($record['product_title']); ?></h3>
-                <p><strong>Status: </strong><?php echo getProductStatusText($record['product_status']); ?></p>
-                <p><strong>Change status to: </strong>
-                    <?php
-                        for ($i = 0; $i <= 4; $i++)
-                        {
-                            $url = base_url_admin('products/updateProductStatus/' . $record['product_id'] . '/' . $i);
-                            $onclick_text = 'Are you sure to change status to ' . getProductStatusText($i);
-                            echo '<a href="' . $url . '" style="margin-left:10px" onclick="return confirm(\'' . $onclick_text . '\');">' . getProductStatusText($i) . '</a>, ';
-                        }
-                    ?>
-                </p>
+
                 <div class="actions pull-right">
                     <a class="btn green mini" href="<?php echo goBack(); ?>">
                         <i class="icon-arrow-left"></i>
@@ -68,15 +58,9 @@
                                     <li><span>Product Code</span><span>#<?php echo stripslashes($record['product_code']); ?></span></li>
                                     <li><span>Product Title</span><span><?php echo stripslashes($record['product_title']); ?></span></li>
                                     <li><span>Product Description</span><span><?php echo stripslashes($record['product_description']); ?></span></li>
-                                    <li><span>View Product</span><span><a href="<?php echo getProductUrl($record['product_url_key']); ?>" target="_blank">Click here</a></span></li>
-                                </ul>
-                                <ul class="unstyled span5 offset1">
-                                    <li><span>Seller</span><span><a href='<?php echo base_url_admin('sellers/sellerDetail/' . $record['seller_id']); ?>' target="_blank"><?php echo getSellerDisplayName($record['seller_fullname'], $record['seller_company_name']); ?></a></span></li>
-                                    <li><span>Seller's Margin</span><span><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($record['product_seller_price'], 2); ?></span></li>
-                                    <li><span>Selling Price</span><span><?php echo DEFAULT_CURRENCY_SYMBOL . number_format($record['product_price'], 2); ?></span></li>
-                                    <li><span>Profit Percent</span><span><?php echo number_format($record['product_profit_percent'], 2); ?>%</span></li>
                                     <li><span>Shipping Charge</span><span><?php echo $record['product_shipping_charge'] == 0 ? 'Free' : (DEFAULT_CURRENCY_SYMBOL . number_format($record['product_shipping_charge'], 2)); ?></span></li>
                                     <li><span>Gift Charge</span><span><?php echo $record['product_gift_charge'] == 0 ? 'Free' : (DEFAULT_CURRENCY_SYMBOL . number_format($record['product_shipping_charge'], 2)); ?></span></li>
+                                    <li><span>View Product</span><span><a href="<?php echo getProductUrl($record['product_url_key']); ?>" target="_blank">Click here</a></span></li>
                                 </ul>
                             </div>
 

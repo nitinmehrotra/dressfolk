@@ -29,31 +29,11 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                 </div>
                                 <div class="list-footer col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 newslettter">    <div class="block block-subscribe">
-                                                <div class="block-title">
-                                                    <span>Newsletter Signup</span>
-                                                </div>
-                                                <form action="<?php echo base_url('index/saveNewsletter'); ?>" method="post" id="newsletter-validate-detail">
-                                                    <div class="block-content">
-                                                        <div class="form-subscribe-header">
-                                                            <div class="input-box">
-                                                                <input type="hidden" name="url" value="<?php echo current_url(); ?>"/>
-                                                                <input type="email" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email"/>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
-                                                            </div>
-                                                        </div>
 
-                                                    </div>
-                                                </form>
-                                                <script type="text/javascript">
-                                                    //<![CDATA[
-                                                    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
-                                                    //]]>
-                                                </script>
-                                            </div>
-                                        </div>
+                                        <?php
+                                        echo $this->load->view('layout/front/footer-newsletter-subscribe');
+                                        ?>
+
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-links">
                                             <div class="footer-links">
                                                 <div class="row">
@@ -84,11 +64,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                             <ul class="footer-list">
                                                                 <li><span class="widget widget-cms-link"><a href="<?php echo base_url('all-products'); ?>" title="All Products"><span>All Products</span></a></span>
                                                                 </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('return-exchanges'); ?>" title="Returns and Exchanges"><span>Returns and Exchanges</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('shipping-options'); ?>" title="Shipping Options"><span>Shipping Options</span></a></span>
-                                                                </li>
-                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('faq'); ?>" title="Help &amp; FAQs"><span>Help &amp; FAQs</span></a></span>
+                                                                <li><span class="widget widget-cms-link"><a href="<?php echo base_url('review-us'); ?>" title="Review Us"><span>Review Us</span></a></span>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -100,7 +76,7 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                                                         <div class="custom-footer-content">
                                                             <ul class="footer-list">
                                                                 <?php
-                                                                if (isset($this->session->userdata['user_id']))
+                                                                if (!isset($this->session->userdata['user_id']))
                                                                 {
                                                                     ?>
                                                                     <li><span class="widget widget-cms-link"><a href="<?php echo base_url('login'); ?>" title="Login"><span>Login</span></a></span>
@@ -183,8 +159,12 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
     frontendData.enableAjax = true;
 </script>
 <script type="text/javascript" src="<?php echo JS_PATH; ?>/frontend.js"></script>
+<script type="text/javascript" src="<?php echo JS_PATH; ?>/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script>
+    $ = jQuery;
     jQuery(document).ready(function () {
+        jQuery('.datepicker').datepicker();
+
         jQuery(document).on('click', 'a.wishlist-action', function (e) {
             e.preventDefault();
             var is_loggedin = '<?php echo isset($this->session->userdata['user_id']) == true ? "1" : "0"; ?>';
@@ -221,7 +201,14 @@ $static_record = $model->fetchSelectedData('static_page_content', TABLE_STATIC_P
                 });
             }
         });
-    });
+
+        $('.form-search ul.dropdown-menu li a').click(function () {
+            var cat_id = $(this).attr('data-value');
+            var cat_name = $(this).html();
+            $('.category-filter button span.category-label').html(cat_name);
+            $('.search_cat_id').val(cat_id);
+        })
+    })
 </script>
 </body>
 </html>

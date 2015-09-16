@@ -41,6 +41,12 @@
                                                 <input type="contact" name="contact" id="contact" value="<?php echo stripslashes($record['user_contact']); ?>" title="Mobile" maxlength="10" class="input-text required-entry" />
                                             </div>
                                         </li>
+                                        <li>
+                                            <label for="dob" class="required">DOB</label>
+                                            <div class="input-box">
+                                                <input type="text" name="dob" id="dob" value="<?php echo empty($record['user_dob']) == TRUE ? NULL : (date('m/d/Y', strtotime($record['user_dob']))); ?>" title="Date of Birth" class="input-text datepicker" />
+                                            </div>
+                                        </li>
                                         <li class="signup-gender-radio">
                                             <label for="gender" class="required"><em>*</em>Gender</label>
                                             <div class="input-box">

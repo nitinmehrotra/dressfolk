@@ -2412,6 +2412,7 @@ button.button:hover:before {
   position:relative;
   border:#e6e6e6 solid 1px;
   width:100%;
+  height:268px;
 }
 .category-products .products-grid .item .product-action .product-image:before {
   content:'';

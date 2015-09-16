@@ -66,7 +66,7 @@ class Products extends CI_Controller
     public function productsList($cc_name)
     {
         $custom_model = new Custom_model();
-        $fields = 'product_id, product_title, product_code, product_price, product_description, pi_image_path, pi_image_title, cc_name, pc_name, seller_fullname, seller_company_name';
+        $fields = 'product_id, product_title, product_code, product_price, product_description, pi_image_path, pi_image_title, cc_name, pc_name, seller_fullname, seller_company_name, product_url_key';
         $records = $custom_model->getAllProductsList($fields, array("cc_name" => $cc_name, "product_status" => "1"), "product_id", "DESC");
         $pc_name = $records[0]["pc_name"];
 
@@ -84,7 +84,7 @@ class Products extends CI_Controller
             urldecode($cc_name) => base_url("products/view/" . rawurlencode($pc_name) . "/" . rawurlencode($cc_name)),
         );
         $data["breadcrumbArray"] = $breadcrumbArray;
-        $data["meta_title"] = $records[0]["cc_name"] . " | " . SITE_NAME;
+        $data["meta_title"] = $records[0]["cc_name"] . " | " . $records[0]["pc_name"] . " | " . SITE_NAME;
         $this->template->write_view("content", "pages/products/products-grid", $data);
         $this->template->render();
     }
@@ -295,12 +295,13 @@ class Products extends CI_Controller
 
     public function search()
     {
-        if ($this->input->get("search"))
+        if ($this->input->get("q"))
         {
             $model = new Common_model();
             $custom_model = new Custom_model();
             $category_name_records = array();
-            $query = urldecode($this->input->get("search"));
+            $cat = urldecode($this->input->get("cat_id"));
+            $query = urldecode($this->input->get("q"));
 
             $whereCondArr = array(
                 'product_title' => $query,
@@ -312,7 +313,12 @@ class Products extends CI_Controller
                 $whereString .= ' OR ' . $wKey . ' LIKE "%' . $wValue . '%" ';
             }
 
-            $product_fields = '*';
+            if (!empty($cat))
+            {
+                $whereString .=' AND pc_id = ' . $cat;
+            }
+
+            $product_fields = 'product_id, product_title, product_price, product_url_key, pi_image_path, cc_name';
             $productWhereCondStr = '(' . $whereString . ') AND product_status = "1"';
             $records = $custom_model->getAllSearchProductsList($product_fields, $productWhereCondStr, 'rand()');
 
@@ -460,6 +466,20 @@ class Products extends CI_Controller
         $data["meta_title"] = $pageHeading . " | " . SITE_NAME;
         $this->template->write_view("content", "pages/products/products-wishlist", $data);
         $this->template->render();
+    }
+
+    public function viewProductCatList($pc_url, $cc_url)
+    {
+        $model = new Common_model();
+        $cat_record = $model->fetchSelectedData('cc_name', TABLE_CHILD_CATEGORY, array('cc_url' => $cc_url));
+        $this->productsList($cat_record[0]['cc_name']);
+    }
+
+    public function viewProductParentCatList($pc_url)
+    {
+        $model = new Common_model();
+        $cat_record = $model->fetchSelectedData('pc_name', TABLE_PARENT_CATEGORY, array('pc_url' => $pc_url));
+        $this->childList($cat_record[0]['pc_name']);
     }
 
 }

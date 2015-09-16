@@ -2,15 +2,6 @@
     <div class="container">
         <div class="main">
             <div class="row show-grid">
-                <div class="col-lg-12">
-                    <div class="site-preface"></div>
-                </div>
-            </div>
-            <div class="row show-grid">
-                <div class="col-lg-12">
-                </div>
-            </div>
-            <div class="row show-grid">
                 <div class="col-lg-9">
                     <div class="col-main">
                         <div class="std">
@@ -24,15 +15,6 @@
                 <div class="col-lg-3 sidebar">
                     <div class="col-right">
                     </div>
-                </div>
-            </div>
-            <div class="row show-grid">
-                <div class="col-lg-12">
-                </div>
-            </div>
-            <div class="row show-grid">
-                <div class="col-lg-12">
-                    <div class="site-postscript"></div>
                 </div>
             </div>
         </div>
