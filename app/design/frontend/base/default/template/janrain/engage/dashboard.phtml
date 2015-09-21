@@ -1,0 +1,55 @@
+<?php
+$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+$socialIds = array();
+foreach (Mage::helper('engage/identifiers')->get_identifiers($customerId) as $social) {
+    $id = $social->getId();
+    $socialIds[] = (object) array(
+        'id' => $id,
+        'providerName' => $social->getProvider(),
+        'profileName' => $social->getProfileName(),
+        'unlinkUrl' => Mage::getUrl('engage/rpx/removeid', array('identifier' => $id)),
+        );
+}
+?>
+<div class="dashboard">
+    <div class="box-account box-info">
+        <div class="box-head">
+            <h2>Janrain Engage</h2>
+        </div>
+        <div class="col2-set">
+            <div class="col-1">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>Identities</h3>
+                    </div>
+                    <div class="box-content">
+                        <ul>
+                            <?php foreach ($socialIds as &$socId):?>
+                            <li style="clear:both;">
+                                <span class="janrain-provider-icon-32 janrain-provider-icon-<?php echo $socId->providerName;?>"> </span>
+                                <span class="rpx_profile_label"><?php echo $socId->profileName;?>
+                                    <small>(
+                                        <a href="<?php echo $socId->unlinkUrl;?>">
+                                            remove
+                                        </a>
+                                        )</small>
+                                </span>
+                            </li>
+                            <?php endforeach;?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>Add Identity</h3>
+                    </div>
+                    <div class="box-content">
+                        <div id='janrainEngageEmbed'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
