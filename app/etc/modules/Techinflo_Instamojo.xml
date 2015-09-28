@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Package: Techinflo_Instamojo
+* Edition: Community
+* Version: 1.0.1
+* Developer: Sampath Kumar<Techinflo Team>
+*/ 
+-->
+<config>
+    <modules>
+        <Techinflo_Instamojo>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Techinflo_Instamojo>
+    </modules>
+</config>

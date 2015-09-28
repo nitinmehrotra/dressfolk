@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Package: Techinflo_Instamojo
+* Edition: Community
+* Version: 1.0.0
+* Developer: Sampath Kumar<Techinflo Team>
+*/ 
+-->
+<config>
+  <modules>
+    <Techinflo_Instamojo>
+      <version>1.0.0</version>
+    </Techinflo_Instamojo>
+  </modules>
+  <global>
+    <models>
+      <instamojo>
+        <class>Techinflo_Instamojo_Model</class>
+      </instamojo>
+    </models>
+    <helpers>
+      <instamojo>
+        <class>Techinflo_Instamojo_Helper</class>
+      </instamojo>
+    </helpers>
+    <blocks>
+      <instamojo>
+        <class>Techinflo_Instamojo_Block</class>
+      </instamojo>
+    </blocks>
+  </global>
+  <default>
+    <payment>
+      <instamojo>
+        <model>instamojo/standard</model>
+        <active>1</active>
+        <order_status>pending</order_status>
+        <title>Instamojo Pay</title>
+        <payment_action>sale</payment_action>
+        <allowspecific>0</allowspecific>
+        <sort_order>1</sort_order>
+      </instamojo>
+    </payment>
+  </default>
+  <frontend>
+    <routers>
+      <instamojo>
+        <use>standard</use>
+        <args>
+          <module>Techinflo_Instamojo</module>
+          <frontName>instamojo</frontName>
+        </args>
+      </instamojo>
+    </routers>
+  </frontend>
+</config>

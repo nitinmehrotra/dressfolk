@@ -1,0 +1,84 @@
+<?php
+/**
+* Package: Techinflo_Instamojo
+* Edition: Community
+* Version: 1.0.0
+* Developer: Sampath Kumar<Techinflo Team>
+*/ 
+?>
+<?php 
+	$_orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+	$_order = Mage::helper('instamojo')->getCurrentOrder();
+	$linkurl = Mage::helper('instamojo')->getLinkUrl(); 
+	$privateSalt = Mage::helper('instamojo')->getPrivateSalt(); 
+if($_orderId){
+	$data_name = Mage::helper('instamojo')->getUserName($_order);
+	$data_email = Mage::helper('instamojo')->getUserEmail($_order);
+	$data_phone = Mage::helper('instamojo')->getUserPhone($_order);
+	$data_amount = Mage::helper('instamojo')->getGrandTotal($_order);
+	$data_orderid = Mage::helper('instamojo')->getCurrentOrderId();
+	$signature = Mage::helper('instamojo')->generateSecureKey(); 
+?>
+<?php $date = date('m/d/Y'); 
+$formatedDate = date('m/d/Y',strtotime($date));
+$date = explode('/', $formatedDate);
+$year = $date[2]; $month = $date[0]; $day = $date[1]; $hour = 24; $min = 30;
+?>
+<script type="text/javascript">
+    var current="Time Up!";    
+    var year='<?php echo $year; ?>';    
+    var month='<?php echo $month; ?>';      
+    var day='<?php echo $day; ?>';       
+    var hour='<?php echo $hour; ?>';      
+    var minute='<?php echo $min; ?>';    
+    var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+    function countdown(yr,m,d,hr,min){
+        theyear=yr;themonth=m;theday=d;thehour=hr;theminute=min;
+        var today=new Date();
+        var todayy=today.getYear();
+        if (todayy < 1000) todayy+=1900;
+        var todaym=today.getMonth();
+        var todayd=today.getDate();
+        var todayh=today.getHours();
+        var todaymin=today.getMinutes();
+        var todaysec=today.getSeconds();
+        var todaystring=montharray[todaym]+" "+todayd+", "+todayy+" "+todayh+":"+todaymin+":"+todaysec;
+        var futurestring=montharray[m-1]+" "+d+", "+yr+" "+hr+":"+min+":"+"00";
+        var dd=Date.parse(futurestring)-Date.parse(todaystring);
+        var dday=Math.floor(dd/(60*60*1000*24)*1);
+        var dhour=Math.floor((dd%(60*60*1000*24))/(60*60*1000)*1);
+        var dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+        var dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+        if(dday<=0&&dhour<=0&&dmin<=0&&dsec<=0){
+			document.getElementById('timer-text').style.display="none";
+            document.getElementById('timer-table').style.display="none";
+            return;
+        } else {
+			document.getElementById('dsec').innerHTML=dsec;
+            setTimeout("countdown(theyear,themonth,theday,thehour,theminute)",1000);
+        }
+    }
+</script>
+<h1 style="margin: 100px 0px 0px 200px; color:#ea7601; width:40px; border:2px solid #ea7601; border-radius:50px; padding: 9px; text-align:center;" id="dsec"></h1>
+<div id="loadtext" style="font-size: 17px; margin: 20px 25px; text-align: center;"><?php echo $this->__("Please wait for a moment, While we redirect you to Instamojo Payments") ?></div>
+<form name="instamojoform" method="get" action="<?php echo $linkurl; ?>">
+	<input type="hidden" name="data_sign" value="<?php echo $signature; ?>">
+	<input type="hidden" name="data_readonly" value="<?php echo "data_amount"; ?>">
+	<input type="hidden" name="data_readonly" value="<?php echo "data_name"; ?>">
+	<input type="hidden" name="data_readonly" value="<?php echo "data_email"; ?>">
+	<input type="hidden" name="data_readonly" value="<?php echo "data_phone"; ?>">
+	<!--<input type="hidden" name="data_readonly" value="<?php //echo "data_Field_40225"; ?>">-->
+	<input type="hidden" name="data_amount" value="<?php echo $data_amount; ?>">
+	<input type="hidden" name="data_email" value="<?php echo $data_email; ?>">
+	<input type="hidden" name="data_name" value="<?php echo $data_name; ?>">
+	<input type="hidden" name="data_phone" value="<?php echo $data_phone; ?>">
+	<!--<input type="hidden" name="data_Field_40225" value="<?php //echo $data_orderid; ?>">-->
+	<input type="hidden" name="intent" value="<?php echo $this->__("buy"); ?>">
+</form>
+<script type="text/javascript">
+document.instamojoform.submit();
+window.onload=countdown(year,month,day,hour,minute); 
+</script>
+<?php } else { ?>
+<h4><?php echo $this->__("It seems something went wrong on your end. Please try again!") ?> <a href="<?php echo Mage::getUrl('customer/account') ?>"> <?php echo $this->__("click here") ?></a><?php echo $this->__("to go back") ?></h4>
+<?php } ?>
