@@ -1,0 +1,11 @@
+<div class="blog-homepage " id="widget-0f5e8aae531685aae3f38700f6cb7b31">
+            <h3 class="title-widget"><span>Latest News</span></h3>
+        <div class="owl-carousel ">
+            </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            widgetConfig.init('widget-0f5e8aae531685aae3f38700f6cb7b31', {
+                carousel: {"enable":true,"pagination":false,"autoPlay":5000,"items":3,"singleItem":false,"lazyLoad":true,"lazyEffect":false,"addClassActive":true,"navigation":true,"navigationText":["<i class=\"fs1\" aria-hidden=\"true\" data-icon=\"#\"><\/i>","<i class=\"fs1\" aria-hidden=\"true\" data-icon=\"$\"><\/i>"],"engineSrc":"http:\/\/sqtr.in\/js\/icotheme\/jquery\/plugins\/owl-carousel\/owl.carousel.js"}            });
+        });
+    </script>
+</div>

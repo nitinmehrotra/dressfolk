@@ -1,0 +1,34 @@
+<div class="block-container " id="block-f1a1d18c85dee13cd178a420f6540a08">
+        <div class="">
+                    <div class="">
+                <div class="home-banner">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="inner-banner">
+            <div class="overlay">
+                <span class="widget widget-category-link"><a href="#"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span>
+            </div>
+            <div class="banner-img"><span class="text">Shoes</span><img alt="" src="http://sqtr.in/media/wysiwyg/icotheme/Shoes-banner.jpg" /></div>
+        </div>
+        <div class="inner-banner">
+            <div class="overlay"><span class="widget widget-category-link"><a href="#"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span></div>
+            <div class="banner-img"><span class="text">Shirts</span><img alt="" src="http://sqtr.in/media/wysiwyg/icotheme/shirt-banner.jpg" /></div>
+        </div>
+    </div> 
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="inner-banner">
+            <div class="overlay"><span class="widget widget-category-link"><a href="#"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span></div>
+            <div class="banner-img"><span class="text">Bag</span><img alt="" src="http://sqtr.in/media/wysiwyg/icotheme/bags-banner.jpg" /></div>
+        </div>
+        <div class="inner-banner">
+            <div class="overlay"><span class="widget widget-category-link"><a href="#"><i class="fs1" aria-hidden="true" data-icon="$"></i></a></span></div>
+            <div class="banner-img"><span class="text">Pants</span><img alt="" src="http://sqtr.in/media/wysiwyg/icotheme/pant-banner.jpg" /></div>
+        </div>
+    </div> 
+</div>            </div>
+            </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('#block-f1a1d18c85dee13cd178a420f6540a08 .owl-carousel').owlCarousel({"enable":false,"pagination":false,"transitionStyle":false,"autoPlay":false,"items":1,"singleItem":true,"lazyLoad":true,"lazyEffect":false,"addClassActive":true,"navigation":false,"navigationText":[null,null]});
+        });
+    </script>
+</div>
