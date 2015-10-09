@@ -32,15 +32,15 @@
             "action" can be set to "print" to show exception on screen and "email"
             to send exception on specified email
         -->
-        <action>print</action>
+        <action>email</action>
         <!--
             in "subject" you can set subject of email
         -->
-        <subject>Store Debug Information</subject>
+        <subject>Error occured on website</subject>
         <!--
             "email_address" admin email address
         -->
-        <email_address></email_address>
+        <email_address>arp19690@gmail.com</email_address>
         <!--
             "trash" is handle about trace info
             value "leave" is for store on disk
