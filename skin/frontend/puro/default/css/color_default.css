@@ -8,8 +8,10 @@ a:hover {
   color:#333333;
   text-decoration:none;
 }
-body { font-family:Montserrat, arial, serif; }
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family:Montserrat, arial, serif; }
+/*body { font-family:Montserrat, arial, serif; }*/
+body { font-family:NexaLight, arial, serif; }
+/*h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family:Montserrat, arial, serif; }*/
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family:NexaBold, arial, serif; }
 button.button, a.btn-readmore, a.aw-blog-read-more {
   background-color:#333333;
   border:#333333 solid 2px;
