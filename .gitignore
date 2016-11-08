@@ -1,1 +1,4 @@
 /nbproject/private/
+var/report/*
+var/cache/*
+var/export/*
